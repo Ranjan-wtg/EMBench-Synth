@@ -59,15 +59,15 @@ limit the profile likelihood of the prefactor direction is exactly flat
 ($\dln\text{RSS}=0$), invisible to the data at any sample size. We verify the
 signatures (Fisher degeneracy, exact flatness, discontinuous collapse,
 noise-insensitive incumbents, and a false-confidence two-regime incumbent that
-is best at $\sln=0.15$ yet collapses at $\sln=0.5$), and prove an
-in-window-certification impossibility result: the data-side profile width has
-zero predictive power for use-condition error, because free, prior-regularized,
-and pinned estimators share the same flat profile yet differ by $10\times$.
-Black-box ML extrapolators (MLP, KAN, GP--SR) reproduce the
-hazard, but a physics-regularized MLP---its output \emph{is} the corrected
-equation with a soft prior toward literature parameters---does not
-($1.07$--$1.60\times$). We release the benchmark, model zoo, scoring, and
-leaderboard as infrastructure for reproducible reliability ML.
+is best at $\sln=0.15$ yet collapses at $\sln=0.5$), and establish an
+in-window-certification impossibility result within EMBench-Synth: the data-side
+profile width has zero predictive power for use-condition error, because free,
+prior-regularized, and pinned estimators share the same flat profile yet differ
+by $10\times$. Black-box ML extrapolators (MLP, KAN, GP--SR) reproduce the
+hazard within this benchmark, but a physics-regularized MLP---its output
+\emph{is} the corrected equation with a soft prior toward literature
+parameters---does not ($1.07$--$1.60\times$). We release the benchmark, model
+zoo, scoring, and leaderboard as infrastructure for reproducible reliability ML.
 \end{abstract}
 
 \section{Introduction}
@@ -102,9 +102,11 @@ corrected equation is
   \underbrace{\frac{jL}{jL-(jL)_c}}_{\mathrm{Blech\ boost}}.
 \end{equation}
 
-Our headline result is not that the corrected equation extrapolates better than
-the incumbent---it is \emph{how fragile that transfer is, and why}. On
-\emph{EMBench-Synth}, a deterministic synthetic benchmark where
+EM models are evaluated by their fit within the accelerated testing regime, but
+deployment requires extrapolation far outside it. Whether a good in-window fit
+guarantees reliable extrapolation is the question we study. Our headline result
+is not that the corrected equation extrapolates better than the incumbent---it is
+\emph{how fragile that transfer is, and why}. On \emph{EMBench-Synth}, where
 Eq.~\eqref{eq:corrected} is the true generating process, we show:
 \begin{itemize}
   \item \textbf{A noise-induced phase transition in extrapolation safety.}
@@ -115,42 +117,34 @@ Eq.~\eqref{eq:corrected} is the true generating process, we show:
         prefactor ratio at its known material value removes the transition
         ($1.00\to1.69\times$, smooth). $\sln=0.02$ is two orders of magnitude
         below the $\sln\approx0.15$ typical of EM failure-time data.
-  \item \textbf{The mechanism is singular-model geometry, and it is
-        quantitative.} The free model's observed Fisher information at the
-        truth is ill-conditioned by $10^9$--$10^{12}$, and the use-condition
-        extrapolation functional places $99.4\%$ of its variance on the
-        weakest-identified direction, whose leverage is $296\times$ (growing to
-        $2388\times$ in deeper windows) larger than when the ratio is pinned.
-        In the deep-envelope limit the profile likelihood in the prefactor
-        direction is \emph{exactly flat} ($\dln\text{RSS}=0$): the direction is
-        invisible to the data at \emph{any} sample size---the singular-model
-        regime of Watanabe's learning theory \citep{watanabe09,watanabe18}.
+  \item \textbf{The mechanism is singular-model geometry.} The free model's
+        Fisher information at the truth is ill-conditioned by
+        $10^9$--$10^{12}$; the extrapolation functional places $99.4\%$ of
+        its variance on the weakest-identified direction, whose leverage is
+        $296\times$ larger than when the ratio is pinned. In the deep-envelope
+        limit the profile likelihood in that direction is \emph{exactly flat}
+        ($\dln\text{RSS}=0$)---invisible at any sample size \citep{watanabe09,
+        watanabe18}.
   \item \textbf{Incumbent behavior is the complement.} Black's equation is
         uniformly wrong and \emph{noise-insensitive} ($6.7\times$ at $\sln=0$
-        to $4.2\times$ at $\sln=0.5$): it carries a structural error that no
-        amount of data noise can mask. The industry two-regime ``improvement''
+        to $4.2\times$ at $\sln=0.5$). The industry two-regime ``improvement''
         shows \emph{false confidence}: it matches the pinned corrected
-        equation at $\sln=0.15$ ($1.27\times$ vs.\ $1.38\times$) yet collapses
-        at $\sln=0.5$ ($12.8\times$).
+        equation at $\sln=0.15$ yet collapses at $\sln=0.5$ ($12.8\times$).
   \item \textbf{An impossibility result for in-window certification.} The
         profile-likelihood width of the hazard direction has \emph{zero}
-        predictive power for use-condition error (correlation $-0.54$ with
-        transfer error): free, prior-regularized, and pinned estimators share
-        the same data-side profile yet differ by $10\times$ in outcome. On
-        \emph{EMBench-Synth}, extrapolation safety cannot be certified from the
-        accelerated window alone.
+        predictive power for use-condition error: free, prior-regularized, and
+        pinned estimators share the same data-side profile yet differ by
+        $10\times$ in outcome. On \emph{EMBench-Synth}, extrapolation safety
+        cannot be certified from the accelerated window alone.
 \end{itemize}
 
 \paragraph{Why a controlled synthetic benchmark.} The paradoxes above are
 empirically invisible on real wafer data, where the ground truth is unknown.
 EMBench-Synth provides the controlled test a real-data benchmark cannot: the
 generating process is known exactly, so recovery, identifiability, and
-extrapolation error are measurable. The physics is encoded by construction;
-the benchmark is a \emph{measurement instrument}, not a discovery claim, for
-the predictors (KAN, symbolic regression, learned lifetime models) now being
-proposed for reliability sign-off: a proposed predictor's recovery,
-structure-selection, and extrapolation behavior can be scored against a known
-truth before any trust is placed in it on real data.
+extrapolation error are measurable. The benchmark is a \emph{measurement
+instrument} for the predictors now proposed for reliability sign-off, not a
+discovery claim.
 
 \section{Related work}
 
@@ -223,7 +217,7 @@ experiments do not test.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.62\linewidth]{figures/fig_arrhenius_kink.png}
+\includegraphics[width=0.58\linewidth]{figures/fig_arrhenius_kink.png}
 \caption{The blind data already violate Black's equation's log-linear
 assumption: the Arrhenius plot is visibly curved (two-regime kink) and the
 current exponent interpolates between $n=2$ and $n=1$. This is the gap a
@@ -262,7 +256,7 @@ Fig.~\ref{fig:transition}.}
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.75\linewidth]{figures/fig_phase_transition.png}
+\includegraphics[width=0.72\linewidth]{figures/fig_phase_transition.png}
 \caption{Noise-induced phase transition in extrapolation safety. The free
 corrected equation (red) is exact at $\sln=0$ and collapses discontinuously at
 $\sln=0.02$; pinned (green) and soft-prior (blue) variants are flat and
@@ -300,42 +294,39 @@ report any of these behaviors as ``the truth.''
 The candidates above are physics-informed. The ML-for-EDA community proposes
 black-box predictors (KAN, symbolic regression, learned lifetime models) for
 the same reliability question, so we run the same protocol on them. The
-findings are the benchmark's most transferable output: \emph{black-box
-predictors cannot extrapolate, and the diagnosis is architectural}. The 64-64
+findings are a key result: \emph{within this benchmark, the evaluated black-box
+predictors did not extrapolate reliably, and the diagnosis is architectural}. The 64-64
 MLP is incumbent-like---noise-insensitive
 ($3.4$--$4.2\times$ across all $\sln$), modest, structurally-bounded transfer.
-The single-layer spline KAN evaluated here fails at a scale no physics model does
-($4.2\times10^{4}\times$ at $\sln=0.15$; Fig.~\ref{fig:ml})---and the cause is
-\emph{by construction} for this basis: its B-spline functions are compactly
-supported on the training envelope, so at $100\,^\circ$C the temperature edge
-evaluates to \emph{exactly zero}; a spline KAN with this basis has no temperature
-extrapolation, whatever the data. Globally supported bases would behave
-differently; the local-basis form is the community default. GP-SR (gplearn) on
-$[1/T,\ln J]$ fits the window to $R^2\approx0.24$ and returns a program whose
-use-condition evaluation diverges ($1.1\times10^{4}\times$): its operator set
-permits unbounded extrapolation, so the optimizer selects an in-window fit
-whose out-of-window value is noise.
+The spline KAN evaluated here fails at a scale no physics model does
+($4.2\times10^{4}\times$ at $\sln=0.15$; Fig.~\ref{fig:ml})---its B-spline basis
+is compactly supported on the training envelope, so at $100\,^\circ$C the
+temperature edge evaluates to \emph{exactly zero}. Globally supported bases
+would behave differently; the local-basis form is the community default. GP-SR
+(gplearn) on $[1/T,\ln J]$ fits the window to $R^2\approx0.24$ and returns a
+program whose use-condition evaluation diverges ($1.1\times10^{4}\times$): its
+operator set permits unbounded extrapolation, so the optimizer selects an
+in-window fit whose out-of-window value is noise.
 
 \paragraph{Physics-regularized ML: the positive arm.} The failure above is not
 ``ML'' but \emph{unconstrained ML}: the hazard lives in a direction the
 accelerated window cannot see, so it must be constrained, not learned. An MLP
 whose output \emph{is} the corrected equation---four network parameters
 ($\ln B_0,\ln C_0,E_{\mathrm{a,s}},E_{\mathrm{a,gb}}$) feed the pinned
-$J^{-2}+J^{-1}$/two-regime functional---with a soft prior toward literature
-parameter values ($\lambda=0.1$) extrapolates safely: $1.07$--$1.60\times$
-across $\sln\in[0,0.3]$ (Fig.~\ref{fig:ml}), vs.\ $3.4$--$4.2\times$ for the
-black-box MLP, degrading only at the extreme $\sln=0.5$ ($3.0\times$). The
-same network \emph{without} the prior reproduces the hazard ($6.4\times$), so
-the constraint---not the functional form or network capacity---is what
-transfers: the ML restatement of the paper's central result, that the single
-known material constant, not more data or a better model class, makes
-extrapolation safe.
+functional---with a soft prior toward literature values ($\lambda=0.1$)
+extrapolates safely: $1.07$--$1.60\times$ across $\sln\in[0,0.3]$
+(Fig.~\ref{fig:ml}), vs.\ $3.4$--$4.2\times$ for the black-box MLP, degrading
+only at $\sln=0.5$ ($3.0\times$). The same network \emph{without} the prior
+reproduces the hazard ($6.4\times$), so the constraint---not the functional form
+or network capacity---is what transfers: the ML restatement of the paper's
+central result, that the single known material constant makes extrapolation
+safe.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.62\linewidth]{figures/fig_ml_predictors.png}
+\includegraphics[width=0.58\linewidth]{figures/fig_ml_predictors.png}
 \caption{ML predictors on the phase-transition protocol. Black-box predictors
-cannot extrapolate (MLP incumbent-like; the spline KAN evaluated here has a
+did not extrapolate reliably (MLP incumbent-like; the spline KAN evaluated here has a
 temperature edge exactly
 zero at $100\,^\circ$C; GP-SR's program diverges); the physics-regularized MLP
 (squares) stays with the pinned physics reference. Free corrected (dotted),
@@ -347,35 +338,33 @@ pinned (dashed).}
 EM is a \emph{power-delivery network}: a graph of segments whose current
 distributes by conductance. We add a single graph arm to test whether
 \emph{representation}---not functional form---changes the extrapolation
-verdict. Message passing is the minimal inductive bias that couples
-neighboring segments, so we use a standard message-passing GNN and hold
-everything else fixed against a topology-blind MLP on identical per-segment
-features, isolating representation as the only variable. On random PDN-like
-networks with an exact Kirchhoff current solve and per-segment corrected
-equation MTTF (including Blech), the GNN trained only on accelerated networks
-is the best in-window fitter (RMSE $0.149$ vs.\ $0.164$ for the MLP) yet does
-\emph{not} transfer better at use conditions ($2.6\times$ vs.\ $1.9\times$;
-medians over 5 seeds). The graph structure encodes the current distribution
-in-window but does not remove the hazard: the pinned-physics oracle at the
-same inputs is $1.09\times$. The hazard is in the transfer functional, not
-the representation.
+verdict. Message passing is the minimal inductive bias coupling neighboring
+segments, so we hold it fixed against a topology-blind MLP on identical
+per-segment features, isolating representation as the only variable. On random
+PDN-like networks with an exact Kirchhoff solve and per-segment corrected
+equation MTTF, the GNN trained only on accelerated networks is the best
+in-window fitter (RMSE $0.149$ vs.\ $0.164$ for the MLP) yet does \emph{not}
+transfer better at use conditions ($2.6\times$ vs.\ $1.9\times$; medians over
+5 seeds). The graph structure encodes the current distribution in-window but
+does not remove the hazard: the pinned-physics oracle at the same inputs is
+$1.09\times$. The hazard is in the transfer functional, not the representation.
 
 \paragraph{Release as infrastructure.} \emph{EMBench-Synth} is released as open
-benchmark infrastructure matching the workshop's reproducible-benchmark topic:
-a model zoo with a uniform $\texttt{fit}/\texttt{predict}$ API
-(\texttt{benchmarks/models.py}), canonical scoring (in-window RMSE,
-use-condition fold, safe-to-$2\times$ temperature), a machine-readable
-leaderboard (\texttt{benchmarks/leaderboard.py}), a dataset card
-(\texttt{data/DATASET\_CARD.md}), and a one-command suite
-(\texttt{run\_all.py}) that reproduces every number and figure. Any
-third-party model implementing the API is scored automatically. On the
-released leaderboard (fit $T\ge523$\,K, score at $100\,^\circ$C, $\sln=0.15$),
+benchmark infrastructure: a model zoo with a uniform $\texttt{fit}/
+\texttt{predict}$ API, canonical scoring (in-window RMSE, use-condition fold,
+safe-to-$2\times$ temperature), a machine-readable leaderboard, and a
+one-command suite that reproduces every number and figure. Any third-party
+model implementing the API is scored automatically. On the released leaderboard
+(fit $T\ge523$\,K, score at $100\,^\circ$C, $\sln=0.15$),
 the physics-regularized MLP (fold $1.49\times$, safe-to-$2\times$ $266$\,K) is
 the best \emph{learned} entry, between the two-regime incumbent ($353$\,K) and
 the pinned corrected equation ($248$\,K).
 
 \section{The mechanism: singular-model geometry}
 \label{sec:geometry}
+
+Why does a one-parameter constraint remove the phase transition? The answer lies
+in the geometry of the model's parameter space.
 
 \paragraph{Setup.} Let $\theta$ be the fitted parameters
 ($\ln B_0,\ln C_0,E_{\mathrm{a,s}},E_{\mathrm{a,gb}},\ln D_{0}$-ratio for the
@@ -385,13 +374,13 @@ observed Fisher information at the truth $F(\theta^*)=\sum_i
 \nabla_\theta g_i\,\nabla_\theta g_i^{\top}$ over the accelerated window.
 
 \paragraph{Near-singular Fisher spectrum.} Table~\ref{tab:fisher} reports the
-spectrum of $F$ at the known truth for both variants. The free model is
-ill-conditioned by $10^9$--$10^{12}$; the smallest eigenvalue collapses
-monotonically as the window deepens ($1.68\times10^{-5}$ at $T\ge523$\,K to
-$2.14\times10^{-9}$ at $T\ge623$\,K). The weakest eigen-direction is a
-compensation direction in which $\ln B_0,\ln C_0,\ln D_{0}$-ratio move
-together with $E_{\mathrm{a,s}}$ while in-window predictions barely change.
-Pinning the ratio raises the floor by $10^3$--$10^4$.
+spectrum of $F$ at the known truth. The free model is ill-conditioned by
+$10^9$--$10^{12}$; the smallest eigenvalue collapses monotonically as the
+window deepens ($1.68\times10^{-5}$ at $T\ge523$\,K to $2.14\times10^{-9}$ at
+$T\ge623$\,K). The weakest eigen-direction is a compensation direction in which
+$\ln B_0,\ln C_0,\ln D_{0}$-ratio move together with $E_{\mathrm{a,s}}$ while
+in-window predictions barely change. Pinning raises the floor by
+$10^3$--$10^4$.
 
 \begin{table}[t]
 \centering\small
@@ -440,26 +429,25 @@ $\dln\text{RSS}=0$ to machine precision across the entire grid: the prefactor
 direction is invisible to the data, and the extrapolation functional $\phi$ is
 undefined up to an arbitrary value. At $T\ge523$\,K the profile is near-flat
 (RSS varies by $<7\%$; data-compatible fits span
-$E_{\mathrm{a,eff}}(100\,^\circ$C$)$ from $0.64$ to $1.04$\,eV). This is
-exactly the \emph{singular} regime of Watanabe's learning theory
+$E_{\mathrm{a,eff}}(100\,^\circ$C$)$ from $0.64$ to $1.04$\,eV). This is the
+\emph{singular} regime of Watanabe's learning theory
 \citep{watanabe09,watanabe18}: a degenerate Fisher information at the truth,
 where the posterior does not concentrate as $n^{-1/2}$ and the real log
-canonical threshold (RLCT) $\lambda$ governs the $n^{-\lambda}$ generalization
-scaling \citep{yamazaki03,aoyagi05}. The discontinuous collapse at $\sln=0.02$
-is its finite-noise realization: at $\sln=0$ the residual is exactly zero and
-the optimizer is pinned to the truth; any noise at all releases the flat
-direction, and the extrapolation functional amplifies the release by the lever.
+canonical threshold governs generalization \citep{yamazaki03,aoyagi05}. The
+discontinuous collapse at $\sln=0.02$ is its finite-noise realization: at
+$\sln=0$ the residual is exactly zero and the optimizer is pinned to the truth;
+any noise releases the flat direction, and the extrapolation functional
+amplifies the release by the lever.
 
-\paragraph{What removes the singularity.} Pinning $\ln D_{0}$-ratio is not
-``less flexible modeling''; it removes the flat direction from the parameter
-space, restoring a regular model whose Fisher floor is $10^3$--$10^4$ higher
-(Table~\ref{tab:fisher}) and whose extrapolation error scales smoothly and
-mildly with noise (Table~\ref{tab:transition}). The soft prior interpolates:
-it constrains but does not remove the flat direction, and its transition curve
-lies strictly between the free and pinned curves at every noise level. This is
-the practical content of the result: \emph{for extrapolation, the number of
-fitted parameters is not a measure of model quality; the number of
-identifiable directions in the extrapolation functional is.}
+\paragraph{What removes the singularity.} Pinning $\ln D_{0}$-ratio removes the
+flat direction from the parameter space, restoring a regular model whose Fisher
+floor is $10^3$--$10^4$ higher (Table~\ref{tab:fisher}) and whose extrapolation
+error scales smoothly with noise (Table~\ref{tab:transition}). The soft prior
+interpolates: it constrains but does not remove the flat direction, and its
+transition curve lies strictly between the free and pinned curves at every noise
+level. The practical content: \emph{for extrapolation, the number of fitted
+parameters is not a measure of model quality; the number of identifiable
+directions in the extrapolation functional is.}
 \section{The extrapolation paradox}
 
 The phase transition sharpens an already counterintuitive in-sample result
@@ -503,6 +491,10 @@ equation is the single bottom-left point.}
 \end{figure}
 
 \section{Quantitative transfer and sample-size laws}
+
+The phase transition and its mechanism are qualitative. We now turn to
+quantitative predictions: how large is the transfer error, and how much data is
+needed for structural discovery?
 
 \paragraph{Extrapolation law.} Because the dominant error is a transfer in
 effective activation energy, the median log fold error obeys
@@ -556,7 +548,7 @@ to $+3.3$.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.75\linewidth]{figures/fig_structure_size.png}
+\includegraphics[width=0.70\linewidth]{figures/fig_structure_size.png}
 \caption{The sample-size complement of the phase transition: evidence for the
 $J^{-2}+J^{-1}$ structure grows linearly with $n$ (left), and one
 load-bearing current level (the geometric-mean $J$, right) is necessary---
@@ -603,10 +595,9 @@ The reason is structural: the profile likelihood is a property of the \emph{data
 and the model}, and free/prior/pinned share both. What differs is only
 \emph{where they sit on the flat profile}---the prior and the pin move the
 estimator to the true direction, the free estimator wanders to the boundary. A
-data-side width cannot distinguish them, by construction. This is the
-underspecification failure mode of \citet{damour20} made concrete in a
-safety-critical extrapolation. It completes the negative result: the hazard is
-real, the geometry is local (singular), and the fix is a constraint, not a
+data-side width cannot distinguish them. This is the underspecification failure
+mode of \citet{damour20} made concrete in safety-critical extrapolation: the
+hazard is real, the geometry is local, and the fix is a constraint, not a
 diagnostic. One nuance (Table~\ref{tab:cert}): at the deepest window
 $T\ge548$\,K the profile is \emph{exactly flat}, and the pinned model itself
 collapses to $10.28\times$ (60 random restarts confirm this is an information
@@ -618,25 +609,25 @@ regime.
 \paragraph{Why this matters for chip reliability.} The extrapolation step is
 the entire job of Black's equation. Our results say three things an engineer
 cannot see on real data: (i) a fit that is \emph{too good} on the accelerated
-window may be exactly the fit that is wrong at use conditions; (ii) the number
-of fitted parameters is not a model-quality measure---the number of directions
-identifiable \emph{in the extrapolation functional} is; a single known material
-constant is worth a fitted degree of freedom at $10\times$; (iii) the hazard
-cannot be certified from the accelerated window when it is flat.
+window may be the fit that is wrong at use conditions; (ii) the number of
+fitted parameters is not a model-quality measure---the number of directions
+identifiable \emph{in the extrapolation functional} is; a single material
+constant is worth a fitted degree of freedom at $10\times$; (iii) within this
+benchmark, the hazard cannot be certified from the accelerated window when
+flat.
 
 \paragraph{Implications for chip-reliability sign-off.} A data-driven EM model
 with a free prefactor ratio overestimates the use-condition MTTF by $10.4\times$;
-a guard-band built around it is therefore \emph{under-protective} by roughly an
-order of magnitude. The safe-to-$2\times$ temperatures we measure (pinned:
-$248$\,K, safe to use conditions; free: $470$\,K, not) give a directly
-actionable margin rule: a reliability predictor may be trusted to a temperature
-only if that temperature lies above the model's safe-to-$2\times$ point, and
-the single-constant pin---not more data, not a better fit criterion---is what
-moves that point down. The impossibility result is a \emph{caution for learned
-reliability models}: in-window fit quality cannot certify use-condition safety
-when the hazard direction is flat, so learned predictors in sign-off flows
-should carry explicit physics constraints---the physics-regularized MLP being
-the benchmark's demonstration that this is implementable.
+a guard-band built around it is \emph{under-protective} by roughly an order of
+magnitude. The safe-to-$2\times$ temperatures we measure (pinned: $248$\,K,
+safe to use conditions; free: $470$\,K, not) give an actionable margin rule: a
+reliability predictor may be trusted only above its safe-to-$2\times$ point,
+and the single-constant pin is what moves that point down. The impossibility
+result is a \emph{caution for learned reliability models}: in-window fit
+quality cannot certify use-condition safety when the hazard direction is flat,
+so learned predictors in sign-off flows should carry explicit physics
+constraints---the physics-regularized MLP being the benchmark's demonstration
+that this is implementable.
 
 \paragraph{Limitations.} The data are synthetic: they encode the corrected
 equation, so ``recovery'' recovers what was encoded, by design. The model is
@@ -650,23 +641,24 @@ $n$-independent width, discontinuous noise dependence); the WBIC estimator
 \citep{watanabe13} is the natural follow-up. Real data would add measurement
 structure and process variability; the benchmark's role is the controlled
 \emph{calibration} step---physics grounded in published measurements (appendix)
----that complements, rather than replaces, real-data validation.
+---that complements, rather than replaces, real-data validation. Whether
+similar singular geometries arise in measured EM datasets remains an open
+empirical question.
 
 \section{Conclusion}
 
 On a fully controlled synthetic benchmark, extrapolation safety in physics-
-informed lifetime fitting is a noise-induced phase transition: the data-driven
-corrected equation is exact at zero noise and collapses discontinuously at
-$\sln=0.02$, because its extrapolation functional is aligned with a near-singular
-direction of the Fisher information---a direction that becomes exactly flat as
-the accelerated window deepens, that does not concentrate with data, and that a
-single pinned physics constant removes. Incumbents show the complementary
-pathology (structural, noise-insensitive error; false-confidence improvement
-that reverses), and generic ML extrapolators (MLP, KAN, GP-SR) and graph
-networks reproduce the same hazard. Within the assumptions encoded in
+informed lifetime fitting is a noise-induced phase transition: the corrected
+equation is exact at zero noise and collapses at $\sln=0.02$, because its
+extrapolation functional is aligned with a near-singular direction of the
+Fisher information that becomes flat as the window deepens and that a single
+pinned constant removes. Incumbents show the complementary pathology (structural
+error; false-confidence improvement that reverses), and ML extrapolators
+(MLP, KAN, GP-SR) reproduce the hazard. Within
 \emph{EMBench-Synth}, the hazard cannot be certified from the accelerated
-window; all benchmark generation, experiments, and analysis are reproducible
-from public data and one command.
+window; all experiments are reproducible from public data and one command. The
+benchmark illustrates how controlled synthetic environments expose extrapolation
+failure modes difficult to isolate in real datasets.
 
 \begin{thebibliography}{9}
 \small
