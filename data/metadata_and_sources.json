@@ -1,0 +1,117 @@
+{
+  "dataset": {
+    "name": "EMBench-Synth",
+    "version": "1.0",
+    "purpose": "Controlled testbed for equation-discovery (KAN + symbolic regression) in electromigration reliability. Synthetic, NOT a substitute for real experimental data.",
+    "crossover_T_K": 494.19507312194156,
+    "crossover_T_C": 221.04507312194158,
+    "noise_sigma_log": 0.15,
+    "seed": 42,
+    "T_K_range": [
+      443.0,
+      698.0
+    ],
+    "J_MA_cm2_grid": [
+      0.5,
+      1.0,
+      2.0,
+      4.0,
+      8.0
+    ],
+    "L_um_grid": [
+      5.0,
+      15.0,
+      25.0,
+      35.0,
+      40.0,
+      50.0,
+      65.0,
+      90.0,
+      130.0,
+      200.0,
+      350.0,
+      600.0
+    ]
+  },
+  "physical_model": {
+    "mttf_base": "MTTF = (B0 J^-2 + C0 J^-1) / D_eff(T),  D_eff(T) = Sum_p D0_p exp(-Ea_p/kT)",
+    "nucleation_growth": "MTTF = t_N + t_E = B(T) J^-2 + C(T) J^-1; local exponent n_eff(J) = (2 + alpha J)/(1 + alpha J) in [1, 2]",
+    "ea_effective": "Apparent Ea = Ea_eff(T) = Sum_p w_p Ea_p / Sum_p w_p, w_p = D0_p exp(-Ea_p/kT); the local Arrhenius slope of MTTF = const / D_eff(T) equals Ea_eff(T) exactly",
+    "pathways": [
+      {
+        "name": "surface",
+        "D0_relative": 1.0,
+        "Ea_eV": 0.8
+      },
+      {
+        "name": "grain_boundary",
+        "D0_relative": 12000.0,
+        "Ea_eV": 1.2
+      },
+      {
+        "name": "bulk",
+        "D0_relative": 1.0,
+        "Ea_eV": 2.3
+      }
+    ],
+    "blech": "MTTF_ext = MTTF * boost(jL); boost(jL) = jL/(jL - jL_c) for jL > jL_c; immortal (MTTF undefined) for jL <= jL_c",
+    "jL_critical_A_per_cm": 3000.0,
+    "prefactors": {
+      "B0": 3.74e-06,
+      "C0": 1.122e-06,
+      "alpha": 0.3,
+      "note": "Calibrated fit knobs (the 'A' of Black's equation), not universal constants."
+    }
+  },
+  "sources": {
+    "Lienig_2025_Table2.1": {
+      "citation": "Lienig, J., Scheible, J., et al., Fundamentals of Electromigration-Aware Integrated Circuit Design, Springer 2025, Ch. 2, Table 2.1",
+      "values_eV": {
+        "surface": 0.8,
+        "grain_boundary": 1.2,
+        "bulk": 2.3
+      }
+    },
+    "Huntington_2007_nucleation_growth": {
+      "citation": "H. B. Huntington, 'Black's law revisited -- Nucleation and growth in electromigration failure', Microelectronics Reliability 47 (2007)",
+      "note": "MTTF = t_N + t_E, n = 2 nucleation / n = 1 growth; observed fractional exponents (e.g. n = 1.4 +/- 0.1) explained by the additive sum."
+    },
+    "Rovitto_thesis": {
+      "citation": "M. Rovitto, PhD thesis, TU Wien (iue.tuwien.ac.at/phd/rovitto), eq. 1.3",
+      "note": "MTTF = t_N + t_E = B j^-2 + C j^-1."
+    },
+    "Tu_Gusak_2019": {
+      "citation": "K. N. Tu, A. M. Gusak, 'A unified model of mean-time-to-failure for electromigration, thermomigration, and stress-migration based on entropy production', J. Appl. Phys. 126, 075109 (2019)",
+      "note": "Justifies n = 2 for the nucleation-dominated limit via entropy production."
+    },
+    "Korhonen_1993": {
+      "citation": "M. A. Korhonen et al., J. Appl. Phys. 73, 3790 (1993)",
+      "note": "Stress-evolution PDE underlying the Blech back-stress model; time-to-failure diverges as (jL) -> (jL)_c from above."
+    },
+    "Ogawa_2001_Blech": {
+      "citation": "E. T. Ogawa et al., 'Blech Effect in Cu Interconnects and Its Applications', Appl. Phys. Lett. 78, 2652 (2001)",
+      "note": "Reports (jL)_c ~ 3700 A/cm in Cu/oxide dual damascene."
+    },
+    "Blech_critical_product_range": {
+      "citation": "arXiv:1712.05562 (general 2000-10000 A/cm range); academia.edu/118806387 (90/65/45nm SiCOH large-scale statistics, 2900-3000 A/cm single-link)",
+      "note": "Central estimate 3000 A/cm used here."
+    },
+    "Filippi_2009_bimodal": {
+      "citation": "R. G. Filippi, P.-C. Wang, R. Brendler, J. R. Lloyd, Appl. Phys. Lett. 95, 072111 (2009)",
+      "note": "Real EM failure times are often bimodal (early + late populations); this dataset uses single-mode lognormal noise only (documented limitation)."
+    },
+    "tested_envelopes": {
+      "citation": "COIN project Cu 170-250 C; AlCu 200-250 C (MDPI); SWEAT up to ~425 C before bimodal onset",
+      "note": "Sampling is confined to this 170-425 C envelope."
+    }
+  },
+  "IMPORTANT_CAVEATS": [
+    "SYNTHETIC dataset for pipeline validation, not a substitute for real experimental data.",
+    "Bulk (2.3 eV) diffusion is NOT reached in the sampled T-range by design (no tested envelope reaches it) -- do not claim bulk-diffusion recovery.",
+    "Single-mode lognormal failure statistics only; real EM is often bimodal (Filippi 2009).",
+    "B0, C0 (the 'A' prefactors) are calibrated fit knobs, not universal constants -- report SHAPES (Ea_eff(T), n_eff(J), (jL)_c), not absolute MTTF magnitudes, as meaningful.",
+    "D0 pathway ratios are a disclosed modeling choice calibrating the crossover temperature into the tested envelope.",
+    "The Blech boost form jL/(jL - jL_c) is a Korhonen-type first-order approximation; the exact transition shape is an open modeling question. The threshold VALUE (jL)_c is literature-grounded.",
+    "Ground-truth columns exist ONLY for your post-hoc validation; never expose them to the discovery algorithm (use the *blind* CSVs)."
+  ]
+}
