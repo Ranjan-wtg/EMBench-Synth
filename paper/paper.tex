@@ -41,33 +41,26 @@
 \begin{abstract}
 Industry extrapolates accelerated electromigration (EM) tests to use conditions
 with Black's equation, setting the guard-banding rules used in chip-reliability
-sign-off. On \emph{EMBench-Synth}, a reproducible public benchmark for ML-based
-equation discovery and reliability prediction whose ground truth encodes the
-three known corrections to that equation, we report that \emph{extrapolation
-safety is a noise-induced phase transition}: as the measurement noise $\sln$
-rises from $0$ to $0.02$---far below the $\sln=0.15$ typical of EM data---the
-fully data-driven fit of the corrected equation jumps discontinuously from
-exact ($1.00\times$) to catastrophic ($5.19\times$), then degrades monotonically
-to $16.8\times$ at $\sln=0.5$. The transition is a property of model geometry,
-not noise scale: the corrected equation has a near-singular Fisher information
-at the truth (condition number $10^9$--$10^{12}$), and the extrapolation
-functional concentrates $99.4\%$ of its variance on the weakest-identified
-direction. Pinning the prefactor ratio---at zero in-sample cost---removes the
-singular direction and the transition ($1.00\to1.69\times$, smooth). This is
-the singular-model regime of Watanabe's learning theory: in the deep-envelope
-limit the profile likelihood of the prefactor direction is exactly flat
-($\dln\text{RSS}=0$), invisible to the data at any sample size. We verify the
-signatures (Fisher degeneracy, exact flatness, discontinuous collapse,
-noise-insensitive incumbents, and a false-confidence two-regime incumbent that
-is best at $\sln=0.15$ yet collapses at $\sln=0.5$), and establish an
-in-window-certification impossibility result within EMBench-Synth: the data-side
-profile width has zero predictive power for use-condition error, because free,
-prior-regularized, and pinned estimators share the same flat profile yet differ
-by $10\times$. Black-box ML extrapolators (MLP, KAN, GP--SR) reproduce the
-hazard within this benchmark, but a physics-regularized MLP---its output
-\emph{is} the corrected equation with a soft prior toward literature
-parameters---does not ($1.07$--$1.60\times$). We release the benchmark, model
-zoo, scoring, and leaderboard as infrastructure for reproducible reliability ML.
+sign-off. On \emph{EMBench-Synth}, a reproducible public benchmark whose ground
+truth encodes the three known corrections to that equation, we ask whether good
+in-window fit guarantees safe extrapolation. It does not: \emph{extrapolation
+safety is a noise-induced phase transition}. The fully data-driven fit of the
+corrected equation is exact at zero noise yet collapses discontinuously at
+$\sln=0.02$---two orders of magnitude below the $\sln\approx0.15$ typical of EM
+data---reaching $16.8\times$ use-condition error at $\sln=0.5$. The cause is
+model geometry, not noise: the corrected equation has a near-singular Fisher
+information at the truth, and its extrapolation functional concentrates variance
+on a direction that becomes exactly flat in the deep-envelope limit---the
+singular-model regime of Watanabe's theory, invisible to the data at any sample
+size. Pinning one known material constant removes the flat direction and the
+transition at zero in-sample cost. Consequently, in-window fit quality cannot
+certify use-condition error on this benchmark: free, prior-regularized, and
+pinned estimators share the same flat profile yet differ by $10\times$. Black-box
+ML extrapolators (MLP, KAN, GP--SR) reproduce the hazard, but a
+physics-regularized MLP---its output \emph{is} the corrected equation with a soft
+prior toward literature parameters---does not ($1.07$--$1.60\times$). We release
+the benchmark, model zoo, scoring, and leaderboard as reproducible infrastructure
+for reliability ML.
 \end{abstract}
 
 \section{Introduction}
@@ -115,15 +108,12 @@ Eq.~\eqref{eq:corrected} is the true generating process, we show:
         $\sln=0.02$ ($1.00\times\to5.19\times$ median fold error at
         $100\,^\circ$C), degrading to $16.8\times$ at $\sln=0.5$. Pinning the
         prefactor ratio at its known material value removes the transition
-        ($1.00\to1.69\times$, smooth). $\sln=0.02$ is two orders of magnitude
-        below the $\sln\approx0.15$ typical of EM failure-time data.
+        ($1.00\to1.69\times$, smooth).
   \item \textbf{The mechanism is singular-model geometry.} The free model's
         Fisher information at the truth is ill-conditioned by
         $10^9$--$10^{12}$; the extrapolation functional places $99.4\%$ of
         its variance on the weakest-identified direction, whose leverage is
-        $296\times$ larger than when the ratio is pinned. In the deep-envelope
-        limit the profile likelihood in that direction is \emph{exactly flat}
-        ($\dln\text{RSS}=0$)---invisible at any sample size \citep{watanabe09,
+        $296\times$ larger than when the ratio is pinned \citep{watanabe09,
         watanabe18}.
   \item \textbf{Incumbent behavior is the complement.} Black's equation is
         uniformly wrong and \emph{noise-insensitive} ($6.7\times$ at $\sln=0$
@@ -134,8 +124,7 @@ Eq.~\eqref{eq:corrected} is the true generating process, we show:
         profile-likelihood width of the hazard direction has \emph{zero}
         predictive power for use-condition error: free, prior-regularized, and
         pinned estimators share the same data-side profile yet differ by
-        $10\times$ in outcome. On \emph{EMBench-Synth}, extrapolation safety
-        cannot be certified from the accelerated window alone.
+        $10\times$ in outcome.
 \end{itemize}
 
 \paragraph{Why a controlled synthetic benchmark.} The paradoxes above are
@@ -227,7 +216,8 @@ data-driven ``corrected'' equation is supposed to close.}
 
 \section{The noise-induced phase transition}
 
-\paragraph{Protocol.} For each noise level $\sln\in\{0,0.02,0.05,0.1,0.15,0.3,
+How does extrapolation safety behave as measurement noise grows? Answer: it does
+not degrade gradually---it collapses. \paragraph{Protocol.} For each noise level $\sln\in\{0,0.02,0.05,0.1,0.15,0.3,
 0.5\}$ we regenerate the benchmark with that noise (seed 42), fit each model
 on the accelerated window $T\ge523$\,K, predict at $100\,^\circ$C and
 $J\in\{0.1,0.5,1\}$\,MA/cm$^2$, and record the median fold error
@@ -291,7 +281,8 @@ report any of these behaviors as ``the truth.''
 \section{ML predictors and the benchmark as infrastructure}
 \label{sec:ml}
 
-The candidates above are physics-informed. The ML-for-EDA community proposes
+Do black-box ML predictors extrapolate more safely than physics-informed fits?
+The candidates above are physics-informed; the ML-for-EDA community proposes
 black-box predictors (KAN, symbolic regression, learned lifetime models) for
 the same reliability question, so we run the same protocol on them. The
 findings are a key result: \emph{within this benchmark, the evaluated black-box
@@ -450,7 +441,8 @@ parameters is not a measure of model quality; the number of identifiable
 directions in the extrapolation functional is.}
 \section{The extrapolation paradox}
 
-The phase transition sharpens an already counterintuitive in-sample result
+Why is the best in-window fitter the worst extrapolator? The phase transition
+sharpens an already counterintuitive in-sample result
 (Table~\ref{tab:paradox}). On the accelerated window the \emph{best-fitting}
 model is the free corrected equation ($0.142$ ln-RMSE, best of the family) yet
 it extrapolates $10.4\times$ wrong at $100\,^\circ$C; the pinned twin costs
