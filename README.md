@@ -35,6 +35,8 @@ MTTF(T,J,L) = (B0 J^-2 + C0 J^-1)/D_eff(T) · jL/(jL - (jL)_c)
 | Spline KAN decomposition R² (σ_ln floor ≈ 0.98) | — | 0.997 |
 | GP symbolic regression R² (36-node opaque program) | 0.862 | — |
 
+![Noise-induced phase transition: extrapolation safety collapses at σ_ln = 0.02](paper/figures/fig_phase_transition.png)
+
 **The extrapolation paradox (headline result).** In-sample fit quality on the
 accelerated window is *inversely* predictive of use-condition accuracy:
 
@@ -50,15 +52,18 @@ accelerated window is *inversely* predictive of use-condition accuracy:
 A free prefactor ratio absorbs the surface pathway into a degenerate,
 unphysical direction (Ea_s = 0.54 eV, D0r = 3×10⁶, at bounds); pinning that one
 measured constant costs 0.001 ln-RMSE and is worth a 7.5× extrapolation
-improvement. See `figures/fig_paradox.png`.
+improvement.
+
+![The extrapolation paradox: best in-window fit has worst out-of-window error](paper/figures/fig_paradox.png)
 
 **Critical sample size for structure discovery (secondary result).** At
 σ_ln = 0.15 the J⁻²+J⁻¹ structure is statistically forced only by the full
 five-current grid (ΔBIC = −76, 20/20 draws). With 1–2 J levels it is
 unidentifiable; with 3–4 it is a lottery (70–75%). One level is load-bearing —
 dropping the geometric-mean current J = 2.0 MA/cm² flips ΔBIC from −63 to +3.3.
-Coverage, not count, sets the minimum test cells. See
-`figures/fig_structure_size.png`.
+Coverage, not count, sets the minimum test cells.
+
+![Sample-size law: structure discovery requires the full current-density sweep](paper/figures/fig_structure_size.png)
 
 Black-box MLP: best on random splits, but 2.9–3.7× OOD extrapolation error with
 the wrong sign. Shuffled negative control recovers 2.34 eV vs the real 0.064 eV
@@ -66,6 +71,8 @@ the wrong sign. Shuffled negative control recovers 2.34 eV vs the real 0.064 eV
 corrected equation plus a soft prior toward literature parameters — is the
 positive ML arm: 1.07–1.60× across the σ_ln sweep (1.49× at σ_ln = 0.15 on the
 released leaderboard), showing the constraint, not model class, transfers.
+
+![ML predictors: Black-box extrapolators fail; physics-regularized MLP extrapolates safely](paper/figures/fig_ml_predictors.png)
 
 **The noise-induced phase transition (headline result, see `paper/paper.tex`).**
 Extrapolation safety is not a continuous function of noise — it collapses
@@ -86,7 +93,7 @@ ill-conditioned by 10⁹–10¹², 99.4% of extrapolation variance carried by th
 direction. As the accelerated window deepens (T ≥ 548 K) the direction becomes
 *exactly flat* (ΔRSS = 0 to machine precision, span 0.0000 eV): invisible at any
 sample size. A single pinned physics constant removes it (lever ratio
-free/pinned 296× → 2388×). See `figures/fig_phase_transition.png`.
+free/pinned 296× → 2388×).
 
 **In-window certification is impossible.** The profile-likelihood width of the
 hazard direction is 0.13 eV with an *exact* hazard of 10.4×; at deep windows the
