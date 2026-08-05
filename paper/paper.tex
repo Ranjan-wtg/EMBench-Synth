@@ -117,17 +117,14 @@ Eq.~\eqref{eq:corrected} is the true generating process, we show:
         below the $\sln\approx0.15$ typical of EM failure-time data.
   \item \textbf{The mechanism is singular-model geometry, and it is
         quantitative.} The free model's observed Fisher information at the
-        truth has a near-singular spectrum (condition number
-        $10^9$--$10^{12}$; $\lambda_{\min}\to0$ as the accelerated window
-        deepens toward the crossover). The use-condition extrapolation
-        functional places $99.4\%$ of its variance on that weakest-identified
-        direction, whose extrapolation leverage is $296\times$ (growing to
+        truth is ill-conditioned by $10^9$--$10^{12}$, and the use-condition
+        extrapolation functional places $99.4\%$ of its variance on the
+        weakest-identified direction, whose leverage is $296\times$ (growing to
         $2388\times$ in deeper windows) larger than when the ratio is pinned.
         In the deep-envelope limit the profile likelihood in the prefactor
-        direction is \emph{exactly flat} ($\dln\text{RSS}=0$ over the whole
-        grid): the direction is invisible to the data at \emph{any} sample
-        size---the singular-model regime of Watanabe's learning theory
-        \citep{watanabe09,watanabe18}.
+        direction is \emph{exactly flat} ($\dln\text{RSS}=0$): the direction is
+        invisible to the data at \emph{any} sample size---the singular-model
+        regime of Watanabe's learning theory \citep{watanabe09,watanabe18}.
   \item \textbf{Incumbent behavior is the complement.} Black's equation is
         uniformly wrong and \emph{noise-insensitive} ($6.7\times$ at $\sln=0$
         to $4.2\times$ at $\sln=0.5$): it carries a structural error that no
@@ -149,11 +146,9 @@ empirically invisible on real wafer data, where the ground truth is unknown.
 EMBench-Synth provides the controlled test a real-data benchmark cannot: the
 generating process is known exactly, so recovery, identifiability, and
 extrapolation error are measurable. The physics is encoded by construction;
-the benchmark is a \emph{measurement instrument}, not a discovery claim. It is
-released as open, reproducible infrastructure for \emph{ML-based equation
-discovery and reliability prediction}---the class of methods (KAN
-decomposition, symbolic regression, learned lifetime models) now being
-proposed for reliability sign-off---so that a proposed predictor's recovery,
+the benchmark is a \emph{measurement instrument}, not a discovery claim, for
+the predictors (KAN, symbolic regression, learned lifetime models) now being
+proposed for reliability sign-off: a proposed predictor's recovery,
 structure-selection, and extrapolation behavior can be scored against a known
 truth before any trust is placed in it on real data.
 
@@ -314,9 +309,8 @@ The single-layer spline KAN evaluated here fails at a scale no physics model doe
 \emph{by construction} for this basis: its B-spline functions are compactly
 supported on the training envelope, so at $100\,^\circ$C the temperature edge
 evaluates to \emph{exactly zero}; a spline KAN with this basis has no temperature
-extrapolation, whatever the data. Variants using globally supported bases would
-behave differently, but the local-basis form is the one adopted by the community's
-default KAN implementations. GP-SR (gplearn) on
+extrapolation, whatever the data. Globally supported bases would behave
+differently; the local-basis form is the community default. GP-SR (gplearn) on
 $[1/T,\ln J]$ fits the window to $R^2\approx0.24$ and returns a program whose
 use-condition evaluation diverges ($1.1\times10^{4}\times$): its operator set
 permits unbounded extrapolation, so the optimizer selects an in-window fit
@@ -354,17 +348,17 @@ EM is a \emph{power-delivery network}: a graph of segments whose current
 distributes by conductance. We add a single graph arm to test whether
 \emph{representation}---not functional form---changes the extrapolation
 verdict. Message passing is the minimal inductive bias that couples
-neighboring segments (the physical content of a PDN), so we use a standard
-message-passing GNN and hold everything else fixed against a topology-blind
-MLP on the identical per-segment features, isolating representation as the
-only variable. On random PDN-like networks with an exact Kirchhoff current
-solve and per-segment corrected-equation MTTF (including Blech), the GNN
-trained only on accelerated networks is the best in-window fitter (RMSE $0.149$
-vs.\ $0.164$ for the MLP) yet does \emph{not} transfer better at use
-conditions ($2.6\times$ vs.\ $1.9\times$; medians over 5 seeds). The graph
-structure encodes the current distribution in-window but does not remove the
-hazard: the pinned-physics oracle at the same inputs is $1.09\times$. The
-hazard is in the transfer functional, not the representation.
+neighboring segments, so we use a standard message-passing GNN and hold
+everything else fixed against a topology-blind MLP on identical per-segment
+features, isolating representation as the only variable. On random PDN-like
+networks with an exact Kirchhoff current solve and per-segment corrected
+equation MTTF (including Blech), the GNN trained only on accelerated networks
+is the best in-window fitter (RMSE $0.149$ vs.\ $0.164$ for the MLP) yet does
+\emph{not} transfer better at use conditions ($2.6\times$ vs.\ $1.9\times$;
+medians over 5 seeds). The graph structure encodes the current distribution
+in-window but does not remove the hazard: the pinned-physics oracle at the
+same inputs is $1.09\times$. The hazard is in the transfer functional, not
+the representation.
 
 \paragraph{Release as infrastructure.} \emph{EMBench-Synth} is released as open
 benchmark infrastructure matching the workshop's reproducible-benchmark topic:
@@ -552,13 +546,13 @@ additive form (vs.\ a single power law) follows
 $\Delta\text{BIC}\approx -A\,n + \ln n$ above an identifiability floor
 \citep{schwarz78}. The floor is $+4.44$ (exact, $\sln$-independent, set by
 parsimony at $\le2$ current levels), and the per-sample evidence is
-$A=2.04,0.51,0.16$ at $\sln=0.05,0.15,0.30$, so the law is reported
-empirically. This is the \textbf{sample-size complement of the phase
-transition}: identifiability of the \emph{structure} also has a sharp
-threshold, here in current-density coverage. The additive form is statistically
-forced only by the full five-current sweep ($\Delta\text{BIC}=-76$, $20/20$
-draws); the geometric-mean current $J=2.0$\,MA/cm$^2$ is necessary---dropping
-it flips the verdict from $-62.8$ to $+3.3$.
+$A=2.04,0.51,0.16$ at $\sln=0.05,0.15,0.30$. This is the \textbf{sample-size
+complement of the phase transition}: identifiability of the \emph{structure}
+also has a sharp threshold, here in current-density coverage. The additive
+form is statistically forced only by the full five-current sweep
+($\Delta\text{BIC}=-76$, $20/20$ draws); the geometric-mean current
+$J=2.0$\,MA/cm$^2$ is necessary---dropping it flips the verdict from $-62.8$
+to $+3.3$.
 
 \begin{figure}[t]
 \centering
