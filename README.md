@@ -110,7 +110,7 @@ released leaderboard), showing the constraint, not model class, transfers.
 
 ![ML predictors: Black-box extrapolators fail; physics-regularized MLP extrapolates safely](paper/figures/fig_ml_predictors.png)
 
-**The noise-induced phase transition (headline result, see `paper/paper.tex`).**
+**The noise-induced phase transition (secondary diagnostic).**
 Extrapolation safety is not a continuous function of noise — it collapses
 discontinuously at σ_ln = 0.02:
 
@@ -166,7 +166,7 @@ results/results.json                # all benchmark numbers (14 keys incl. phase
 figures/*.png                       # 10 figures
 results/deployment_identifiability.json # 20-seed deployment-design experiment
 paper/paper.tex, paper/paper.md     # NeurIPS-2026 workshop paper (LaTeX + markdown)
-paper/figures/*.png                 # paper figures (all 10 bundled; 4 embedded in paper)
+paper/figures/*.png                 # synchronized paper figures
 ```
 
 ## Quickstart

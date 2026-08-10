@@ -41,21 +41,23 @@
 \begin{abstract}
 Industry extrapolates accelerated electromigration (EM) tests to use conditions
 with Black's equation, setting guard-banding rules used in chip-reliability
-sign-off. We show that this workflow has a deployment-identifiability limit:
-different corrected-equation parameters can be indistinguishable throughout an
-accelerated temperature envelope while predicting materially different
-use-condition lifetimes. On the controlled \emph{EMBench-Synth} benchmark, the
-free corrected fit has a median $5.35\times$ use-condition error across 20
-seeds, despite its best accelerated-window fit. We derive a deployment
-functional for measuring this ambiguity from the fitted Jacobian and use it to
-select one additional temperature batch. The selected batch reduces the local
-deployment lever by 97.9\% median, lowers median fold error to $1.47\times$,
-and achieves the $2\times$ safety target in 85\% of seeds, compared with 50\%
-for a random candidate batch. The result is not a claim that uncertainty alone
-can certify safety: when the deployment direction is absent from the test
-envelope, additional deployment-relevant measurements or material constraints
-are necessary. We release the benchmark, adaptive test-design procedure, model
-zoo, figures, and machine-readable results.
+sign-off. We study the resulting deployment-identifiability limit on the
+controlled \emph{EMBench-Synth} benchmark: physically distinct corrected-equation
+parameters can agree in the accelerated envelope yet disagree at use
+conditions. An optimizer-independent construction reaches $15.97\times$ hidden
+deployment disagreement while remaining within $0.15$ log-lifetime units of
+the accelerated data for the deepest tested window. We then define a robust
+compatible-set certificate and compare certificate-directed, Fisher, and random
+one-batch test selection across 20 seeds. The accelerated-only certificate has
+$91.8\times$ median worst-case disagreement; the selected batch reduces this
+to $88.4\times$, but all policies correctly return ABSTAIN under a $2\times$
+sign-off limit. A separate local-lever experiment remains a secondary result,
+reducing point-prediction error from $5.35\times$ to $1.47\times$; its
+parameter-information and deployment objectives select the same batch on the
+current candidate set. The contribution is therefore a falsifiable boundary
+on data-only sign-off, not a claim that one adaptive test can manufacture
+missing deployment information. We release the benchmark, procedures, figures,
+and machine-readable results.
 \end{abstract}
 
 \section{Introduction}
@@ -98,20 +100,19 @@ deployment functional unresolved even when the fitted equation is excellent.
 On \emph{EMBench-Synth}, where Eq.~\eqref{eq:corrected} is the true generating
 process, we show:
 \begin{itemize}
-  \item \textbf{Deployment ambiguity.} Across 20 noise realizations, the free
-        corrected model has median $5.35\times$ use-condition error despite
-        its best accelerated-window fit.
+  \item \textbf{Deployment ambiguity.} An optimizer-independent tradeoff family
+        hides up to $15.97\times$ deployment disagreement behind a $0.15$ log
+        unit accelerated-window compatibility threshold.
   \item \textbf{A deployment-conditioned diagnostic.} We propagate the local
         likelihood geometry through the use-condition functional, rather than
         reporting parameter uncertainty or training RMSE alone.
-  \item \textbf{Adaptive test design.} One additional five-current batch at
-        the temperature selected by this diagnostic reduces the deployment
-        lever by $97.9\%$ median and reaches the $2\times$ safety target in
-        $85\%$ of seeds, versus $50\%$ for a random candidate batch.
-  \item \textbf{Limits of data-only certification.} The diagnostic identifies
-        when the accelerated envelope is insufficient; it cannot manufacture
-        information absent from that envelope. Material constraints or a
-        deployment-relevant test are required.
+  \item \textbf{Robust certificate.} A fixed compatible-set certificate starts
+        at $91.8\times$ median worst-case disagreement and remains at
+        $88.4\times$ after the best one-batch policy; all 20 seeds abstain at
+        the $2\times$ sign-off threshold.
+  \item \textbf{Secondary adaptive result.} A local deployment-lever policy
+        reduces point-prediction error to $1.47\times$, but selects the same
+        batch as the parameter-information control on the current grid.
 \end{itemize}
 
 \paragraph{Why a controlled synthetic benchmark.} The paradoxes above are
@@ -739,15 +740,16 @@ empirical question.
 \section{Conclusion}
 
 On a fully controlled synthetic benchmark, accelerated EM data can leave the
-deployment functional non-identifiable: the free corrected model has median
-$5.35\times$ use-condition error across 20 seeds despite its excellent
-accelerated-window fit. A deployment-conditioned Jacobian diagnostic selects a
-single additional five-current temperature batch, reducing median error to
-$1.47\times$ and achieving the $2\times$ target in 85\% of seeds, versus 50\%
-for random selection. The result is a practical boundary: fit quality and
-in-window uncertainty cannot substitute for deployment-relevant information.
-The benchmark, adaptive test-design procedure, model zoo, figures, and
-machine-readable results are released with documented reproduction commands.
+deployment functional non-identifiable. An optimizer-independent construction
+allows up to $15.97\times$ deployment disagreement within a $0.15$ log-unit
+accelerated-data tolerance. Our compatible-set certificate reports $91.8\times$
+median disagreement after accelerated fitting and $88.4\times$ after the
+best one-batch policy; all policies abstain under a $2\times$ sign-off limit.
+This is a practical boundary, not a universal theorem: fit quality and local
+uncertainty cannot substitute for deployment-relevant information, and the
+certificate requires external validation before use in production sign-off.
+The benchmark, test-design procedures, model zoo, figures, and machine-readable
+results are released with documented reproduction commands.
 
 \begin{thebibliography}{99}
 \small

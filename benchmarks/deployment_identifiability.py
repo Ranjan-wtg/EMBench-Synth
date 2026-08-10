@@ -104,6 +104,8 @@ def candidate_scores(model, F, H):
     p = np.asarray(model.p, dtype=float)
     Finv = np.linalg.pinv(F, rcond=1e-12)
     rows = []
+    sign, logdet_old = np.linalg.slogdet(F + np.eye(F.shape[0]) * 1e-12)
+    logdet_old = float(logdet_old) if sign > 0 else -np.inf
     for Tc in CANDIDATE_T:
         Gc = np.stack([numerical_gradient(lambda q: model_mu(q, Tc, j), p)
                        for j in J_TEST])
@@ -111,8 +113,11 @@ def candidate_scores(model, F, H):
         invnew = np.linalg.pinv(Fnew, rcond=1e-12)
         old = float(np.trace(H @ Finv @ H.T))
         new = float(np.trace(H @ invnew @ H.T))
+        sign_new, logdet_new = np.linalg.slogdet(Fnew + np.eye(F.shape[0]) * 1e-12)
+        parameter_gain = float(logdet_new - logdet_old) if sign_new > 0 else -np.inf
         rows.append({"T_K": float(Tc), "lever_after": new,
-                     "relative_reduction": float(1.0 - new / old)})
+                     "relative_reduction": float(1.0 - new / old),
+                     "parameter_information_gain": parameter_gain})
     return rows
 
 
@@ -133,14 +138,17 @@ def evaluate_one(seed, sigma=0.15):
     F, H, lever, lam_min, cond = fisher_and_deployment_lever(base, T, J)
     scores = candidate_scores(base, F, H)
     adaptive = min(scores, key=lambda r: r["lever_after"])["T_K"]
+    parameter_optimal = max(scores, key=lambda r: r["parameter_information_gain"])["T_K"]
     random_t = float(CANDIDATE_T[seed % len(CANDIDATE_T)])
 
     base_fold = E.fold_error(base.predict(np.full(3, T_USE), J_USE), true)["fold_factor"]
     out = {"seed": seed, "sigma": sigma, "base_fold": float(base_fold),
            "deployment_lever": lever, "lambda_min": lam_min,
            "condition_number": cond, "candidate_scores": scores,
-           "adaptive_T_K": adaptive, "random_T_K": random_t}
-    for label, Tc in (("adaptive", adaptive), ("random", random_t)):
+           "adaptive_T_K": adaptive, "parameter_optimal_T_K": parameter_optimal,
+           "random_T_K": random_t}
+    for label, Tc in (("adaptive", adaptive), ("parameter_optimal", parameter_optimal),
+                      ("random", random_t)):
         Ta, Ja, ya = add_batch(df, Tc, sigma, seed)
         augmented = fit_free(np.r_[T, Ta], np.r_[J, Ja], np.r_[y, ya])
         pred = augmented.predict(np.full(3, T_USE), J_USE)
@@ -166,6 +174,7 @@ def make_figures(rows, out_dir):
     x = np.arange(len(d))
     ax.plot(x, d["base_fold"], "o-", label="accelerated only")
     ax.plot(x, d["adaptive_fold"], "o-", label="adaptive extra temperature")
+    ax.plot(x, d["parameter_optimal_fold"], "o-", label="parameter-information batch", alpha=.8)
     ax.plot(x, d["random_fold"], "o-", label="random extra temperature", alpha=.7)
     ax.axhline(2.0, color="k", ls="--", lw=1, label="2× safety target")
     ax.set_xlabel("Seed"); ax.set_ylabel("Use-condition fold error")
@@ -190,11 +199,15 @@ def main():
         "summary": {
             "base_fold_median": float(np.median([r["base_fold"] for r in rows])),
             "adaptive_fold_median": float(np.median([r["adaptive_fold"] for r in rows])),
+            "parameter_optimal_fold_median": float(np.median([r["parameter_optimal_fold"] for r in rows])),
             "random_fold_median": float(np.median([r["random_fold"] for r in rows])),
             "adaptive_T_median_K": float(np.median([r["adaptive_T_K"] for r in rows])),
+            "parameter_optimal_T_median_K": float(np.median([r["parameter_optimal_T_K"] for r in rows])),
             "adaptive_lever_reduction_median": float(np.median([
                 1.0 - r["adaptive_lever"] / r["deployment_lever"] for r in rows])),
             "adaptive_safe_rate_2x": float(np.mean([r["adaptive_fold"] <= 2.0 for r in rows])),
+            "parameter_optimal_safe_rate_2x": float(np.mean([
+                r["parameter_optimal_fold"] <= 2.0 for r in rows])),
             "random_safe_rate_2x": float(np.mean([r["random_fold"] <= 2.0 for r in rows])),
         },
     }

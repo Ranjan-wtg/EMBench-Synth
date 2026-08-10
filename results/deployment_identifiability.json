@@ -53,38 +53,47 @@
         {
           "T_K": 443.0,
           "lever_after": 77.19678903265935,
-          "relative_reduction": 0.9934635540664908
+          "relative_reduction": 0.9934635540664908,
+          "parameter_information_gain": 7.437007711999749
         },
         {
           "T_K": 455.0,
           "lever_after": 139.40364780792316,
-          "relative_reduction": 0.9881963431607894
+          "relative_reduction": 0.9881963431607894,
+          "parameter_information_gain": 6.718143185972133
         },
         {
           "T_K": 475.0,
           "lever_after": 381.4881107955178,
-          "relative_reduction": 0.9676984439153743
+          "relative_reduction": 0.9676984439153743,
+          "parameter_information_gain": 5.222795101637983
         },
         {
           "T_K": 494.0,
           "lever_after": 1190.067736797892,
-          "relative_reduction": 0.8992339770051563
+          "relative_reduction": 0.8992339770051563,
+          "parameter_information_gain": 3.3895695641509747
         },
         {
           "T_K": 510.0,
           "lever_after": 4265.32646167727,
-          "relative_reduction": 0.6388441001901728
+          "relative_reduction": 0.6388441001901728,
+          "parameter_information_gain": 1.530960476480475
         },
         {
           "T_K": 523.0,
           "lever_after": 10437.17088235206,
-          "relative_reduction": 0.11625853839039735
+          "relative_reduction": 0.11625853839039735,
+          "parameter_information_gain": 0.3341445804851233
         }
       ],
       "adaptive_T_K": 443.0,
+      "parameter_optimal_T_K": 443.0,
       "random_T_K": 443.0,
       "adaptive_fold": 1.5580480753251198,
       "adaptive_lever": 103.19042803902141,
+      "parameter_optimal_fold": 1.5580480753251198,
+      "parameter_optimal_lever": 103.19042803902141,
       "random_fold": 1.5580480753251198,
       "random_lever": 103.19042803902141
     },
@@ -99,38 +108,47 @@
         {
           "T_K": 443.0,
           "lever_after": 0.6642239576685238,
-          "relative_reduction": 0.3091848149758447
+          "relative_reduction": 0.3091848149758447,
+          "parameter_information_gain": 2.4101327727716892
         },
         {
           "T_K": 455.0,
           "lever_after": 0.7092422960433382,
-          "relative_reduction": 0.2623642337624863
+          "relative_reduction": 0.2623642337624863,
+          "parameter_information_gain": 2.0016019415675146
         },
         {
           "T_K": 475.0,
           "lever_after": 0.7796673839584921,
-          "relative_reduction": 0.18911978122991413
+          "relative_reduction": 0.18911978122991413,
+          "parameter_information_gain": 1.3046308593483005
         },
         {
           "T_K": 494.0,
           "lever_after": 0.8382877722695986,
-          "relative_reduction": 0.12815261205482387
+          "relative_reduction": 0.12815261205482387,
+          "parameter_information_gain": 0.7014009866862594
         },
         {
           "T_K": 510.0,
           "lever_after": 0.8794711266872997,
-          "relative_reduction": 0.0853205427301319
+          "relative_reduction": 0.0853205427301319,
+          "parameter_information_gain": 0.3374265482426111
         },
         {
           "T_K": 523.0,
           "lever_after": 0.906705716219343,
-          "relative_reduction": 0.0569956565386216
+          "relative_reduction": 0.0569956565386216,
+          "parameter_information_gain": 0.17265151696763326
         }
       ],
       "adaptive_T_K": 443.0,
+      "parameter_optimal_T_K": 443.0,
       "random_T_K": 455.0,
       "adaptive_fold": 2.3083742401784924,
       "adaptive_lever": 263.59199953643713,
+      "parameter_optimal_fold": 2.3083742401784924,
+      "parameter_optimal_lever": 263.59199953643713,
       "random_fold": 2.547849379682409,
       "random_lever": 402.36854196797435
     },
@@ -145,38 +163,47 @@
         {
           "T_K": 443.0,
           "lever_after": 48.01894956191248,
-          "relative_reduction": 0.9933737619872184
+          "relative_reduction": 0.9933737619872184,
+          "parameter_information_gain": 7.101068410744018
         },
         {
           "T_K": 455.0,
           "lever_after": 86.6042428961073,
-          "relative_reduction": 0.9880492944643351
+          "relative_reduction": 0.9880492944643351,
+          "parameter_information_gain": 6.435061235705357
         },
         {
           "T_K": 475.0,
           "lever_after": 238.06050498790285,
-          "relative_reduction": 0.96714951947337
+          "relative_reduction": 0.96714951947337,
+          "parameter_information_gain": 5.0342605744650815
         },
         {
           "T_K": 494.0,
           "lever_after": 747.5706541858563,
-          "relative_reduction": 0.8968411193664381
+          "relative_reduction": 0.8968411193664381,
+          "parameter_information_gain": 3.2855999361202652
         },
         {
           "T_K": 510.0,
           "lever_after": 2657.812140429521,
-          "relative_reduction": 0.6332427927637239
+          "relative_reduction": 0.6332427927637239,
+          "parameter_information_gain": 1.4916867012972208
         },
         {
           "T_K": 523.0,
           "lever_after": 6400.546678412134,
-          "relative_reduction": 0.11677481306843074
+          "relative_reduction": 0.11677481306843074,
+          "parameter_information_gain": 0.33162183115154953
         }
       ],
       "adaptive_T_K": 443.0,
+      "parameter_optimal_T_K": 443.0,
       "random_T_K": 475.0,
       "adaptive_fold": 1.0166137669621114,
       "adaptive_lever": 31.279869214215942,
+      "parameter_optimal_fold": 1.0166137669621114,
+      "parameter_optimal_lever": 31.279869214215942,
       "random_fold": 1.0182644092957627,
       "random_lever": 154.56250213142408
     },
@@ -191,38 +218,47 @@
         {
           "T_K": 443.0,
           "lever_after": 23.432140119045545,
-          "relative_reduction": 0.9929679838964424
+          "relative_reduction": 0.9929679838964424,
+          "parameter_information_gain": 6.514088878605458
         },
         {
           "T_K": 455.0,
           "lever_after": 41.927888179502474,
-          "relative_reduction": 0.987417385549569
+          "relative_reduction": 0.987417385549569,
+          "parameter_information_gain": 5.922103205388622
         },
         {
           "T_K": 475.0,
           "lever_after": 115.52850617582888,
-          "relative_reduction": 0.9653297431766348
+          "relative_reduction": 0.9653297431766348,
+          "parameter_information_gain": 4.667743889923949
         },
         {
           "T_K": 494.0,
           "lever_after": 365.28492251913207,
-          "relative_reduction": 0.8903775137699211
+          "relative_reduction": 0.8903775137699211,
+          "parameter_information_gain": 3.0693189729847603
         },
         {
           "T_K": 510.0,
           "lever_after": 1267.7699880439104,
-          "relative_reduction": 0.6195405572756103
+          "relative_reduction": 0.6195405572756103,
+          "parameter_information_gain": 1.4059373651155092
         },
         {
           "T_K": 523.0,
           "lever_after": 2940.1232111181216,
-          "relative_reduction": 0.11766515299122215
+          "relative_reduction": 0.11766515299122215,
+          "parameter_information_gain": 0.3256124325234815
         }
       ],
       "adaptive_T_K": 443.0,
+      "parameter_optimal_T_K": 443.0,
       "random_T_K": 494.0,
       "adaptive_fold": 1.6983919451011773,
       "adaptive_lever": 12.161773226847739,
+      "parameter_optimal_fold": 1.6983919451011773,
+      "parameter_optimal_lever": 12.161773226847739,
       "random_fold": 3.0725737553860792,
       "random_lever": 86.98297755799697
     },
@@ -237,38 +273,47 @@
         {
           "T_K": 443.0,
           "lever_after": 21.7153531756108,
-          "relative_reduction": 0.9921227956778202
+          "relative_reduction": 0.9921227956778202,
+          "parameter_information_gain": 6.2551295270255345
         },
         {
           "T_K": 455.0,
           "lever_after": 38.605330482120806,
-          "relative_reduction": 0.98599598755435
+          "relative_reduction": 0.98599598755435,
+          "parameter_information_gain": 5.659222702595175
         },
         {
           "T_K": 475.0,
           "lever_after": 105.6819297033162,
-          "relative_reduction": 0.9616640748735212
+          "relative_reduction": 0.9616640748735212,
+          "parameter_information_gain": 4.420853695490859
         },
         {
           "T_K": 494.0,
           "lever_after": 331.8799142172386,
-          "relative_reduction": 0.8796111730914484
+          "relative_reduction": 0.8796111730914484,
+          "parameter_information_gain": 2.8774952976349972
         },
         {
           "T_K": 510.0,
           "lever_after": 1108.9285086386426,
-          "relative_reduction": 0.5977382283126994
+          "relative_reduction": 0.5977382283126994,
+          "parameter_information_gain": 1.309879000541473
         },
         {
           "T_K": 523.0,
           "lever_after": 2436.107527709259,
-          "relative_reduction": 0.11630648641171737
+          "relative_reduction": 0.11630648641171737,
+          "parameter_information_gain": 0.3163257457551918
         }
       ],
       "adaptive_T_K": 443.0,
+      "parameter_optimal_T_K": 443.0,
       "random_T_K": 510.0,
       "adaptive_fold": 1.575789590686186,
       "adaptive_lever": 11.63752003577084,
+      "parameter_optimal_fold": 1.575789590686186,
+      "parameter_optimal_lever": 11.63752003577084,
       "random_fold": 2.004450276980129,
       "random_lever": 383.0130783538644
     },
@@ -283,38 +328,47 @@
         {
           "T_K": 443.0,
           "lever_after": 4.203952584012718,
-          "relative_reduction": 0.9532143162450898
+          "relative_reduction": 0.9532143162450898,
+          "parameter_information_gain": 3.2204213163413797
         },
         {
           "T_K": 455.0,
           "lever_after": 6.425170816800154,
-          "relative_reduction": 0.9284944337742367
+          "relative_reduction": 0.9284944337742367,
+          "parameter_information_gain": 2.8074837241666533
         },
         {
           "T_K": 475.0,
           "lever_after": 14.057365104112183,
-          "relative_reduction": 0.8435559333638969
+          "relative_reduction": 0.8435559333638969,
+          "parameter_information_gain": 2.030630290064556
         },
         {
           "T_K": 494.0,
           "lever_after": 31.626192500746683,
-          "relative_reduction": 0.6480328902046029
+          "relative_reduction": 0.6480328902046029,
+          "parameter_information_gain": 1.2088815835472833
         },
         {
           "T_K": 510.0,
           "lever_after": 59.18410488728345,
-          "relative_reduction": 0.3413415686218635
+          "relative_reduction": 0.3413415686218635,
+          "parameter_information_gain": 0.5626532613876769
         },
         {
           "T_K": 523.0,
           "lever_after": 81.71560701959925,
-          "relative_reduction": 0.09058904175120763
+          "relative_reduction": 0.09058904175120763,
+          "parameter_information_gain": 0.2209908320887859
         }
       ],
       "adaptive_T_K": 443.0,
+      "parameter_optimal_T_K": 443.0,
       "random_T_K": 523.0,
       "adaptive_fold": 1.2180265077072805,
       "adaptive_lever": 116.09475072066316,
+      "parameter_optimal_fold": 1.2180265077072805,
+      "parameter_optimal_lever": 116.09475072066316,
       "random_fold": 5.355993029410316,
       "random_lever": 82.2731677605975
     },
@@ -329,38 +383,47 @@
         {
           "T_K": 443.0,
           "lever_after": 4.3450420209451055,
-          "relative_reduction": 0.9544366030944196
+          "relative_reduction": 0.9544366030944196,
+          "parameter_information_gain": 3.252438432742709
         },
         {
           "T_K": 455.0,
           "lever_after": 6.678557789342239,
-          "relative_reduction": 0.9299666659503404
+          "relative_reduction": 0.9299666659503404,
+          "parameter_information_gain": 2.833896209284136
         },
         {
           "T_K": 475.0,
           "lever_after": 14.737906472658668,
-          "relative_reduction": 0.8454539498273925
+          "relative_reduction": 0.8454539498273925,
+          "parameter_information_gain": 2.047360496466494
         },
         {
           "T_K": 494.0,
           "lever_after": 33.39713811808866,
-          "relative_reduction": 0.6497877230531417
+          "relative_reduction": 0.6497877230531417,
+          "parameter_information_gain": 1.2166335741636818
         },
         {
           "T_K": 510.0,
           "lever_after": 62.76643896706928,
-          "relative_reduction": 0.3418125400811629
+          "relative_reduction": 0.3418125400811629,
+          "parameter_information_gain": 0.5646765934520062
         },
         {
           "T_K": 523.0,
           "lever_after": 86.75047508066099,
-          "relative_reduction": 0.09030883733822426
+          "relative_reduction": 0.09030883733822426,
+          "parameter_information_gain": 0.22113573032215328
         }
       ],
       "adaptive_T_K": 443.0,
+      "parameter_optimal_T_K": 443.0,
       "random_T_K": 443.0,
       "adaptive_fold": 2.217528442652728,
       "adaptive_lever": 306.6901275659078,
+      "parameter_optimal_fold": 2.217528442652728,
+      "parameter_optimal_lever": 306.6901275659078,
       "random_fold": 2.217528442652728,
       "random_lever": 306.6901275659078
     },
@@ -375,38 +438,47 @@
         {
           "T_K": 443.0,
           "lever_after": 6.517101435310392,
-          "relative_reduction": 0.9747162901603724
+          "relative_reduction": 0.9747162901603724,
+          "parameter_information_gain": 3.9892050401405106
         },
         {
           "T_K": 455.0,
           "lever_after": 10.677577776574239,
-          "relative_reduction": 0.9585753296963834
+          "relative_reduction": 0.9585753296963834,
+          "parameter_information_gain": 3.5049459474577054
         },
         {
           "T_K": 475.0,
           "lever_after": 26.34598782809688,
-          "relative_reduction": 0.8977882547485257
+          "relative_reduction": 0.8977882547485257,
+          "parameter_information_gain": 2.5793784259977945
         },
         {
           "T_K": 494.0,
           "lever_after": 69.04340549643575,
-          "relative_reduction": 0.7321395948429807
+          "relative_reduction": 0.7321395948429807,
+          "parameter_information_gain": 1.559927898510482
         },
         {
           "T_K": 510.0,
           "lever_after": 152.9800488632511,
-          "relative_reduction": 0.406499468344353
+          "relative_reduction": 0.406499468344353,
+          "parameter_information_gain": 0.7056211598823579
         },
         {
           "T_K": 523.0,
           "lever_after": 232.58552703230907,
-          "relative_reduction": 0.09766250583121505
+          "relative_reduction": 0.09766250583121505,
+          "parameter_information_gain": 0.24298882892036655
         }
       ],
       "adaptive_T_K": 443.0,
+      "parameter_optimal_T_K": 443.0,
       "random_T_K": 455.0,
       "adaptive_fold": 1.337269850408032,
       "adaptive_lever": 25.404211476827367,
+      "parameter_optimal_fold": 1.337269850408032,
+      "parameter_optimal_lever": 25.404211476827367,
       "random_fold": 1.491640414296922,
       "random_lever": 40.31209486231704
     },
@@ -421,38 +493,47 @@
         {
           "T_K": 443.0,
           "lever_after": 41.60217888269482,
-          "relative_reduction": 0.9924497944282579
+          "relative_reduction": 0.9924497944282579,
+          "parameter_information_gain": 6.72711498969743
         },
         {
           "T_K": 455.0,
           "lever_after": 74.42139639701558,
-          "relative_reduction": 0.9864935718074299
+          "relative_reduction": 0.9864935718074299,
+          "parameter_information_gain": 6.062374166396918
         },
         {
           "T_K": 475.0,
           "lever_after": 203.04818326646347,
-          "relative_reduction": 0.9631496338460228
+          "relative_reduction": 0.9631496338460228,
+          "parameter_information_gain": 4.6984076604558
         },
         {
           "T_K": 494.0,
           "lever_after": 634.6659041746618,
-          "relative_reduction": 0.8848171375973887
+          "relative_reduction": 0.8848171375973887,
+          "parameter_information_gain": 3.03488317754811
         },
         {
           "T_K": 510.0,
           "lever_after": 2163.641603284363,
-          "relative_reduction": 0.607329728223302
+          "relative_reduction": 0.607329728223302,
+          "parameter_information_gain": 1.368909236612982
         },
         {
           "T_K": 523.0,
           "lever_after": 4874.374496129313,
-          "relative_reduction": 0.11537014483773234
+          "relative_reduction": 0.11537014483773234,
+          "parameter_information_gain": 0.32046452389291247
         }
       ],
       "adaptive_T_K": 443.0,
+      "parameter_optimal_T_K": 443.0,
       "random_T_K": 475.0,
       "adaptive_fold": 1.0729027849935968,
       "adaptive_lever": 30.201334203536973,
+      "parameter_optimal_fold": 1.0729027849935968,
+      "parameter_optimal_lever": 30.201334203536973,
       "random_fold": 1.0700980074869482,
       "random_lever": 147.89676024375808
     },
@@ -467,38 +548,47 @@
         {
           "T_K": 443.0,
           "lever_after": 24.468529492999647,
-          "relative_reduction": 0.9930076214927289
+          "relative_reduction": 0.9930076214927289,
+          "parameter_information_gain": 6.552675247327471
         },
         {
           "T_K": 455.0,
           "lever_after": 43.817923083781714,
-          "relative_reduction": 0.9874781398820084
+          "relative_reduction": 0.9874781398820084,
+          "parameter_information_gain": 5.956425042785167
         },
         {
           "T_K": 475.0,
           "lever_after": 120.75394372529843,
-          "relative_reduction": 0.9654921117750633
+          "relative_reduction": 0.9654921117750633,
+          "parameter_information_gain": 4.693147506588911
         },
         {
           "T_K": 494.0,
           "lever_after": 381.74002239258147,
-          "relative_reduction": 0.8909100471809417
+          "relative_reduction": 0.8909100471809417,
+          "parameter_information_gain": 3.084835466444755
         },
         {
           "T_K": 510.0,
           "lever_after": 1327.6025045957588,
-          "relative_reduction": 0.6206106614624922
+          "relative_reduction": 0.6206106614624922,
+          "parameter_information_gain": 1.412236019997449
         },
         {
           "T_K": 523.0,
           "lever_after": 3087.7637861986495,
-          "relative_reduction": 0.11760888040605555
+          "relative_reduction": 0.11760888040605555,
+          "parameter_information_gain": 0.3260752137434384
         }
       ],
       "adaptive_T_K": 443.0,
+      "parameter_optimal_T_K": 443.0,
       "random_T_K": 494.0,
       "adaptive_fold": 1.7531464483509085,
       "adaptive_lever": 15.095790712881197,
+      "parameter_optimal_fold": 1.7531464483509085,
+      "parameter_optimal_lever": 15.095790712881197,
       "random_fold": 3.0303726364830816,
       "random_lever": 153.97699402179975
     },
@@ -513,38 +603,47 @@
         {
           "T_K": 443.0,
           "lever_after": 211.94553121195463,
-          "relative_reduction": 0.9934500684882225
+          "relative_reduction": 0.9934500684882225,
+          "parameter_information_gain": 8.02798254724972
         },
         {
           "T_K": 455.0,
           "lever_after": 382.10713925436545,
-          "relative_reduction": 0.9881914207958721
+          "relative_reduction": 0.9881914207958721,
+          "parameter_information_gain": 7.190783013925344
         },
         {
           "T_K": 475.0,
           "lever_after": 1034.2374136287585,
-          "relative_reduction": 0.9680380889021349
+          "relative_reduction": 0.9680380889021349,
+          "parameter_information_gain": 5.509610312768663
         },
         {
           "T_K": 494.0,
           "lever_after": 3182.2468839605904,
-          "relative_reduction": 0.9016563405497572
+          "relative_reduction": 0.9016563405497572,
+          "parameter_information_gain": 3.534560838388554
         },
         {
           "T_K": 510.0,
           "lever_after": 11482.234577299667,
-          "relative_reduction": 0.6451548204228691
+          "relative_reduction": 0.6451548204228691,
+          "parameter_information_gain": 1.5820186481332676
         },
         {
           "T_K": 523.0,
           "lever_after": 28625.50382960558,
-          "relative_reduction": 0.11536191161049614
+          "relative_reduction": 0.11536191161049614,
+          "parameter_information_gain": 0.3370823030683283
         }
       ],
       "adaptive_T_K": 443.0,
+      "parameter_optimal_T_K": 443.0,
       "random_T_K": 510.0,
       "adaptive_fold": 2.43207721449329,
       "adaptive_lever": 324.64973946716583,
+      "parameter_optimal_fold": 2.43207721449329,
+      "parameter_optimal_lever": 324.64973946716583,
       "random_fold": 3.60856054036397,
       "random_lever": 8975.657196542965
     },
@@ -559,38 +658,47 @@
         {
           "T_K": 443.0,
           "lever_after": 45.724601343925414,
-          "relative_reduction": 0.993358636031555
+          "relative_reduction": 0.993358636031555,
+          "parameter_information_gain": 7.064211806628521
         },
         {
           "T_K": 455.0,
           "lever_after": 82.44472330648532,
-          "relative_reduction": 0.9880251462306331
+          "relative_reduction": 0.9880251462306331,
+          "parameter_information_gain": 6.403488593689705
         },
         {
           "T_K": 475.0,
           "lever_after": 226.7132849205364,
-          "relative_reduction": 0.9670705616367485
+          "relative_reduction": 0.9670705616367485,
+          "parameter_information_gain": 5.012577613547835
         },
         {
           "T_K": 494.0,
           "lever_after": 712.3918979493258,
-          "relative_reduction": 0.8965271704204526
+          "relative_reduction": 0.8965271704204526,
+          "parameter_information_gain": 3.2732943854194083
         },
         {
           "T_K": 510.0,
           "lever_after": 2529.9322116797393,
-          "relative_reduction": 0.6325347812903311
+          "relative_reduction": 0.6325347812903311,
+          "parameter_information_gain": 1.4869407496497828
         },
         {
           "T_K": 523.0,
           "lever_after": 6080.45571753677,
-          "relative_reduction": 0.11683167644416326
+          "relative_reduction": 0.11683167644416326,
+          "parameter_information_gain": 0.331306280685288
         }
       ],
       "adaptive_T_K": 443.0,
+      "parameter_optimal_T_K": 443.0,
       "random_T_K": 523.0,
       "adaptive_fold": 1.089036672365567,
       "adaptive_lever": 40.82997061476884,
+      "parameter_optimal_fold": 1.089036672365567,
+      "parameter_optimal_lever": 40.82997061476884,
       "random_fold": 6.663175978357049,
       "random_lever": 6025.7300229957
     },
@@ -605,38 +713,47 @@
         {
           "T_K": 443.0,
           "lever_after": 5.647614641913797,
-          "relative_reduction": 0.9748525666841904
+          "relative_reduction": 0.9748525666841904,
+          "parameter_information_gain": 3.9697200127150385
         },
         {
           "T_K": 455.0,
           "lever_after": 9.128167659500315,
-          "relative_reduction": 0.9593545236232643
+          "relative_reduction": 0.9593545236232643,
+          "parameter_information_gain": 3.5042803310388955
         },
         {
           "T_K": 475.0,
           "lever_after": 22.198313823665213,
-          "relative_reduction": 0.9011563904411742
+          "relative_reduction": 0.9011563904411742,
+          "parameter_information_gain": 2.6038962196587576
         },
         {
           "T_K": 494.0,
           "lever_after": 58.07925653290722,
-          "relative_reduction": 0.7413874133950913
+          "relative_reduction": 0.7413874133950913,
+          "parameter_information_gain": 1.5936577639670801
         },
         {
           "T_K": 510.0,
           "lever_after": 130.63090714915262,
-          "relative_reduction": 0.4183328299106761
+          "relative_reduction": 0.4183328299106761,
+          "parameter_information_gain": 0.726785555144648
         },
         {
           "T_K": 523.0,
           "lever_after": 201.98068735184702,
-          "relative_reduction": 0.10062987857458616
+          "relative_reduction": 0.10062987857458616,
+          "parameter_information_gain": 0.2471369868882789
         }
       ],
       "adaptive_T_K": 443.0,
+      "parameter_optimal_T_K": 443.0,
       "random_T_K": 443.0,
       "adaptive_fold": 1.2330080518290187,
       "adaptive_lever": 8.435837087052013,
+      "parameter_optimal_fold": 1.2330080518290187,
+      "parameter_optimal_lever": 8.435837087052013,
       "random_fold": 1.2330080518290187,
       "random_lever": 8.435837087052013
     },
@@ -651,38 +768,47 @@
         {
           "T_K": 443.0,
           "lever_after": 4.2902671333239155,
-          "relative_reduction": 0.9547804704187415
+          "relative_reduction": 0.9547804704187415,
+          "parameter_information_gain": 3.2592977308139286
         },
         {
           "T_K": 455.0,
           "lever_after": 6.584496605052381,
-          "relative_reduction": 0.930599230827107
+          "relative_reduction": 0.930599230827107,
+          "parameter_information_gain": 2.8424758547016307
         },
         {
           "T_K": 475.0,
           "lever_after": 14.513905214359808,
-          "relative_reduction": 0.847023053393917
+          "relative_reduction": 0.847023053393917,
+          "parameter_information_gain": 2.0575801687087854
         },
         {
           "T_K": 494.0,
           "lever_after": 32.94505308996074,
-          "relative_reduction": 0.6527582650539038
+          "relative_reduction": 0.6527582650539038,
+          "parameter_information_gain": 1.2255067591683453
         },
         {
           "T_K": 510.0,
           "lever_after": 62.18727324768838,
-          "relative_reduction": 0.34454448760094547
+          "relative_reduction": 0.34454448760094547,
+          "parameter_information_gain": 0.5692102658613294
         },
         {
           "T_K": 523.0,
           "lever_after": 86.25039012597854,
-          "relative_reduction": 0.09091859632641053
+          "relative_reduction": 0.09091859632641053,
+          "parameter_information_gain": 0.22204265052277705
         }
       ],
       "adaptive_T_K": 443.0,
+      "parameter_optimal_T_K": 443.0,
       "random_T_K": 455.0,
       "adaptive_fold": 1.996427618708382,
       "adaptive_lever": 190.11565774944228,
+      "parameter_optimal_fold": 1.996427618708382,
+      "parameter_optimal_lever": 190.11565774944228,
       "random_fold": 2.5553178894990096,
       "random_lever": 352.6945257172244
     },
@@ -697,38 +823,47 @@
         {
           "T_K": 443.0,
           "lever_after": 4.23468108531151,
-          "relative_reduction": 0.9532005635297381
+          "relative_reduction": 0.9532005635297381,
+          "parameter_information_gain": 3.220523483647945
         },
         {
           "T_K": 455.0,
           "lever_after": 6.479928353116528,
-          "relative_reduction": 0.9283872883968977
+          "relative_reduction": 0.9283872883968977,
+          "parameter_information_gain": 2.8064377537737712
         },
         {
           "T_K": 475.0,
           "lever_after": 14.195974228139052,
-          "relative_reduction": 0.8431136653176337
+          "relative_reduction": 0.8431136653176337,
+          "parameter_information_gain": 2.0281095646214844
         },
         {
           "T_K": 494.0,
           "lever_after": 31.93912153127542,
-          "relative_reduction": 0.647025865961063
+          "relative_reduction": 0.647025865961063,
+          "parameter_information_gain": 1.2061041631616085
         },
         {
           "T_K": 510.0,
           "lever_after": 59.69192563536746,
-          "relative_reduction": 0.34031667904113816
+          "relative_reduction": 0.34031667904113816,
+          "parameter_information_gain": 0.5610634396809395
         },
         {
           "T_K": 523.0,
           "lever_after": 82.31261417568666,
-          "relative_reduction": 0.09032489573347646
+          "relative_reduction": 0.09032489573347646,
+          "parameter_information_gain": 0.22064774889367555
         }
       ],
       "adaptive_T_K": 443.0,
+      "parameter_optimal_T_K": 443.0,
       "random_T_K": 475.0,
       "adaptive_fold": 1.383945790957601,
       "adaptive_lever": 201.4356713686774,
+      "parameter_optimal_fold": 1.383945790957601,
+      "parameter_optimal_lever": 201.4356713686774,
       "random_fold": 1.2189694206789226,
       "random_lever": 546.643744743679
     },
@@ -743,38 +878,47 @@
         {
           "T_K": 443.0,
           "lever_after": 23.09966194482758,
-          "relative_reduction": 0.9919083976096705
+          "relative_reduction": 0.9919083976096705,
+          "parameter_information_gain": 6.240247810403892
         },
         {
           "T_K": 455.0,
           "lever_after": 41.04109724131382,
-          "relative_reduction": 0.9856236753017106
+          "relative_reduction": 0.9856236753017106,
+          "parameter_information_gain": 5.634763790975748
         },
         {
           "T_K": 475.0,
           "lever_after": 112.15258761757676,
-          "relative_reduction": 0.9607139642036525
+          "relative_reduction": 0.9607139642036525,
+          "parameter_information_gain": 4.38542128087429
         },
         {
           "T_K": 494.0,
           "lever_after": 351.36009701737277,
-          "relative_reduction": 0.8769217399075925
+          "relative_reduction": 0.8769217399075925,
+          "parameter_information_gain": 2.8425842267787385
         },
         {
           "T_K": 510.0,
           "lever_after": 1163.7067253286432,
-          "relative_reduction": 0.5923640725651301
+          "relative_reduction": 0.5923640725651301,
+          "parameter_information_gain": 1.2898875246999193
         },
         {
           "T_K": 523.0,
           "lever_after": 2524.5182808372774,
-          "relative_reduction": 0.11568410808594198
+          "relative_reduction": 0.11568410808594198,
+          "parameter_information_gain": 0.3140741460510199
         }
       ],
       "adaptive_T_K": 443.0,
+      "parameter_optimal_T_K": 443.0,
       "random_T_K": 494.0,
       "adaptive_fold": 1.3044643380242884,
       "adaptive_lever": 13.661634424820246,
+      "parameter_optimal_fold": 1.3044643380242884,
+      "parameter_optimal_lever": 13.661634424820246,
       "random_fold": 1.7602256132754623,
       "random_lever": 157.63243072693794
     },
@@ -789,38 +933,47 @@
         {
           "T_K": 443.0,
           "lever_after": 9.868223522289638,
-          "relative_reduction": 0.9830540442489241
+          "relative_reduction": 0.9830540442489241,
+          "parameter_information_gain": 4.615723351327331
         },
         {
           "T_K": 455.0,
           "lever_after": 16.792993793600736,
-          "relative_reduction": 0.9711626586982269
+          "relative_reduction": 0.9711626586982269,
+          "parameter_information_gain": 4.079730003412738
         },
         {
           "T_K": 475.0,
           "lever_after": 43.90249848266217,
-          "relative_reduction": 0.9246095515602735
+          "relative_reduction": 0.9246095515602735,
+          "parameter_information_gain": 3.043956302360856
         },
         {
           "T_K": 494.0,
           "lever_after": 125.3461530653475,
-          "relative_reduction": 0.7847525080258684
+          "relative_reduction": 0.7847525080258684,
+          "parameter_information_gain": 1.8718763592671195
         },
         {
           "T_K": 510.0,
           "lever_after": 315.2549036807638,
-          "relative_reduction": 0.4586365381755745
+          "relative_reduction": 0.4586365381755745,
+          "parameter_information_gain": 0.8387922481323695
         },
         {
           "T_K": 523.0,
           "lever_after": 522.2046739034295,
-          "relative_reduction": 0.10325731100592639
+          "relative_reduction": 0.10325731100592639,
+          "parameter_information_gain": 0.26159961715430224
         }
       ],
       "adaptive_T_K": 443.0,
+      "parameter_optimal_T_K": 443.0,
       "random_T_K": 510.0,
       "adaptive_fold": 1.1201238511435905,
       "adaptive_lever": 18.628949870592557,
+      "parameter_optimal_fold": 1.1201238511435905,
+      "parameter_optimal_lever": 18.628949870592557,
       "random_fold": 1.8695051372676816,
       "random_lever": 445.95389454123733
     },
@@ -835,38 +988,47 @@
         {
           "T_K": 443.0,
           "lever_after": 17.295711657264512,
-          "relative_reduction": 0.9861191722071323
+          "relative_reduction": 0.9861191722071323,
+          "parameter_information_gain": 5.091921248756929
         },
         {
           "T_K": 455.0,
           "lever_after": 30.101108056168385,
-          "relative_reduction": 0.9758420870108181
+          "relative_reduction": 0.9758420870108181,
+          "parameter_information_gain": 4.497548240040828
         },
         {
           "T_K": 475.0,
           "lever_after": 80.73236573994892,
-          "relative_reduction": 0.9352075191611815
+          "relative_reduction": 0.9352075191611815,
+          "parameter_information_gain": 3.356778973917546
         },
         {
           "T_K": 494.0,
           "lever_after": 239.43941881923072,
-          "relative_reduction": 0.807835756902314
+          "relative_reduction": 0.807835756902314,
+          "parameter_information_gain": 2.068421992238406
         },
         {
           "T_K": 510.0,
           "lever_after": 643.2905571247286,
-          "relative_reduction": 0.48372142059411904
+          "relative_reduction": 0.48372142059411904,
+          "parameter_information_gain": 0.9181850250926082
         },
         {
           "T_K": 523.0,
           "lever_after": 1115.698609681393,
-          "relative_reduction": 0.10458612073215567
+          "relative_reduction": 0.10458612073215567,
+          "parameter_information_gain": 0.2710145744603043
         }
       ],
       "adaptive_T_K": 443.0,
+      "parameter_optimal_T_K": 443.0,
       "random_T_K": 523.0,
       "adaptive_fold": 1.8050247555291636,
       "adaptive_lever": 59.55099745927152,
+      "parameter_optimal_fold": 1.8050247555291636,
+      "parameter_optimal_lever": 59.55099745927152,
       "random_fold": 3.5455403348132433,
       "random_lever": 5162.286760222236
     },
@@ -881,38 +1043,47 @@
         {
           "T_K": 443.0,
           "lever_after": 0.6634356824259036,
-          "relative_reduction": 0.30941622035515937
+          "relative_reduction": 0.30941622035515937,
+          "parameter_information_gain": 2.6202656269508253
         },
         {
           "T_K": 455.0,
           "lever_after": 0.7084543515415861,
-          "relative_reduction": 0.2625553663251069
+          "relative_reduction": 0.2625553663251069,
+          "parameter_information_gain": 2.1827865165754403
         },
         {
           "T_K": 475.0,
           "lever_after": 0.7788799500510206,
-          "relative_reduction": 0.18924791951344522
+          "relative_reduction": 0.18924791951344522,
+          "parameter_information_gain": 1.456183562610505
         },
         {
           "T_K": 494.0,
           "lever_after": 0.8375007482476888,
-          "relative_reduction": 0.12822833094319386
+          "relative_reduction": 0.12822833094319386,
+          "parameter_information_gain": 0.7963120875299836
         },
         {
           "T_K": 510.0,
           "lever_after": 0.8786843755173706,
-          "relative_reduction": 0.08535945045822302
+          "relative_reduction": 0.08535945045822302,
+          "parameter_information_gain": 0.3800861493299408
         },
         {
           "T_K": 523.0,
           "lever_after": 0.9059191345054023,
-          "relative_reduction": 0.05701023244375203
+          "relative_reduction": 0.05701023244375203,
+          "parameter_information_gain": 0.18879061399675834
         }
       ],
       "adaptive_T_K": 443.0,
+      "parameter_optimal_T_K": 443.0,
       "random_T_K": 443.0,
       "adaptive_fold": 1.6559113091896973,
       "adaptive_lever": 510.5401835654253,
+      "parameter_optimal_fold": 1.6559113091896973,
+      "parameter_optimal_lever": 510.5401835654253,
       "random_fold": 1.6559113091896973,
       "random_lever": 510.5401835654253
     },
@@ -927,38 +1098,47 @@
         {
           "T_K": 443.0,
           "lever_after": 32.007864251721585,
-          "relative_reduction": 0.9932008087131142
+          "relative_reduction": 0.9932008087131142,
+          "parameter_information_gain": 6.782213012972104
         },
         {
           "T_K": 455.0,
           "lever_after": 57.540492632604376,
-          "relative_reduction": 0.9877771033682863
+          "relative_reduction": 0.9877771033682863,
+          "parameter_information_gain": 6.158953985662778
         },
         {
           "T_K": 475.0,
           "lever_after": 158.544743366217,
-          "relative_reduction": 0.9663215255726055
+          "relative_reduction": 0.9663215255726055,
+          "parameter_information_gain": 4.840597727831007
         },
         {
           "T_K": 494.0,
           "lever_after": 500.2218117872524,
-          "relative_reduction": 0.8937416205759136
+          "relative_reduction": 0.8937416205759136,
+          "parameter_information_gain": 3.1734201601339898
         },
         {
           "T_K": 510.0,
           "lever_after": 1758.4594052404445,
-          "relative_reduction": 0.6264636161780137
+          "relative_reduction": 0.6264636161780137,
+          "parameter_information_gain": 1.4477890801457534
         },
         {
           "T_K": 523.0,
           "lever_after": 4155.56238031048,
-          "relative_reduction": 0.11726495382154478
+          "relative_reduction": 0.11726495382154478,
+          "parameter_information_gain": 0.3286248975088206
         }
       ],
       "adaptive_T_K": 443.0,
+      "parameter_optimal_T_K": 443.0,
       "random_T_K": 455.0,
       "adaptive_fold": 1.1175372264951746,
       "adaptive_lever": 22.566060276844023,
+      "parameter_optimal_fold": 1.1175372264951746,
+      "parameter_optimal_lever": 22.566060276844023,
       "random_fold": 1.1299354848671397,
       "random_lever": 40.19599251486666
     }
@@ -966,10 +1146,13 @@
   "summary": {
     "base_fold_median": 5.352875408816516,
     "adaptive_fold_median": 1.4709969331413604,
+    "parameter_optimal_fold_median": 1.4709969331413604,
     "random_fold_median": 1.9369777071239054,
     "adaptive_T_median_K": 443.0,
+    "parameter_optimal_T_median_K": 443.0,
     "adaptive_lever_reduction_median": 0.9789884925613804,
     "adaptive_safe_rate_2x": 0.85,
+    "parameter_optimal_safe_rate_2x": 0.85,
     "random_safe_rate_2x": 0.5
   }
 }
