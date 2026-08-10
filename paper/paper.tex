@@ -27,7 +27,7 @@
 \newcommand{\sln}{\sigma_{\ln}}
 \newcommand{\dln}{\Delta\ln}
 
-\title{Extrapolation Safety as a Noise-Induced Phase Transition:\\ Singular-Model Geometry of Physics-Informed Lifetime Fitting}
+\title{Deployment Non-Identifiability in AI-Based Electromigration Reliability Prediction}
 
 \author{%
   Anonymous Authors\\
@@ -40,27 +40,22 @@
 
 \begin{abstract}
 Industry extrapolates accelerated electromigration (EM) tests to use conditions
-with Black's equation, setting the guard-banding rules used in chip-reliability
-sign-off. On \emph{EMBench-Synth}, a reproducible public benchmark whose ground
-truth encodes the three known corrections to that equation, we ask whether good
-in-window fit guarantees safe extrapolation. It does not: \emph{extrapolation
-safety is a noise-induced phase transition}. The fully data-driven fit of the
-corrected equation is exact at zero noise yet collapses discontinuously at
-$\sln=0.02$---two orders of magnitude below the $\sln\approx0.15$ typical of EM
-data---reaching $16.8\times$ use-condition error at $\sln=0.5$. The cause is
-model geometry, not noise: the corrected equation has a near-singular Fisher
-information at the truth, and its extrapolation functional concentrates variance
-on a direction that becomes exactly flat in the deep-envelope limit---the
-singular-model regime of Watanabe's theory, invisible to the data at any sample
-size. Pinning one known material constant removes the flat direction and the
-transition at zero in-sample cost. Consequently, in-window fit quality cannot
-certify use-condition error on this benchmark: free, prior-regularized, and
-pinned estimators share the same flat profile yet differ by $10\times$. Black-box
-ML extrapolators (MLP, KAN, GP--SR) reproduce the hazard, but a
-physics-regularized MLP---its output \emph{is} the corrected equation with a soft
-prior toward literature parameters---does not ($1.07$--$1.60\times$). We release
-the benchmark, model zoo, scoring, and leaderboard as reproducible infrastructure
-for reliability ML.
+with Black's equation, setting guard-banding rules used in chip-reliability
+sign-off. We show that this workflow has a deployment-identifiability limit:
+different corrected-equation parameters can be indistinguishable throughout an
+accelerated temperature envelope while predicting materially different
+use-condition lifetimes. On the controlled \emph{EMBench-Synth} benchmark, the
+free corrected fit has a median $5.35\times$ use-condition error across 20
+seeds, despite its best accelerated-window fit. We derive a deployment
+functional for measuring this ambiguity from the fitted Jacobian and use it to
+select one additional temperature batch. The selected batch reduces the local
+deployment lever by 97.9\% median, lowers median fold error to $1.47\times$,
+and achieves the $2\times$ safety target in 85\% of seeds, compared with 50\%
+for a random candidate batch. The result is not a claim that uncertainty alone
+can certify safety: when the deployment direction is absent from the test
+envelope, additional deployment-relevant measurements or material constraints
+are necessary. We release the benchmark, adaptive test-design procedure, model
+zoo, figures, and machine-readable results.
 \end{abstract}
 
 \section{Introduction}
@@ -97,34 +92,26 @@ corrected equation is
 
 EM models are evaluated by their fit within the accelerated testing regime, but
 deployment requires extrapolation far outside it. Whether a good in-window fit
-guarantees reliable extrapolation is the question we study. Our headline result
-is not that the corrected equation extrapolates better than the incumbent---it is
-\emph{how fragile that transfer is, and why}. On \emph{EMBench-Synth}, where
-Eq.~\eqref{eq:corrected} is the true generating process, we show:
+guarantees reliable extrapolation is the question we study. Our central finding
+is a deployment-identifiability limit: the accelerated window can leave the
+deployment functional unresolved even when the fitted equation is excellent.
+On \emph{EMBench-Synth}, where Eq.~\eqref{eq:corrected} is the true generating
+process, we show:
 \begin{itemize}
-  \item \textbf{A noise-induced phase transition in extrapolation safety.}
-        The fully data-driven fit of the corrected equation (prefactor ratio
-        free) is \emph{exact} at $\sln=0$ and collapses discontinuously at
-        $\sln=0.02$ ($1.00\times\to5.19\times$ median fold error at
-        $100\,^\circ$C), degrading to $16.8\times$ at $\sln=0.5$. Pinning the
-        prefactor ratio at its known material value removes the transition
-        ($1.00\to1.69\times$, smooth).
-  \item \textbf{The mechanism is singular-model geometry.} The free model's
-        Fisher information at the truth is ill-conditioned by
-        $10^9$--$10^{12}$; the extrapolation functional places $99.4\%$ of
-        its variance on the weakest-identified direction, whose leverage is
-        $296\times$ larger than when the ratio is pinned \citep{watanabe09,
-        watanabe18}.
-  \item \textbf{Incumbent behavior is the complement.} Black's equation is
-        uniformly wrong and \emph{noise-insensitive} ($6.7\times$ at $\sln=0$
-        to $4.2\times$ at $\sln=0.5$). The industry two-regime ``improvement''
-        shows \emph{false confidence}: it matches the pinned corrected
-        equation at $\sln=0.15$ yet collapses at $\sln=0.5$ ($12.8\times$).
-  \item \textbf{An impossibility result for in-window certification.} The
-        profile-likelihood width of the hazard direction has \emph{zero}
-        predictive power for use-condition error: free, prior-regularized, and
-        pinned estimators share the same data-side profile yet differ by
-        $10\times$ in outcome.
+  \item \textbf{Deployment ambiguity.} Across 20 noise realizations, the free
+        corrected model has median $5.35\times$ use-condition error despite
+        its best accelerated-window fit.
+  \item \textbf{A deployment-conditioned diagnostic.} We propagate the local
+        likelihood geometry through the use-condition functional, rather than
+        reporting parameter uncertainty or training RMSE alone.
+  \item \textbf{Adaptive test design.} One additional five-current batch at
+        the temperature selected by this diagnostic reduces the deployment
+        lever by $97.9\%$ median and reaches the $2\times$ safety target in
+        $85\%$ of seeds, versus $50\%$ for a random candidate batch.
+  \item \textbf{Limits of data-only certification.} The diagnostic identifies
+        when the accelerated envelope is insufficient; it cannot manufacture
+        information absent from that envelope. Material constraints or a
+        deployment-relevant test are required.
 \end{itemize}
 
 \paragraph{Why a controlled synthetic benchmark.} The paradoxes above are
@@ -214,10 +201,70 @@ data-driven ``corrected'' equation is supposed to close.}
 \label{fig:data}
 \end{figure}
 
-\section{The noise-induced phase transition}
+\section{Deployment non-identifiability and adaptive test design}
+\label{sec:deployment}
 
-How does extrapolation safety behave as measurement noise grows? Answer: it does
-not degrade gradually---it collapses. \paragraph{Protocol.} For each noise level $\sln\in\{0,0.02,0.05,0.1,0.15,0.3,
+The benchmark permits a sharper statement than a comparison of fitted curves.
+When the accelerated window is above the pathway crossover, one pathway
+dominates and the observed log lifetime is approximately
+\begin{equation}
+  \log \MTTF \approx \log(B_0J^{-2}+C_0J^{-1})-log D_{0,g}
+  +\frac{E_{a,g}}{k_BT}.
+\end{equation}
+Consequently, the accelerated data constrain combinations such as
+$\log B_0-\log D_{0,g}$ more strongly than the individual pathway parameters.
+At use temperature, the previously suppressed pathway can dominate. Two
+parameter settings can therefore be indistinguishable over the accelerated
+envelope but disagree at deployment. This is deployment non-identifiability:
+the ambiguity is in the functional required by sign-off, not necessarily in the
+training loss.
+
+\paragraph{Deployment-conditioned lever.} For a fitted parameter vector
+$\hat\theta$, let $G_{\rm acc}$ be the Jacobian of the accelerated predictions
+and $H_{\rm use}$ the Jacobian of the predictions at $373$ K and
+$J\in\{0.1,0.5,1\}$ MA/cm$^2$. We score the unresolved deployment directions by
+\begin{equation}
+  \mathcal L_{\rm use}=\operatorname{tr}\!\left[
+  H_{\rm use}(G_{\rm acc}^{\mathsf T}G_{\rm acc})^+H_{\rm use}^{\mathsf T}\right].
+\end{equation}
+This is a local diagnostic, not a safety certificate: a large value signals
+that the test envelope does not constrain the deployment functional.
+
+\paragraph{Adaptive test selection.} We evaluate candidate temperature batches
+$T_c\in\{443,455,475,494,510,523\}$ K, each containing the five-current
+grid. For each candidate we add its Jacobian contribution to the accelerated
+Fisher matrix and choose the batch minimizing the predicted $\mathcal L_{\rm
+use}$. Across 20 independent noise seeds at $\sln=0.15$, the accelerated-only
+free model has median fold error $5.35\times$. The selected batch is usually
+the lowest candidate temperature (median $443$ K), reduces the lever by
+$97.9\%$ median, and lowers median fold error to $1.47\times$; a random
+candidate reaches $1.94\times$. The $2\times$ safety success rates are 85\%
+and 50\%, respectively. Figure~\ref{fig:deployment} shows both the
+deployment ambiguity and the per-seed intervention.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.48\linewidth]{figures/fig_deployment_identifiability.png}
+\includegraphics[width=0.48\linewidth]{figures/fig_adaptive_test_design.png}
+\caption{Deployment-conditioned identifiability. Left: accelerated-window
+fit geometry leaves substantial use-condition error across seeds. Right: one
+temperature batch selected from the deployment lever improves safety more
+reliably than a random candidate.}
+\label{fig:deployment}
+\end{figure}
+
+\paragraph{Interpretation.} The result is a test-design rule, not a claim that
+local uncertainty alone certifies extrapolation. If no feasible additional
+measurement reduces $\mathcal L_{\rm use}$, sign-off must use an external
+material constraint or abstain. This distinction matters for AI-assisted chip
+design: a model may be accurate within the accelerated training envelope while
+still being unsafe for ranking vulnerable PDN segments at use conditions.
+
+\section{Noise sensitivity as a secondary stress test}
+
+How does extrapolation safety behave as measurement noise grows? This secondary
+stress test exposes a sharp, seed-specific instability of the unconstrained fit;
+it is not our primary theoretical claim. \paragraph{Protocol.} For each noise level $\sln\in\{0,0.02,0.05,0.1,0.15,0.3,
 0.5\}$ we regenerate the benchmark with that noise (seed 42), fit each model
 on the accelerated window $T\ge523$\,K, predict at $100\,^\circ$C and
 $J\in\{0.1,0.5,1\}$\,MA/cm$^2$, and record the median fold error
@@ -351,11 +398,14 @@ the physics-regularized MLP (fold $1.49\times$, safe-to-$2\times$ $266$\,K) is
 the best \emph{learned} entry, between the two-regime incumbent ($353$\,K) and
 the pinned corrected equation ($248$\,K).
 
-\section{The mechanism: singular-model geometry}
+\section{Geometry of the deployment ambiguity}
 \label{sec:geometry}
 
-Why does a one-parameter constraint remove the phase transition? The answer lies
-in the geometry of the model's parameter space.
+Why does the accelerated window fail to determine the deployment prediction?
+The answer lies in the geometry of the model's parameter space. The Fisher
+analysis below explains the practical non-identifiability observed in
+Section~\ref{sec:deployment}; it is not presented as a numerical computation of
+an RLCT.
 
 \paragraph{Setup.} Let $\theta$ be the fitted parameters
 ($\ln B_0,\ln C_0,E_{\mathrm{a,s}},E_{\mathrm{a,gb}},\ln D_{0}$-ratio for the
@@ -412,20 +462,21 @@ aligned with the direction the accelerated window cannot constrain. Pinning
 removes $v$ from the parameter space, collapsing the lever to $4.30$ and the
 transition with it.
 
-\paragraph{Exact flatness: the singular limit.} The delta-method bound is
-meaningless when the profile likelihood is exactly flat, and in the deep-
-envelope limit it \emph{is}. Sweeping $\ln D_{0}$-ratio over
+\paragraph{Numerical flatness over the tested envelope.} The delta-method bound
+becomes unreliable when the profile likelihood is nearly flat. Sweeping
+$\ln D_{0}$-ratio over
 $[4,13]$ and refitting the remaining parameters at $T\ge548$\,K gives
-$\dln\text{RSS}=0$ to machine precision across the entire grid: the prefactor
-direction is invisible to the data, and the extrapolation functional $\phi$ is
-undefined up to an arbitrary value. At $T\ge523$\,K the profile is near-flat
+$\dln\text{RSS}=0$ to machine precision across the entire grid in standard
+double precision: the prefactor direction is practically unresolved by the
+data, while the extrapolation functional $\phi$ varies substantially. This is
+not a proof of exact mathematical singularity. At $T\ge523$\,K the profile is near-flat
 (RSS varies by $<7\%$; data-compatible fits span
-$E_{\mathrm{a,eff}}(100\,^\circ$C$)$ from $0.64$ to $1.04$\,eV). This is the
-\emph{singular} regime of Watanabe's learning theory
-\citep{watanabe09,watanabe18}: a degenerate Fisher information at the truth,
-where the posterior does not concentrate as $n^{-1/2}$ and the real log
-canonical threshold governs generalization \citep{yamazaki03,aoyagi05}. The
-discontinuous collapse at $\sln=0.02$ is its finite-noise realization: at
+$E_{\mathrm{a,eff}}(100\,^\circ$C$)$ from $0.64$ to $1.04$\,eV). This behavior
+is consistent with practical non-identifiability studied in singular-learning
+theory \citep{watanabe09,watanabe18}, but we do not compute an RLCT or claim a
+singular asymptotic rate. The sharp jump observed in the single-seed noise
+sweep is therefore treated as a stress-test result, not a mathematical
+phase-transition theorem. At
 $\sln=0$ the residual is exactly zero and the optimizer is pinned to the truth;
 any noise releases the flat direction, and the extrapolation functional
 amplifies the release by the lever.
@@ -548,10 +599,10 @@ dropping it flips the BIC verdict.}
 \label{fig:structure_size}
 \end{figure}
 
-\section{In-window certification is impossible}
+\section{Limits of data-only certification}
 
-Given the singularity, one might hope to \emph{detect} the hazard from the
-accelerated-window fit alone. The profile-likelihood experiment
+Given the deployment ambiguity, one might hope to \emph{detect} the hazard from
+the accelerated-window fit alone. The profile-likelihood experiment
 (Section~\ref{sec:geometry}) is exactly that attempt, and it fails:
 Table~\ref{tab:cert} shows the profile width of the hazard direction (the
 extrapolation functional's range over data-compatible fits) alongside the
@@ -591,10 +642,10 @@ data-side width cannot distinguish them. This is the underspecification failure
 mode of \citet{damour20} made concrete in safety-critical extrapolation: the
 hazard is real, the geometry is local, and the fix is a constraint, not a
 diagnostic. One nuance (Table~\ref{tab:cert}): at the deepest window
-$T\ge548$\,K the profile is \emph{exactly flat}, and the pinned model itself
-collapses to $10.28\times$ (60 random restarts confirm this is an information
-limit): the hazard cannot be certified \emph{or} removed in the deep-envelope
-regime.
+$T\ge548$\,K the profile is numerically flat in double precision, and the
+pinned model itself collapses to $10.28\times$ (60 random restarts confirm this
+is an information limit under this envelope): the hazard cannot be certified
+from the accelerated data alone.
 
 \section{Discussion and limitations}
 
@@ -626,100 +677,100 @@ equation, so ``recovery'' recovers what was encoded, by design. The model is
 single-mode log-normal; real EM failure is often bimodal \citep{filippi09}. The
 bulk pathway is outside the sampled window and not claimed. The profile-flatness
 diagnostic is exact only in the deep-window limit; near the crossover the
-profile is shallow but not perfectly flat. The RLCT itself (a birational
-invariant) is not numerically computed here; we establish and verify the
-empirical signatures of the singular regime (Fisher degeneracy, exact flatness,
-$n$-independent width, discontinuous noise dependence); the WBIC estimator
-\citep{watanabe13} is the natural follow-up. Real data would add measurement
+profile is shallow but not perfectly flat. We do not compute an RLCT or claim
+an asymptotic singular-learning rate; the Fisher analysis is used as a local
+diagnostic for deployment non-identifiability. Real data would add measurement
 structure and process variability; the benchmark's role is the controlled
 \emph{calibration} step---physics grounded in published measurements (appendix)
 ---that complements, rather than replaces, real-data validation. Whether
-similar singular geometries arise in measured EM datasets remains an open
+the same deployment ambiguity appears in measured EM datasets remains an open
 empirical question.
 
 \section{Conclusion}
 
-On a fully controlled synthetic benchmark, extrapolation safety in physics-
-informed lifetime fitting is a noise-induced phase transition: the corrected
-equation is exact at zero noise and collapses at $\sln=0.02$, because its
-extrapolation functional is aligned with a near-singular direction of the
-Fisher information that becomes flat as the window deepens and that a single
-pinned constant removes. Incumbents show the complementary pathology (structural
-error; false-confidence improvement that reverses), and ML extrapolators
-(MLP, KAN, GP-SR) reproduce the hazard. Within
-\emph{EMBench-Synth}, the hazard cannot be certified from the accelerated
-window; all experiments are reproducible from public data and one command. The
-benchmark illustrates how controlled synthetic environments expose extrapolation
-failure modes difficult to isolate in real datasets.
+On a fully controlled synthetic benchmark, accelerated EM data can leave the
+deployment functional non-identifiable: the free corrected model has median
+$5.35\times$ use-condition error across 20 seeds despite its excellent
+accelerated-window fit. A deployment-conditioned Jacobian diagnostic selects a
+single additional five-current temperature batch, reducing median error to
+$1.47\times$ and achieving the $2\times$ target in 85\% of seeds, versus 50\%
+for random selection. The result is a practical boundary: fit quality and
+in-window uncertainty cannot substitute for deployment-relevant information.
+The benchmark, adaptive test-design procedure, model zoo, figures, and
+machine-readable results are released with documented reproduction commands.
 
-\begin{thebibliography}{9}
+\begin{thebibliography}{99}
 \small
-\bibitem[Arnaud et al.(2013)]{arnaud2013} L.~Arnaud et al. Study of
-electromigration void nucleation time in Cu interconnects with doping
-elements. \textit{Microelectron.\ Eng.}, 2013.
-\bibitem[Aoyagi and Watanabe(2005)]{aoyagi05} M.~Aoyagi and S.~Watanabe.
-Stochastic complexities of reduced rank regression in Bayesian estimation.
-\textit{Neural Networks}, 18(5--6):924--933, 2005.
 \bibitem[Black(1969)]{black69} J.\,R.~Black. Electromigration---a brief survey
 and some recent results. \textit{IEEE Trans.\ Electron Devices}, 16(4):338--347,
 1969.
-\bibitem[Blech(1976)]{blech} I.\,A.~Blech. Electromigration in thin aluminum
-films on titanium nitride. \textit{J.\ Appl.\ Phys.}, 47(4):1203--1208, 1976.
-\bibitem[Ceric and Selberherr(2011)]{ceric11} H.~Ceric and S.~Selberherr.
-Electromigration in submicron interconnect features of integrated circuits.
-\textit{Mater.\ Sci.\ Eng.\ R}, 71(5--6):53--86, 2011.
-\bibitem[D'Amour et al.(2020)]{damour20} A.~D'Amour et al. Underspecification
-presents challenges for credibility in modern machine learning. \textit{JMLR},
-23(226):1--61, 2020.
-\bibitem[Filippi et al.(2009)]{filippi09} R.\,G.~Filippi, P.-C.~Wang,
-R.~Brendler, and J.\,R.~Lloyd. \textit{Appl.\ Phys.\ Lett.}, 95:072111, 2009.
-\bibitem[Gall and others(2013)]{gall2013} M.~Gall et al. Electromigration
-early failure void nucleation and growth phenomena in Cu and Cu(Mn)
-interconnects. \textit{Proc.\ IEEE IRPS}, 2013.
-\bibitem[Hau-Riege(2004)]{hauriege04} S.\,P.~Hau-Riege. An introduction to Cu
-electromigration. \textit{J.\ Appl.\ Phys.}, 96(3):3792, 2004.
 \bibitem[Hu et al.(2006)]{hu_em} C.\,K.~Hu, L.~Gignac, and R.~Rosenberg.
 Electromigration of Cu/low dielectric constant interconnects.
 \textit{Microelectron.\ Reliab.}, 46(2--4):213--231, 2006.
-\bibitem[Huntington(2007)]{huntington07} H.\,B.~Huntington. Black's law
-revisited---nucleation and growth in electromigration failure.
-\textit{Microelectron.\ Reliab.}, 47(2007):1123--1128, 2007.
 \bibitem[ITRS(2015)]{irs} International Technology Roadmap for Semiconductors.
 \textit{Interconnect Chapter}, 2015.
 \bibitem[JEDEC(2021)]{jedec} JEDEC. \textit{JEP122H: Failure Mechanisms and
 Models for Semiconductor Devices}. JEDEC Solid State Technology Association,
 2021.
-\bibitem[Korhonen et al.(1993)]{korhonen93} M.\,A.~Korhonen, P.~B{\o}rgesen,
-K.\,N.~Tu, and C.-Y.~Li. Stress evolution due to electromigration in confined
-metal lines. \textit{J.\ Appl.\ Phys.}, 73(7):3790, 1993.
-\bibitem[Lloyd(1991)]{lloyd} J.\,R.~Lloyd. Electromigration failure.
-\textit{J.\ Appl.\ Phys.}, 69(11):7601--7604, 1991.
-\bibitem[Liu et al.(2024)]{kan} Z.~Liu et al. KAN: Kolmogorov--Arnold
-Networks. \textit{arXiv:2404.19756}, 2024.
-\bibitem[Ogawa et al.(2001)]{ogawa01} E.\,T.~Ogawa et al. Blech effect in Cu
-interconnects and its applications. \textit{Appl.\ Phys.\ Lett.}, 78:2652, 2001.
-\bibitem[Rovitto(2017)]{rovitto} M.~Rovitto. \textit{Electromigration
-Reliability Issues in Interconnect Nano-structures}. PhD thesis, TU Wien, 2017.
-\bibitem[Schmidt and Lipson(2009)]{gpsr} M.~Schmidt and H.~Lipson. Distilling
-free-form natural laws from experimental data. \textit{Science},
-324(5923):81--85, 2009.
-\bibitem[Schwarz(1978)]{schwarz78} G.~Schwarz. Estimating the dimension of a
-model. \textit{Ann.\ Stat.}, 6(2):461--464, 1978.
 \bibitem[Tu(2003)]{tu03} K.\,N.~Tu. Recent advances on electromigration in
 very-large-scale-integration of interconnects. \textit{J.\ Appl.\ Phys.},
 94(9):5451, 2003.
+\bibitem[Hau-Riege(2004)]{hauriege04} S.\,P.~Hau-Riege. An introduction to Cu
+electromigration. \textit{J.\ Appl.\ Phys.}, 96(3):3792--3807, 2004.
+\bibitem[Ceric and Selberherr(2011)]{ceric11} H.~Ceric and S.~Selberherr.
+Electromigration in submicron interconnect features of integrated circuits.
+\textit{Mater.\ Sci.\ Eng.\ R}, 71(5--6):53--86, 2011.
+\bibitem[Lloyd(1991)]{lloyd} J.\,R.~Lloyd. Electromigration failure.
+\textit{J.\ Appl.\ Phys.}, 69(11):7601--7604, 1991.
+\bibitem[Blech(1976)]{blech} I.\,A.~Blech. Electromigration in thin aluminum
+films on titanium nitride. \textit{J.\ Appl.\ Phys.}, 47(4):1203--1208, 1976.
+\bibitem[Watanabe(2009)]{watanabe09} S.~Watanabe. \textit{Algebraic Geometry
+and Statistical Learning Theory}. Cambridge University Press, 2009.
+\bibitem[Watanabe(2018)]{watanabe18} S.~Watanabe. \textit{Mathematical Theory
+of Bayesian Statistics}. CRC Press, 2018.
+\bibitem[Huntington(2007)]{huntington07} H.\,B.~Huntington. Black's law
+revisited---nucleation and growth in electromigration failure.
+\textit{Microelectron.\ Reliab.}, 47(9--11):1468--1472, 2007.
+\bibitem[Rovitto(2017)]{rovitto} M.~Rovitto. \textit{Electromigration
+Reliability Issues in Interconnect Nano-structures}. PhD thesis, TU Wien, 2017.
 \bibitem[Tu and Gusak(2019)]{tu19} K.\,N.~Tu and A.\,M.~Gusak. A unified model
 of mean-time-to-failure for electromigration, thermomigration, and
 stress-migration. \textit{J.\ Appl.\ Phys.}, 126(7):075109, 2019.
-\bibitem[Watanabe(2009)]{watanabe09} S.~Watanabe. \textit{Algebraic Geometry
-and Statistical Learning Theory}. Cambridge University Press, 2009.
-\bibitem[Watanabe(2013)]{watanabe13} S.~Watanabe. A widely applicable Bayesian
-information criterion. \textit{JMLR}, 14:867--897, 2013.
-\bibitem[Watanabe(2018)]{watanabe18} S.~Watanabe. \textit{Mathematical Theory
-of Bayesian Statistics}. CRC Press, 2018.
+\bibitem[Korhonen et al.(1993)]{korhonen93} M.\,A.~Korhonen, P.~B{\o}rgesen,
+K.\,N.~Tu, and C.-Y.~Li. Stress evolution due to electromigration in confined
+metal lines. \textit{J.\ Appl.\ Phys.}, 73(8):3790--3799, 1993.
+\bibitem[Ogawa et al.(2001)]{ogawa01} E.\,T.~Ogawa et al. Direct observation of
+a critical length effect in dual-damascene Cu/oxide interconnects.
+\textit{Appl.\ Phys.\ Lett.}, 78(18):2652--2654, 2001.
+\bibitem[Liu et al.(2024)]{kan} Z.~Liu et al. KAN: Kolmogorov--Arnold
+Networks. \textit{arXiv:2404.19756}, 2024.
+\bibitem[Schmidt and Lipson(2009)]{gpsr} M.~Schmidt and H.~Lipson. Distilling
+free-form natural laws from experimental data. \textit{Science},
+324(5923):81--85, 2009.
+\bibitem[Arnaud et al.(2013)]{arnaud2013} L.~Arnaud, P.~Lamontagne, F.~Bana,
+Y.~Le Friec, and P.~Waltz. Study of electromigration void nucleation time in
+Cu interconnects with doping elements. \textit{Microelectron.\ Eng.},
+107:145--150, 2013.
+\bibitem[Gall et al.(2013)]{gall2013} M.~Hauschildt, C.~Hennesthal, G.~Talut,
+O.~Aubel, M.~Gall, K.~B.~Yeap, and E.~Zschech. Electromigration early failure
+void nucleation and growth phenomena in Cu and Cu(Mn) interconnects.
+\textit{Proc.\ IEEE IRPS}, pp.~3--8, 2013.
 \bibitem[Yamazaki and Watanabe(2003)]{yamazaki03} K.~Yamazaki and S.~Watanabe.
 Stochastic complexity of Bayesian networks. \textit{Neural Networks},
 16(8):1137--1149, 2003.
+\bibitem[Aoyagi and Watanabe(2005)]{aoyagi05} M.~Aoyagi and S.~Watanabe.
+Stochastic complexities of reduced rank regression in Bayesian estimation.
+\textit{Neural Networks}, 18(5--6):924--933, 2005.
+\bibitem[Schwarz(1978)]{schwarz78} G.~Schwarz. Estimating the dimension of a
+model. \textit{Ann.\ Stat.}, 6(2):461--464, 1978.
+\bibitem[D'Amour et al.(2020)]{damour20} A.~D'Amour et al. Underspecification
+presents challenges for credibility in modern machine learning. \textit{JMLR},
+23(226):1--61, 2020.
+\bibitem[Filippi et al.(2009)]{filippi09} R.\,G.~Filippi, P.-C.~Wang,
+R.~Brendler, and J.\,R.~Lloyd. Electromigration failure statistics in
+Cu interconnects. \textit{Appl.\ Phys.\ Lett.}, 95:072111, 2009.
+\bibitem[Watanabe(2013)]{watanabe13} S.~Watanabe. A widely applicable Bayesian
+information criterion. \textit{JMLR}, 14:867--897, 2013.
 \end{thebibliography}
 
 \appendix
@@ -755,7 +806,8 @@ test.
         and envelope-depth results.
   \item \texttt{python prototype\_diagnostic.py} reproduces
         Table~\ref{tab:cert} (profile-likelihood hazard widths).
-  \item \texttt{python prototype\_quantitative.py} reproduces
+  \item \texttt{python -c "from prototype\_improved import main\_quantitative; main\_quantitative()"}
+        reproduces
         Table~\ref{tab:laws} and the sample-size law.
   \item \texttt{python benchmarks/ml\_predictors.py} reproduces the ML arm
         (Fig.~\ref{fig:ml}), including the physics-regularized MLP.
@@ -763,6 +815,10 @@ test.
         arm.
   \item \texttt{python benchmarks/leaderboard.py} rebuilds the model-zoo
         leaderboard (\texttt{results/leaderboard.json}).
+  \item \texttt{python benchmarks/deployment\_identifiability.py} reproduces
+        the 20-seed deployment-identifiability experiment and writes
+        \texttt{results/deployment\_identifiability.json} and the two adaptive
+        test-design figures.
 \end{itemize}
 
 \paragraph*{Use of AI tools.} Large language models were used as writing,

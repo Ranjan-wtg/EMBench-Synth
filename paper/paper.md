@@ -1,4 +1,12 @@
-# Extrapolation Safety as a Noise-Induced Phase Transition: Singular-Model Geometry of Physics-Informed Lifetime Fitting
+# Deployment Non-Identifiability in AI-Based Electromigration Reliability Prediction
+
+> **Revision note.** The primary paper framing is now deployment
+> non-identifiability and adaptive test design; the original phase-transition
+> analysis is retained as a secondary diagnostic. The new 20-seed result is a
+> 5.35x median use-condition error for accelerated-only fitting, reduced to
+> 1.47x by one deployment-conditioned temperature batch (85% versus 50% safe
+> to 2x for random selection). See `benchmarks/deployment_identifiability.py`
+> and `results/deployment_identifiability.json`.
 
 **with EMBench-Synth**, a deterministic synthetic benchmark for EM reliability equation discovery · NeurIPS 2026 *AI for Chip Design* workshop, research track (archival) · Markdown fallback; LaTeX in `paper.tex` (compiles with `neurips_2026.sty`, `dblblindworkshop`)
 

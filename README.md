@@ -25,6 +25,17 @@ MTTF(T,J,L) = (B0 J^-2 + C0 J^-1)/D_eff(T) · jL/(jL - (jL)_c)
 
 ## Headline results (see `paper/` and `results/results.json`)
 
+**New deployment-identifiability result.** A free corrected-equation fit on
+the accelerated window has a median **5.35x** use-condition error across 20
+seeds at `sigma_ln = 0.15`, despite being the best in-window fitter. A
+deployment-conditioned Fisher diagnostic selects one additional five-current
+temperature batch; the selected batch reduces the deployment lever by **97.9%**
+median, reduces median fold error to **1.47x**, and reaches the 2x safety target
+in **85%** of seeds versus **50%** for a random candidate batch. Results are in
+`results/deployment_identifiability.json`; figures are
+`figures/fig_deployment_identifiability.png` and
+`figures/fig_adaptive_test_design.png`.
+
 | Benchmark | Incumbent Black's | Corrected equation |
 |---|---|---|
 | Generalization (held-out T / J / L splits) | 0.21–0.65 ln-RMSE | **0.14–0.17** |
@@ -116,6 +127,7 @@ benchmarks/
   sr.py                             # GP symbolic regression + BIC structure test
   kanlite.py                        # single-layer spline KAN (physics-init + residual variants)
   eval.py                           # extrapolation, generalization, robustness sweeps
+  deployment_identifiability.py    # deployment lever + adaptive temperature-batch design
   figures.py                        # paper figures
   run_all.py                        # runs everything -> results/results.json, figures/
 prototype_phase_transition.py       # reproduces Table 2 (noise sweep) exactly
@@ -126,6 +138,7 @@ prototype_quantitative.py           # extrapolation law + sample-size laws
 data/                               # blind CSVs, ground-truth CSVs, splits/, metadata
 results/results.json                # all benchmark numbers (14 keys incl. phase_transition)
 figures/*.png                       # 10 figures
+results/deployment_identifiability.json # 20-seed deployment-design experiment
 paper/paper.tex, paper/paper.md     # NeurIPS-2026 workshop paper (LaTeX + markdown)
 paper/figures/*.png                 # paper figures (all 10 bundled; 4 embedded in paper)
 ```
@@ -148,6 +161,7 @@ python prototype_phase_transition.py    # Table 2 (noise sweep)
 python prototype_rlct.py               # Table 3 (Fisher spectrum, lever)
 python prototype_diagnostic.py         # Table 6 (profile-likelihood widths)
 python prototype_quantitative.py       # Table 5 + sample-size laws
+python3 benchmarks/deployment_identifiability.py  # deployment ambiguity + adaptive test design
 ```
 
 ## NeurIPS 2026 submission
@@ -155,8 +169,9 @@ python prototype_quantitative.py       # Table 5 + sample-size laws
 Research track of the *AI for Chip Design* workshop (Dec 12 2026, Paris):
 submission deadline **Aug 30 2026 AoE**, notification Sep 29, camera-ready
 Oct 9. Archival, double-blind (`neurips_2026.sty`, `dblblindworkshop`).
-`paper/paper.tex` compiles cleanly (11 pages total: 9.0 content within the
-9-page limit, then references and appendix).
+`paper/paper.tex` is the canonical manuscript source. The added deployment
+section and figures require a final LaTeX compilation to re-check the workshop
+page limit; the container currently has no TeX compiler installed.
 
 ## Environment
 

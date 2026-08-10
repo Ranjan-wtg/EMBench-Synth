@@ -244,7 +244,13 @@ def main():
     for sigma, row in results["phase_transition"].items():
         print(f"  sigma={sigma}: " + ", ".join(f"{k}={v:.2f}x" for k, v in row.items()))
 
-    print("[9/12] figures")
+    print("[9/13] deployment-identifiability and adaptive test design")
+    from benchmarks import deployment_identifiability as di
+    di.main()
+    with open(os.path.join(RES, "deployment_identifiability.json")) as f:
+        results["deployment_identifiability"] = json.load(f)
+
+    print("[10/13] figures")
     fig.fig_arrhenius_kink(dbb, gen, os.path.join(FIG, "fig_arrhenius_kink.png"))
     fig.fig_ea_recovery(T, ea, gen, rec_res["ea_eff"]["Tc_recovered_K"],
                         os.path.join(FIG, "fig_ea_recovery.png"))
@@ -263,18 +269,18 @@ def main():
     fig.fig_structure_size(results["structure_discovery_size"],
                            os.path.join(FIG, "fig_structure_size.png"))
 
-    print("[10/12] ML predictors as extrapolators (KAN, GP-SR, MLP)")
+    print("[11/13] ML predictors as extrapolators (KAN, GP-SR, MLP)")
     from benchmarks import ml_predictors as mp
     mp_main = mp.main()
     import json as _json
     with open(os.path.join(RES, "ml_predictors.json")) as f:
         results["ml_predictors"] = _json.load(f)["ml_predictor_phase_transition"]
 
-    print("[11/12] GNN-for-circuits arm (power-delivery networks)")
+    print("[12/13] GNN-for-circuits arm (power-delivery networks)")
     from benchmarks import gnn as gnnmod
     gnnmod.main()
 
-    print("[12/12] leaderboard (model zoo + scoring)")
+    print("[13/13] leaderboard (model zoo + scoring)")
     from benchmarks import leaderboard as lb
     lb.build_leaderboard()
 
