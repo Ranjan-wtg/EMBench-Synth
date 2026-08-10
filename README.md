@@ -71,7 +71,7 @@ The machine-readable result and plot are in
 | Spline KAN decomposition R² (σ_ln floor ≈ 0.98) | — | 0.997 |
 | GP symbolic regression R² (36-node opaque program) | 0.862 | — |
 
-![Noise-induced phase transition: extrapolation safety collapses at σ_ln = 0.02](paper/figures/fig_phase_transition.png)
+![Noise-induced instability: extrapolation safety collapses at σ_ln = 0.02](paper/figures/fig_phase_transition.png)
 
 **The extrapolation paradox (headline result).** In-sample fit quality on the
 accelerated window is *inversely* predictive of use-condition accuracy:
@@ -110,7 +110,7 @@ released leaderboard), showing the constraint, not model class, transfers.
 
 ![ML predictors: Black-box extrapolators fail; physics-regularized MLP extrapolates safely](paper/figures/fig_ml_predictors.png)
 
-**The noise-induced phase transition (secondary diagnostic).**
+**Noise-induced instability (secondary diagnostic).**
 Extrapolation safety is not a continuous function of noise — it collapses
 discontinuously at σ_ln = 0.02:
 

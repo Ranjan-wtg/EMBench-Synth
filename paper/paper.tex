@@ -27,7 +27,7 @@
 \newcommand{\sln}{\sigma_{\ln}}
 \newcommand{\dln}{\Delta\ln}
 
-\title{Deployment Non-Identifiability in AI-Based Electromigration Reliability Prediction}
+\title{When Accurate Fits Cannot Certify Extrapolation: Deployment Non-Identifiability in Reliability Prediction}
 
 \author{%
   Anonymous Authors\\
@@ -110,6 +110,10 @@ process, we show:
         at $91.8\times$ median worst-case disagreement and remains at
         $88.4\times$ after the best one-batch policy; all 20 seeds abstain at
         the $2\times$ sign-off threshold.
+  \item \textbf{Uncertainty is not deployment risk.} The profile-likelihood
+        width is identical for free, soft-prior, and pinned estimators, while
+        their actual deployment errors differ by up to $10\times$; a data-side
+        width alone therefore cannot certify the deployment functional.
   \item \textbf{Secondary adaptive result.} A local deployment-lever policy
         reduces point-prediction error to $1.47\times$, but selects the same
         batch as the parameter-information control on the current grid.
@@ -180,7 +184,7 @@ cutoff), the corrected equation with \emph{free} prefactor ratio
 \emph{pinned} twin (ratio fixed at $1.2\times10^4$: 4 parameters), and a
 64-64 MLP baseline. A soft-prior variant
 ($\ln D_{0}$ ratio $\sim\mathcal{N}(\ln1.2\times10^4,5)$) is added for the
-transition study.
+noise-instability study.
 \paragraph{External physics validation.} The benchmark's parameter regime is
 grounded in measured Cu interconnect behavior: stress temperatures of
 $200$--$350\,^\circ$C, currents of $2$--$4$\,MA/cm$^2$ \citep{arnaud2013},
@@ -336,8 +340,8 @@ Black's equation & $6.66$ & $6.53$ & $6.35$ & $6.06$ & $5.78$ & $5.02$ & $4.16$ 
 \end{tabular}
 \caption{Median fold error at $100\,^\circ$C vs.\ measurement noise $\sln$
 (fit on $T\ge523$\,K). The free corrected equation is exact at $\sln=0$ and
-collapses discontinuously at $\sln=0.02$; a one-parameter physics constraint
-removes the transition. Deterministic seed 42; figure in
+shows a sharp instability onset at $\sln=0.02$; a one-parameter physics
+constraint suppresses the instability. Deterministic seed 42; figure in
 Fig.~\ref{fig:transition}.}
 \label{tab:transition}
 \end{table}
@@ -345,7 +349,7 @@ Fig.~\ref{fig:transition}.}
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.72\linewidth]{figures/fig_phase_transition.png}
-\caption{Noise-induced phase transition in extrapolation safety. The free
+\caption{Noise-induced instability in extrapolation safety. The free
 corrected equation (red) is exact at $\sln=0$ and collapses discontinuously at
 $\sln=0.02$; pinned (green) and soft-prior (blue) variants are flat and
 graceful; the two-regime incumbent (orange) shows a false-confidence minimum
@@ -354,14 +358,14 @@ uniformly wrong and noise-insensitive.}
 \label{fig:transition}
 \end{figure}
 
-Three observations. \emph{(i) The transition is discontinuous in noise, not
+Three observations. \emph{(i) The instability onset is sharp in noise, not
 gradual.} Between $\sln=0$ (the optimizer lands exactly on the truth) and
 $\sln=0.02$---two orders of magnitude below typical EM data---the fold error
 jumps from $1.00\times$ to $5.19\times$: not a smooth $\propto\sln$ scaling of
 a regular estimator, but the signature of an exactly flat direction whose
 activation requires any noise at all.
 
-\emph{(ii) A one-parameter constraint is a phase transition.} The pinned
+\emph{(ii) A one-parameter constraint changes the instability boundary.} The pinned
 corrected equation differs from the free variant by a single parameter fixed at
 a \emph{measured material constant}; its curve is smooth and mild
 ($1.00\to1.69\times$), and the soft prior interpolates ($1.00\to2.44\times$).
@@ -414,7 +418,7 @@ safe.
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.58\linewidth]{figures/fig_ml_predictors.png}
-\caption{ML predictors on the phase-transition protocol. Black-box predictors
+\caption{ML predictors on the noise-instability protocol. Black-box predictors
 did not extrapolate reliably (MLP incumbent-like; the spline KAN evaluated here has a
 temperature edge exactly
 zero at $100\,^\circ$C; GP-SR's program diverges); the physics-regularized MLP
@@ -511,7 +515,7 @@ lever by eigen-direction, $1263$ of $1271$ units ($99.4\%$) come from the
 smallest eigenvalue alone---the extrapolation functional is almost perfectly
 aligned with the direction the accelerated window cannot constrain. Pinning
 removes $v$ from the parameter space, collapsing the lever to $4.30$ and the
-transition with it.
+instability with it.
 
 \paragraph{Numerical flatness over the tested envelope.} The delta-method bound
 becomes unreliable when the profile likelihood is nearly flat. Sweeping
@@ -527,7 +531,7 @@ is consistent with practical non-identifiability studied in singular-learning
 theory \citep{watanabe09,watanabe18}, but we do not compute an RLCT or claim a
 singular asymptotic rate. The sharp jump observed in the single-seed noise
 sweep is therefore treated as a stress-test result, not a mathematical
-phase-transition theorem. At
+noise-instability theorem. At
 $\sln=0$ the residual is exactly zero and the optimizer is pinned to the truth;
 any noise releases the flat direction, and the extrapolation functional
 amplifies the release by the lever.
@@ -537,13 +541,14 @@ flat direction from the parameter space, restoring a regular model whose Fisher
 floor is $10^3$--$10^4$ higher (Table~\ref{tab:fisher}) and whose extrapolation
 error scales smoothly with noise (Table~\ref{tab:transition}). The soft prior
 interpolates: it constrains but does not remove the flat direction, and its
-transition curve lies strictly between the free and pinned curves at every noise
+instability curve lies strictly between the free and pinned curves at every noise
 level. The practical content: \emph{for extrapolation, the number of fitted
 parameters is not a measure of model quality; the number of identifiable
 directions in the extrapolation functional is.}
 \section{The extrapolation paradox}
 
-Why is the best in-window fitter the worst extrapolator? The phase transition
+Why is the best in-window fitter the worst extrapolator? The noise-induced
+instability
 sharpens an already counterintuitive in-sample result
 (Table~\ref{tab:paradox}). On the accelerated window the \emph{best-fitting}
 model is the free corrected equation ($0.142$ ln-RMSE, best of the family) yet
@@ -586,7 +591,7 @@ equation is the single bottom-left point.}
 
 \section{Quantitative transfer and sample-size laws}
 
-The phase transition and its mechanism are qualitative. We now turn to
+The instability and its mechanism are qualitative. We now turn to
 quantitative predictions: how large is the transfer error, and how much data is
 needed for structural discovery?
 
@@ -633,7 +638,7 @@ $\Delta\text{BIC}\approx -A\,n + \ln n$ above an identifiability floor
 \citep{schwarz78}. The floor is $+4.44$ (exact, $\sln$-independent, set by
 parsimony at $\le2$ current levels), and the per-sample evidence is
 $A=2.04,0.51,0.16$ at $\sln=0.05,0.15,0.30$. This is the \textbf{sample-size
-complement of the phase transition}: identifiability of the \emph{structure}
+complement of the noise instability}: identifiability of the \emph{structure}
 also has a sharp threshold, here in current-density coverage. The additive
 form is statistically forced only by the full five-current sweep
 ($\Delta\text{BIC}=-76$, $20/20$ draws); the geometric-mean current
@@ -643,7 +648,7 @@ to $+3.3$.
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.70\linewidth]{figures/fig_structure_size.png}
-\caption{The sample-size complement of the phase transition: evidence for the
+\caption{The sample-size complement of the noise instability: evidence for the
 $J^{-2}+J^{-1}$ structure grows linearly with $n$ (left), and one
 load-bearing current level (the geometric-mean $J$, right) is necessary---
 dropping it flips the BIC verdict.}
@@ -848,7 +853,7 @@ test.
   \item \texttt{python generate\_dataset.py} regenerates \texttt{data/}
         deterministically (seed 42).
   \item \texttt{python benchmarks/run\_all.py} writes \texttt{results/results.json}
-        and \texttt{figures/*} including the phase transition
+        and \texttt{figures/*} including the noise-instability diagnostic
         (\texttt{fig\_phase\_transition.png}).
   \item \texttt{python prototype\_phase\_transition.py} reproduces
         Table~\ref{tab:transition} exactly.

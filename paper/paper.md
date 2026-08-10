@@ -1,4 +1,4 @@
-# Deployment Non-Identifiability in AI-Based Electromigration Reliability Prediction
+# When Accurate Fits Cannot Certify Extrapolation: Deployment Non-Identifiability in Reliability Prediction
 
 **EMBench-Synth** — a deterministic synthetic benchmark for AI-assisted electromigration reliability and chip sign-off.
 
@@ -6,7 +6,7 @@
 
 Accelerated electromigration (EM) tests are routinely extrapolated to use conditions, where errors can affect power-delivery-network guard bands. We study a deployment-identifiability limit: physically distinct corrected-equation parameters can agree in the accelerated temperature envelope while disagreeing at use conditions. An optimizer-independent tradeoff family reaches 15.97× hidden deployment disagreement while staying within 0.15 log-lifetime units of the accelerated data for the deepest tested window.
 
-We introduce a robust compatible-set certificate. It reports the worst disagreement among parameterizations compatible with the accelerated predictions and returns `SAFE` only when that disagreement is at most 2×; otherwise it returns `ABSTAIN`. Across 20 noise seeds, the accelerated-only certificate has 91.8× median disagreement. The best one-batch policy reduces this to 88.4×, but all certificate-directed, Fisher, and random policies abstain. A separate local-lever experiment reduces point-prediction error from 5.35× to 1.47×, but its deployment and parameter-information policies select the same batch on the present candidate grid. Our main contribution is therefore a falsifiable boundary on data-only sign-off, not a claim that one adaptive test can manufacture missing deployment information.
+We introduce a robust compatible-set certificate. It reports the worst disagreement among parameterizations compatible with the accelerated predictions and returns `SAFE` only when that disagreement is at most 2×; otherwise it returns `ABSTAIN`. Across 20 noise seeds, the accelerated-only certificate has 91.8× median disagreement. The best one-batch policy reduces this to 88.4×, but all certificate-directed, Fisher, and random policies abstain. A separate local-lever experiment reduces point-prediction error from 5.35× to 1.47×, but its deployment and parameter-information policies select the same batch on the present candidate grid. Finally, identical profile-likelihood widths coexist with deployment errors differing by up to 10× across free, soft-prior, and pinned estimators. Our main contribution is therefore a falsifiable boundary on data-only sign-off, not a claim that one adaptive test can manufacture missing deployment information.
 
 ## 1. Benchmark and physical model
 
