@@ -1,0 +1,2607 @@
+{
+  "protocol": {
+    "train_window": "T >= 523 K",
+    "use_temperature_K": 373.0,
+    "candidate_temperatures_K": [
+      373.0,
+      380.0,
+      393.0,
+      410.0,
+      425.0,
+      443.0,
+      455.0,
+      475.0,
+      494.0,
+      510.0,
+      523.0
+    ],
+    "candidate_currents_MA_cm2": [
+      0.5,
+      1.0,
+      2.0,
+      4.0,
+      8.0
+    ],
+    "sigma_ln": 0.15,
+    "target_fold": 2.0,
+    "compatibility_rule": "fixed total excess log-residual <= 5 sigma^2",
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ]
+  },
+  "summary": {
+    "base_median_worst_case_fold": 91.80444074541691,
+    "base_abstain_rate": 1.0,
+    "safety_median_worst_case_fold": 88.40016026487763,
+    "safety_abstain_rate": 1.0,
+    "fisher_median_worst_case_fold": 88.40016026487763,
+    "fisher_abstain_rate": 1.0,
+    "random_median_worst_case_fold": 89.50638082983238,
+    "random_abstain_rate": 1.0,
+    "safety_median_T_K": 373.0,
+    "fisher_median_T_K": 373.0,
+    "random_median_T_K": 434.0
+  },
+  "runs": [
+    {
+      "seed": 0,
+      "base_certificate": {
+        "compatible_count": 21,
+        "diameter_log": 4.8668084430063505,
+        "worst_case_fold": 129.90565328395326,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          15.239788887524101,
+          12.129588125855282,
+          10.864380397992033
+        ],
+        "prediction_high": [
+          15.731188840998383,
+          12.620988079329564,
+          11.355780351466315
+        ]
+      },
+      "candidate_plan": [
+        {
+          "T_K": 373.0,
+          "planned_worst_case_fold": 101.62034589565631,
+          "planned_compatible_count": 11
+        },
+        {
+          "T_K": 380.0,
+          "planned_worst_case_fold": 101.62034589565631,
+          "planned_compatible_count": 11
+        },
+        {
+          "T_K": 393.0,
+          "planned_worst_case_fold": 101.62034589565631,
+          "planned_compatible_count": 11
+        },
+        {
+          "T_K": 410.0,
+          "planned_worst_case_fold": 101.62034589565631,
+          "planned_compatible_count": 11
+        },
+        {
+          "T_K": 425.0,
+          "planned_worst_case_fold": 101.62034589565631,
+          "planned_compatible_count": 11
+        },
+        {
+          "T_K": 443.0,
+          "planned_worst_case_fold": 106.7410050812979,
+          "planned_compatible_count": 13
+        },
+        {
+          "T_K": 455.0,
+          "planned_worst_case_fold": 109.38984454494366,
+          "planned_compatible_count": 14
+        },
+        {
+          "T_K": 475.0,
+          "planned_worst_case_fold": 114.90027893148701,
+          "planned_compatible_count": 16
+        },
+        {
+          "T_K": 494.0,
+          "planned_worst_case_fold": 120.68784320772612,
+          "planned_compatible_count": 18
+        },
+        {
+          "T_K": 510.0,
+          "planned_worst_case_fold": 123.67818564701965,
+          "planned_compatible_count": 19
+        },
+        {
+          "T_K": 523.0,
+          "planned_worst_case_fold": 123.67818564701965,
+          "planned_compatible_count": 19
+        }
+      ],
+      "safety_optimal_T_K": 373.0,
+      "fisher_T_K": 373.0,
+      "random_T_K": 373.0,
+      "safety_certificate": {
+        "compatible_count": 11,
+        "diameter_log": 4.621243769974557,
+        "worst_case_fold": 101.62034589565631,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          15.338389611933643,
+          12.228188850264823,
+          10.962981122401574
+        ],
+        "prediction_high": [
+          15.584224892376131,
+          12.474024130707312,
+          11.208816402844063
+        ]
+      },
+      "fisher_certificate": {
+        "compatible_count": 11,
+        "diameter_log": 4.621243769974557,
+        "worst_case_fold": 101.62034589565631,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          15.338389611933643,
+          12.228188850264823,
+          10.962981122401574
+        ],
+        "prediction_high": [
+          15.584224892376131,
+          12.474024130707312,
+          11.208816402844063
+        ]
+      },
+      "random_certificate": {
+        "compatible_count": 11,
+        "diameter_log": 4.621243769974557,
+        "worst_case_fold": 101.62034589565631,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          15.338389611933643,
+          12.228188850264823,
+          10.962981122401574
+        ],
+        "prediction_high": [
+          15.584224892376131,
+          12.474024130707312,
+          11.208816402844063
+        ]
+      }
+    },
+    {
+      "seed": 1,
+      "base_certificate": {
+        "compatible_count": 321,
+        "diameter_log": 4.376306886598378,
+        "worst_case_fold": 79.54372628325162,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          19.039053390482344,
+          15.934542699718738,
+          14.674955632622343
+        ],
+        "prediction_high": [
+          19.05126251922072,
+          15.946751828457115,
+          14.687164761360721
+        ]
+      },
+      "candidate_plan": [
+        {
+          "T_K": 373.0,
+          "planned_worst_case_fold": 79.54372628325162,
+          "planned_compatible_count": 321
+        },
+        {
+          "T_K": 380.0,
+          "planned_worst_case_fold": 79.54372628325162,
+          "planned_compatible_count": 321
+        },
+        {
+          "T_K": 393.0,
+          "planned_worst_case_fold": 79.54372628325162,
+          "planned_compatible_count": 321
+        },
+        {
+          "T_K": 410.0,
+          "planned_worst_case_fold": 79.54372628325162,
+          "planned_compatible_count": 321
+        },
+        {
+          "T_K": 425.0,
+          "planned_worst_case_fold": 79.54372628325162,
+          "planned_compatible_count": 321
+        },
+        {
+          "T_K": 443.0,
+          "planned_worst_case_fold": 79.54372628325162,
+          "planned_compatible_count": 321
+        },
+        {
+          "T_K": 455.0,
+          "planned_worst_case_fold": 79.54372628325162,
+          "planned_compatible_count": 321
+        },
+        {
+          "T_K": 475.0,
+          "planned_worst_case_fold": 79.54372628325162,
+          "planned_compatible_count": 321
+        },
+        {
+          "T_K": 494.0,
+          "planned_worst_case_fold": 79.54372628325162,
+          "planned_compatible_count": 321
+        },
+        {
+          "T_K": 510.0,
+          "planned_worst_case_fold": 79.54372628325162,
+          "planned_compatible_count": 321
+        },
+        {
+          "T_K": 523.0,
+          "planned_worst_case_fold": 79.54372628325162,
+          "planned_compatible_count": 321
+        }
+      ],
+      "safety_optimal_T_K": 373.0,
+      "fisher_T_K": 373.0,
+      "random_T_K": 380.0,
+      "safety_certificate": {
+        "compatible_count": 321,
+        "diameter_log": 4.376306886598378,
+        "worst_case_fold": 79.54372628325162,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          19.039053390482344,
+          15.934542699718738,
+          14.674955632622343
+        ],
+        "prediction_high": [
+          19.05126251922072,
+          15.946751828457115,
+          14.687164761360721
+        ]
+      },
+      "fisher_certificate": {
+        "compatible_count": 321,
+        "diameter_log": 4.376306886598378,
+        "worst_case_fold": 79.54372628325162,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          19.039053390482344,
+          15.934542699718738,
+          14.674955632622343
+        ],
+        "prediction_high": [
+          19.05126251922072,
+          15.946751828457115,
+          14.687164761360721
+        ]
+      },
+      "random_certificate": {
+        "compatible_count": 321,
+        "diameter_log": 4.376306886598378,
+        "worst_case_fold": 79.54372628325162,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          19.039053390482344,
+          15.934542699718738,
+          14.674955632622343
+        ],
+        "prediction_high": [
+          19.05126251922072,
+          15.946751828457115,
+          14.687164761360721
+        ]
+      }
+    },
+    {
+      "seed": 2,
+      "base_certificate": {
+        "compatible_count": 16,
+        "diameter_log": 4.747575657776988,
+        "worst_case_fold": 115.30440806113832,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          14.993725887563201,
+          11.882767448797388,
+          10.616806472861569
+        ],
+        "prediction_high": [
+          15.364382130638557,
+          12.253423691872744,
+          10.987462715936925
+        ]
+      },
+      "candidate_plan": [
+        {
+          "T_K": 373.0,
+          "planned_worst_case_fold": 96.99315646706944,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 380.0,
+          "planned_worst_case_fold": 96.99315646706944,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 393.0,
+          "planned_worst_case_fold": 99.41694431407976,
+          "planned_compatible_count": 10
+        },
+        {
+          "T_K": 410.0,
+          "planned_worst_case_fold": 99.41694431407976,
+          "planned_compatible_count": 10
+        },
+        {
+          "T_K": 425.0,
+          "planned_worst_case_fold": 101.90776072619735,
+          "planned_compatible_count": 11
+        },
+        {
+          "T_K": 443.0,
+          "planned_worst_case_fold": 101.90776072619735,
+          "planned_compatible_count": 11
+        },
+        {
+          "T_K": 455.0,
+          "planned_worst_case_fold": 104.4535313800436,
+          "planned_compatible_count": 12
+        },
+        {
+          "T_K": 475.0,
+          "planned_worst_case_fold": 107.07120170238026,
+          "planned_compatible_count": 13
+        },
+        {
+          "T_K": 494.0,
+          "planned_worst_case_fold": 109.74506787247526,
+          "planned_compatible_count": 14
+        },
+        {
+          "T_K": 510.0,
+          "planned_worst_case_fold": 115.30440806113832,
+          "planned_compatible_count": 16
+        },
+        {
+          "T_K": 523.0,
+          "planned_worst_case_fold": 115.30440806113832,
+          "planned_compatible_count": 16
+        }
+      ],
+      "safety_optimal_T_K": 373.0,
+      "fisher_T_K": 373.0,
+      "random_T_K": 393.0,
+      "safety_certificate": {
+        "compatible_count": 9,
+        "diameter_log": 4.574640424128599,
+        "worst_case_fold": 96.99315646706944,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          15.067980995723058,
+          11.957022556957247,
+          10.691061581021426
+        ],
+        "prediction_high": [
+          15.265702005150025,
+          12.154743566384216,
+          10.888782590448395
+        ]
+      },
+      "fisher_certificate": {
+        "compatible_count": 9,
+        "diameter_log": 4.574640424128599,
+        "worst_case_fold": 96.99315646706944,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          15.067980995723058,
+          11.957022556957247,
+          10.691061581021426
+        ],
+        "prediction_high": [
+          15.265702005150025,
+          12.154743566384216,
+          10.888782590448395
+        ]
+      },
+      "random_certificate": {
+        "compatible_count": 10,
+        "diameter_log": 4.599322565071278,
+        "worst_case_fold": 99.41694431407976,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          15.067980995723058,
+          11.957022556957247,
+          10.691061581021426
+        ],
+        "prediction_high": [
+          15.290384146092704,
+          12.179425707326892,
+          10.913464731391073
+        ]
+      }
+    },
+    {
+      "seed": 3,
+      "base_certificate": {
+        "compatible_count": 12,
+        "diameter_log": 4.642998239169781,
+        "worst_case_fold": 103.85526417024572,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          14.716681418735066,
+          11.60935177345187,
+          10.346988084581128
+        ],
+        "prediction_high": [
+          14.989986323750909,
+          11.882656678467713,
+          10.620292989596969
+        ]
+      },
+      "candidate_plan": [
+        {
+          "T_K": 373.0,
+          "planned_worst_case_fold": 96.39723604709864,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 380.0,
+          "planned_worst_case_fold": 96.39723604709864,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 393.0,
+          "planned_worst_case_fold": 96.39723604709864,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 410.0,
+          "planned_worst_case_fold": 96.39723604709864,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 425.0,
+          "planned_worst_case_fold": 96.39723604709864,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 443.0,
+          "planned_worst_case_fold": 96.39723604709864,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 455.0,
+          "planned_worst_case_fold": 96.39723604709864,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 475.0,
+          "planned_worst_case_fold": 98.82077482017095,
+          "planned_compatible_count": 10
+        },
+        {
+          "T_K": 494.0,
+          "planned_worst_case_fold": 98.82077482017095,
+          "planned_compatible_count": 10
+        },
+        {
+          "T_K": 510.0,
+          "planned_worst_case_fold": 101.3086887486759,
+          "planned_compatible_count": 11
+        },
+        {
+          "T_K": 523.0,
+          "planned_worst_case_fold": 101.3086887486759,
+          "planned_compatible_count": 11
+        }
+      ],
+      "safety_optimal_T_K": 373.0,
+      "fisher_T_K": 373.0,
+      "random_T_K": 410.0,
+      "safety_certificate": {
+        "compatible_count": 9,
+        "diameter_log": 4.568477529494864,
+        "worst_case_fold": 96.39723604709864,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          14.741545744647336,
+          11.63421609936414,
+          10.371852410493396
+        ],
+        "prediction_high": [
+          14.94032993998826,
+          11.833000294705066,
+          10.570636605834322
+        ]
+      },
+      "fisher_certificate": {
+        "compatible_count": 9,
+        "diameter_log": 4.568477529494864,
+        "worst_case_fold": 96.39723604709864,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          14.741545744647336,
+          11.63421609936414,
+          10.371852410493396
+        ],
+        "prediction_high": [
+          14.94032993998826,
+          11.833000294705066,
+          10.570636605834322
+        ]
+      },
+      "random_certificate": {
+        "compatible_count": 9,
+        "diameter_log": 4.568477529494864,
+        "worst_case_fold": 96.39723604709864,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          14.741545744647336,
+          11.63421609936414,
+          10.371852410493396
+        ],
+        "prediction_high": [
+          14.94032993998826,
+          11.833000294705066,
+          10.570636605834322
+        ]
+      }
+    },
+    {
+      "seed": 4,
+      "base_certificate": {
+        "compatible_count": 10,
+        "diameter_log": 4.594492090089238,
+        "worst_case_fold": 98.93787125852127,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          15.307775637297524,
+          12.199509119341688,
+          10.936219179108992
+        ],
+        "prediction_high": [
+          15.53071126919823,
+          12.422444751242395,
+          11.159154811009698
+        ]
+      },
+      "candidate_plan": [
+        {
+          "T_K": 373.0,
+          "planned_worst_case_fold": 91.8538476423437,
+          "planned_compatible_count": 7
+        },
+        {
+          "T_K": 380.0,
+          "planned_worst_case_fold": 91.8538476423437,
+          "planned_compatible_count": 7
+        },
+        {
+          "T_K": 393.0,
+          "planned_worst_case_fold": 91.8538476423437,
+          "planned_compatible_count": 7
+        },
+        {
+          "T_K": 410.0,
+          "planned_worst_case_fold": 94.15592066290591,
+          "planned_compatible_count": 8
+        },
+        {
+          "T_K": 425.0,
+          "planned_worst_case_fold": 94.15592066290591,
+          "planned_compatible_count": 8
+        },
+        {
+          "T_K": 443.0,
+          "planned_worst_case_fold": 96.51947789796964,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 455.0,
+          "planned_worst_case_fold": 96.51947789796964,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 475.0,
+          "planned_worst_case_fold": 96.51947789796964,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 494.0,
+          "planned_worst_case_fold": 96.51947789796964,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 510.0,
+          "planned_worst_case_fold": 96.51947789796964,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 523.0,
+          "planned_worst_case_fold": 98.93787125852127,
+          "planned_compatible_count": 10
+        }
+      ],
+      "safety_optimal_T_K": 373.0,
+      "fisher_T_K": 373.0,
+      "random_T_K": 425.0,
+      "safety_certificate": {
+        "compatible_count": 7,
+        "diameter_log": 4.520198701282867,
+        "worst_case_fold": 91.8538476423437,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          15.332568330224616,
+          12.22430181226878,
+          10.961011872036083
+        ],
+        "prediction_high": [
+          15.48121057331895,
+          12.372944055363114,
+          11.109654115130418
+        ]
+      },
+      "fisher_certificate": {
+        "compatible_count": 7,
+        "diameter_log": 4.520198701282867,
+        "worst_case_fold": 91.8538476423437,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          15.332568330224616,
+          12.22430181226878,
+          10.961011872036083
+        ],
+        "prediction_high": [
+          15.48121057331895,
+          12.372944055363114,
+          11.109654115130418
+        ]
+      },
+      "random_certificate": {
+        "compatible_count": 8,
+        "diameter_log": 4.544952138552466,
+        "worst_case_fold": 94.15592066290591,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          15.332568330224616,
+          12.22430181226878,
+          10.961011872036083
+        ],
+        "prediction_high": [
+          15.50596401058855,
+          12.397697492632712,
+          11.134407552400017
+        ]
+      }
+    },
+    {
+      "seed": 5,
+      "base_certificate": {
+        "compatible_count": 3,
+        "diameter_log": 4.413418498032854,
+        "worst_case_fold": 82.55118275736055,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          18.601083662808954,
+          15.496912076464373,
+          14.237657976295523
+        ],
+        "prediction_high": [
+          18.651076474328377,
+          15.5469048879838,
+          14.28765078781495
+        ]
+      },
+      "candidate_plan": [
+        {
+          "T_K": 373.0,
+          "planned_worst_case_fold": 82.55118275736055,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 380.0,
+          "planned_worst_case_fold": 82.55118275736055,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 393.0,
+          "planned_worst_case_fold": 82.55118275736055,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 410.0,
+          "planned_worst_case_fold": 82.55118275736055,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 425.0,
+          "planned_worst_case_fold": 82.55118275736055,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 443.0,
+          "planned_worst_case_fold": 82.55118275736055,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 455.0,
+          "planned_worst_case_fold": 82.55118275736055,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 475.0,
+          "planned_worst_case_fold": 82.55118275736055,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 494.0,
+          "planned_worst_case_fold": 82.55118275736055,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 510.0,
+          "planned_worst_case_fold": 82.55118275736055,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 523.0,
+          "planned_worst_case_fold": 82.55118275736055,
+          "planned_compatible_count": 3
+        }
+      ],
+      "safety_optimal_T_K": 373.0,
+      "fisher_T_K": 373.0,
+      "random_T_K": 443.0,
+      "safety_certificate": {
+        "compatible_count": 3,
+        "diameter_log": 4.413418498032854,
+        "worst_case_fold": 82.55118275736055,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          18.601083662808954,
+          15.496912076464373,
+          14.237657976295523
+        ],
+        "prediction_high": [
+          18.651076474328377,
+          15.5469048879838,
+          14.28765078781495
+        ]
+      },
+      "fisher_certificate": {
+        "compatible_count": 3,
+        "diameter_log": 4.413418498032854,
+        "worst_case_fold": 82.55118275736055,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          18.601083662808954,
+          15.496912076464373,
+          14.237657976295523
+        ],
+        "prediction_high": [
+          18.651076474328377,
+          15.5469048879838,
+          14.28765078781495
+        ]
+      },
+      "random_certificate": {
+        "compatible_count": 3,
+        "diameter_log": 4.413418498032854,
+        "worst_case_fold": 82.55118275736055,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          18.601083662808954,
+          15.496912076464373,
+          14.237657976295523
+        ],
+        "prediction_high": [
+          18.651076474328377,
+          15.5469048879838,
+          14.28765078781495
+        ]
+      }
+    },
+    {
+      "seed": 6,
+      "base_certificate": {
+        "compatible_count": 3,
+        "diameter_log": 4.433286367714782,
+        "worst_case_fold": 84.20770014454952,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          18.819823719390016,
+          15.705676033592173,
+          14.436531931387986
+        ],
+        "prediction_high": [
+          18.869818299102768,
+          15.755670613304925,
+          14.486526511100738
+        ]
+      },
+      "candidate_plan": [
+        {
+          "T_K": 373.0,
+          "planned_worst_case_fold": 84.20770014454952,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 380.0,
+          "planned_worst_case_fold": 84.20770014454952,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 393.0,
+          "planned_worst_case_fold": 84.20770014454952,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 410.0,
+          "planned_worst_case_fold": 84.20770014454952,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 425.0,
+          "planned_worst_case_fold": 84.20770014454952,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 443.0,
+          "planned_worst_case_fold": 84.20770014454952,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 455.0,
+          "planned_worst_case_fold": 84.20770014454952,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 475.0,
+          "planned_worst_case_fold": 84.20770014454952,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 494.0,
+          "planned_worst_case_fold": 84.20770014454952,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 510.0,
+          "planned_worst_case_fold": 84.20770014454952,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 523.0,
+          "planned_worst_case_fold": 84.20770014454952,
+          "planned_compatible_count": 3
+        }
+      ],
+      "safety_optimal_T_K": 373.0,
+      "fisher_T_K": 373.0,
+      "random_T_K": 455.0,
+      "safety_certificate": {
+        "compatible_count": 3,
+        "diameter_log": 4.433286367714782,
+        "worst_case_fold": 84.20770014454952,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          18.819823719390016,
+          15.705676033592173,
+          14.436531931387986
+        ],
+        "prediction_high": [
+          18.869818299102768,
+          15.755670613304925,
+          14.486526511100738
+        ]
+      },
+      "fisher_certificate": {
+        "compatible_count": 3,
+        "diameter_log": 4.433286367714782,
+        "worst_case_fold": 84.20770014454952,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          18.819823719390016,
+          15.705676033592173,
+          14.436531931387986
+        ],
+        "prediction_high": [
+          18.869818299102768,
+          15.755670613304925,
+          14.486526511100738
+        ]
+      },
+      "random_certificate": {
+        "compatible_count": 3,
+        "diameter_log": 4.433286367714782,
+        "worst_case_fold": 84.20770014454952,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          18.819823719390016,
+          15.705676033592173,
+          14.436531931387986
+        ],
+        "prediction_high": [
+          18.869818299102768,
+          15.755670613304925,
+          14.486526511100738
+        ]
+      }
+    },
+    {
+      "seed": 7,
+      "base_certificate": {
+        "compatible_count": 3,
+        "diameter_log": 4.435710245870126,
+        "worst_case_fold": 84.4120569173476,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          18.24831494120175,
+          15.132893593011584,
+          13.862472588644756
+        ],
+        "prediction_high": [
+          18.298182834514883,
+          15.182761486324718,
+          13.91234048195789
+        ]
+      },
+      "candidate_plan": [
+        {
+          "T_K": 373.0,
+          "planned_worst_case_fold": 84.4120569173476,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 380.0,
+          "planned_worst_case_fold": 84.4120569173476,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 393.0,
+          "planned_worst_case_fold": 84.4120569173476,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 410.0,
+          "planned_worst_case_fold": 84.4120569173476,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 425.0,
+          "planned_worst_case_fold": 84.4120569173476,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 443.0,
+          "planned_worst_case_fold": 84.4120569173476,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 455.0,
+          "planned_worst_case_fold": 84.4120569173476,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 475.0,
+          "planned_worst_case_fold": 84.4120569173476,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 494.0,
+          "planned_worst_case_fold": 84.4120569173476,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 510.0,
+          "planned_worst_case_fold": 84.4120569173476,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 523.0,
+          "planned_worst_case_fold": 84.4120569173476,
+          "planned_compatible_count": 3
+        }
+      ],
+      "safety_optimal_T_K": 373.0,
+      "fisher_T_K": 373.0,
+      "random_T_K": 475.0,
+      "safety_certificate": {
+        "compatible_count": 3,
+        "diameter_log": 4.435710245870126,
+        "worst_case_fold": 84.4120569173476,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          18.24831494120175,
+          15.132893593011584,
+          13.862472588644756
+        ],
+        "prediction_high": [
+          18.298182834514883,
+          15.182761486324718,
+          13.91234048195789
+        ]
+      },
+      "fisher_certificate": {
+        "compatible_count": 3,
+        "diameter_log": 4.435710245870126,
+        "worst_case_fold": 84.4120569173476,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          18.24831494120175,
+          15.132893593011584,
+          13.862472588644756
+        ],
+        "prediction_high": [
+          18.298182834514883,
+          15.182761486324718,
+          13.91234048195789
+        ]
+      },
+      "random_certificate": {
+        "compatible_count": 3,
+        "diameter_log": 4.435710245870126,
+        "worst_case_fold": 84.4120569173476,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          18.24831494120175,
+          15.132893593011584,
+          13.862472588644756
+        ],
+        "prediction_high": [
+          18.298182834514883,
+          15.182761486324718,
+          13.91234048195789
+        ]
+      }
+    },
+    {
+      "seed": 8,
+      "base_certificate": {
+        "compatible_count": 14,
+        "diameter_log": 4.688005544184392,
+        "worst_case_fold": 108.63629330706789,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          15.716033346293734,
+          12.609005173765556,
+          11.346939173135404
+        ],
+        "prediction_high": [
+          16.034944717319796,
+          12.927916544791618,
+          11.665850544161465
+        ]
+      },
+      "candidate_plan": [
+        {
+          "T_K": 373.0,
+          "planned_worst_case_fold": 96.10127099733388,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 380.0,
+          "planned_worst_case_fold": 96.10127099733388,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 393.0,
+          "planned_worst_case_fold": 96.10127099733388,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 410.0,
+          "planned_worst_case_fold": 96.10127099733388,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 425.0,
+          "planned_worst_case_fold": 96.10127099733388,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 443.0,
+          "planned_worst_case_fold": 98.48340633859013,
+          "planned_compatible_count": 10
+        },
+        {
+          "T_K": 455.0,
+          "planned_worst_case_fold": 100.93487897271748,
+          "planned_compatible_count": 11
+        },
+        {
+          "T_K": 475.0,
+          "planned_worst_case_fold": 100.93487897271748,
+          "planned_compatible_count": 11
+        },
+        {
+          "T_K": 494.0,
+          "planned_worst_case_fold": 103.43550990200141,
+          "planned_compatible_count": 12
+        },
+        {
+          "T_K": 510.0,
+          "planned_worst_case_fold": 103.43550990200141,
+          "planned_compatible_count": 12
+        },
+        {
+          "T_K": 523.0,
+          "planned_worst_case_fold": 106.01131385117753,
+          "planned_compatible_count": 13
+        }
+      ],
+      "safety_optimal_T_K": 373.0,
+      "fisher_T_K": 373.0,
+      "random_T_K": 494.0,
+      "safety_certificate": {
+        "compatible_count": 9,
+        "diameter_log": 4.5654025416674955,
+        "worst_case_fold": 96.10127099733388,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          15.765218319214195,
+          12.658190146686017,
+          11.396124146055865
+        ],
+        "prediction_high": [
+          15.96152668772336,
+          12.854498515195182,
+          11.59243251456503
+        ]
+      },
+      "fisher_certificate": {
+        "compatible_count": 9,
+        "diameter_log": 4.5654025416674955,
+        "worst_case_fold": 96.10127099733388,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          15.765218319214195,
+          12.658190146686017,
+          11.396124146055865
+        ],
+        "prediction_high": [
+          15.96152668772336,
+          12.854498515195182,
+          11.59243251456503
+        ]
+      },
+      "random_certificate": {
+        "compatible_count": 12,
+        "diameter_log": 4.638948325768185,
+        "worst_case_fold": 103.43550990200141,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          15.74063084338697,
+          12.633602670858794,
+          11.371536670228641
+        ],
+        "prediction_high": [
+          16.010484995996826,
+          12.903456823468648,
+          11.641390822838495
+        ]
+      }
+    },
+    {
+      "seed": 9,
+      "base_certificate": {
+        "compatible_count": 12,
+        "diameter_log": 4.654251338049633,
+        "worst_case_fold": 105.0305581744853,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          14.82041242296489,
+          11.707402102478483,
+          10.439395510854037
+        ],
+        "prediction_high": [
+          15.09364684890367,
+          11.98063652841726,
+          10.712629936792817
+        ]
+      },
+      "candidate_plan": [
+        {
+          "T_K": 373.0,
+          "planned_worst_case_fold": 97.4900723681644,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 380.0,
+          "planned_worst_case_fold": 97.4900723681644,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 393.0,
+          "planned_worst_case_fold": 97.4900723681644,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 410.0,
+          "planned_worst_case_fold": 97.4900723681644,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 425.0,
+          "planned_worst_case_fold": 97.4900723681644,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 443.0,
+          "planned_worst_case_fold": 97.4900723681644,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 455.0,
+          "planned_worst_case_fold": 97.4900723681644,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 475.0,
+          "planned_worst_case_fold": 99.9403816889484,
+          "planned_compatible_count": 10
+        },
+        {
+          "T_K": 494.0,
+          "planned_worst_case_fold": 102.45590442961277,
+          "planned_compatible_count": 11
+        },
+        {
+          "T_K": 510.0,
+          "planned_worst_case_fold": 102.45590442961277,
+          "planned_compatible_count": 11
+        },
+        {
+          "T_K": 523.0,
+          "planned_worst_case_fold": 102.45590442961277,
+          "planned_compatible_count": 11
+        }
+      ],
+      "safety_optimal_T_K": 373.0,
+      "fisher_T_K": 373.0,
+      "random_T_K": 510.0,
+      "safety_certificate": {
+        "compatible_count": 9,
+        "diameter_log": 4.579750550954623,
+        "worst_case_fold": 97.4900723681644,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          14.845271103204027,
+          11.732260782717617,
+          10.464254191093174
+        ],
+        "prediction_high": [
+          15.044004742047797,
+          11.930994421561389,
+          10.662987829936945
+        ]
+      },
+      "fisher_certificate": {
+        "compatible_count": 9,
+        "diameter_log": 4.579750550954623,
+        "worst_case_fold": 97.4900723681644,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          14.845271103204027,
+          11.732260782717617,
+          10.464254191093174
+        ],
+        "prediction_high": [
+          15.044004742047797,
+          11.930994421561389,
+          10.662987829936945
+        ]
+      },
+      "random_certificate": {
+        "compatible_count": 11,
+        "diameter_log": 4.629432505328895,
+        "worst_case_fold": 102.45590442961277,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          14.82041242296489,
+          11.707402102478483,
+          10.439395510854037
+        ],
+        "prediction_high": [
+          15.068828016182932,
+          11.955817695696524,
+          10.687811104072079
+        ]
+      }
+    },
+    {
+      "seed": 10,
+      "base_certificate": {
+        "compatible_count": 34,
+        "diameter_log": 5.176928347991042,
+        "worst_case_fold": 177.13786859518848,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          15.53327554248315,
+          12.418507023410504,
+          11.148740915578879
+        ],
+        "prediction_high": [
+          16.32566926356992,
+          13.210900744497275,
+          11.94113463666565
+        ]
+      },
+      "candidate_plan": [
+        {
+          "T_K": 373.0,
+          "planned_worst_case_fold": 102.06967751018162,
+          "planned_compatible_count": 11
+        },
+        {
+          "T_K": 380.0,
+          "planned_worst_case_fold": 102.06967751018162,
+          "planned_compatible_count": 11
+        },
+        {
+          "T_K": 393.0,
+          "planned_worst_case_fold": 104.54781781404262,
+          "planned_compatible_count": 12
+        },
+        {
+          "T_K": 410.0,
+          "planned_worst_case_fold": 107.11135324993661,
+          "planned_compatible_count": 13
+        },
+        {
+          "T_K": 425.0,
+          "planned_worst_case_fold": 109.70920800516612,
+          "planned_compatible_count": 14
+        },
+        {
+          "T_K": 443.0,
+          "planned_worst_case_fold": 120.80651023803173,
+          "planned_compatible_count": 18
+        },
+        {
+          "T_K": 455.0,
+          "planned_worst_case_fold": 123.72698797194187,
+          "planned_compatible_count": 19
+        },
+        {
+          "T_K": 475.0,
+          "planned_worst_case_fold": 139.51196783244072,
+          "planned_compatible_count": 24
+        },
+        {
+          "T_K": 494.0,
+          "planned_worst_case_fold": 157.2806658667154,
+          "planned_compatible_count": 29
+        },
+        {
+          "T_K": 510.0,
+          "planned_worst_case_fold": 164.90534970902922,
+          "planned_compatible_count": 31
+        },
+        {
+          "T_K": 523.0,
+          "planned_worst_case_fold": 173.00825447166918,
+          "planned_compatible_count": 33
+        }
+      ],
+      "safety_optimal_T_K": 373.0,
+      "fisher_T_K": 373.0,
+      "random_T_K": 523.0,
+      "safety_certificate": {
+        "compatible_count": 11,
+        "diameter_log": 4.625655692913812,
+        "worst_case_fold": 102.06967751018162,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          15.727567382504478,
+          12.612798863431832,
+          11.343032755600207
+        ],
+        "prediction_high": [
+          15.968688448514019,
+          12.853919929441373,
+          11.584153821609748
+        ]
+      },
+      "fisher_certificate": {
+        "compatible_count": 11,
+        "diameter_log": 4.625655692913812,
+        "worst_case_fold": 102.06967751018162,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          15.727567382504478,
+          12.612798863431832,
+          11.343032755600207
+        ],
+        "prediction_high": [
+          15.968688448514019,
+          12.853919929441373,
+          11.584153821609748
+        ]
+      },
+      "random_certificate": {
+        "compatible_count": 33,
+        "diameter_log": 5.1533393070685865,
+        "worst_case_fold": 173.00825447166918,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          15.53327554248315,
+          12.418507023410504,
+          11.148740915578879
+        ],
+        "prediction_high": [
+          16.302080222647465,
+          13.187311703574817,
+          11.917545595743192
+        ]
+      }
+    },
+    {
+      "seed": 11,
+      "base_certificate": {
+        "compatible_count": 16,
+        "diameter_log": 4.748873712166141,
+        "worst_case_fold": 115.45417663696004,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          14.92084479724694,
+          11.809321958218245,
+          10.542799140891937
+        ],
+        "prediction_high": [
+          15.291672853058078,
+          12.180150014029383,
+          10.913627196703075
+        ]
+      },
+      "candidate_plan": [
+        {
+          "T_K": 373.0,
+          "planned_worst_case_fold": 97.11121165860581,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 380.0,
+          "planned_worst_case_fold": 97.11121165860581,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 393.0,
+          "planned_worst_case_fold": 97.11121165860581,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 410.0,
+          "planned_worst_case_fold": 99.53919985963341,
+          "planned_compatible_count": 10
+        },
+        {
+          "T_K": 425.0,
+          "planned_worst_case_fold": 102.03410781351681,
+          "planned_compatible_count": 11
+        },
+        {
+          "T_K": 443.0,
+          "planned_worst_case_fold": 102.03410781351681,
+          "planned_compatible_count": 11
+        },
+        {
+          "T_K": 455.0,
+          "planned_worst_case_fold": 102.03410781351681,
+          "planned_compatible_count": 11
+        },
+        {
+          "T_K": 475.0,
+          "planned_worst_case_fold": 107.20638476101887,
+          "planned_compatible_count": 13
+        },
+        {
+          "T_K": 494.0,
+          "planned_worst_case_fold": 109.88507592793509,
+          "planned_compatible_count": 14
+        },
+        {
+          "T_K": 510.0,
+          "planned_worst_case_fold": 109.88507592793509,
+          "planned_compatible_count": 14
+        },
+        {
+          "T_K": 523.0,
+          "planned_worst_case_fold": 115.45417663696004,
+          "planned_compatible_count": 16
+        }
+      ],
+      "safety_optimal_T_K": 373.0,
+      "fisher_T_K": 373.0,
+      "random_T_K": 373.0,
+      "safety_certificate": {
+        "compatible_count": 9,
+        "diameter_log": 4.575856833704881,
+        "worst_case_fold": 97.11121165860581,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          14.995129419762625,
+          11.883606580733929,
+          10.61708376340762
+        ],
+        "prediction_high": [
+          15.192940597112502,
+          12.081417758083806,
+          10.8148949407575
+        ]
+      },
+      "fisher_certificate": {
+        "compatible_count": 9,
+        "diameter_log": 4.575856833704881,
+        "worst_case_fold": 97.11121165860581,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          14.995129419762625,
+          11.883606580733929,
+          10.61708376340762
+        ],
+        "prediction_high": [
+          15.192940597112502,
+          12.081417758083806,
+          10.8148949407575
+        ]
+      },
+      "random_certificate": {
+        "compatible_count": 9,
+        "diameter_log": 4.575856833704881,
+        "worst_case_fold": 97.11121165860581,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          14.995129419762625,
+          11.883606580733929,
+          10.61708376340762
+        ],
+        "prediction_high": [
+          15.192940597112502,
+          12.081417758083806,
+          10.8148949407575
+        ]
+      }
+    },
+    {
+      "seed": 12,
+      "base_certificate": {
+        "compatible_count": 3,
+        "diameter_log": 4.411143786209127,
+        "worst_case_fold": 82.3636160168983,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          17.769171823262543,
+          14.666101472664169,
+          13.407927135427009
+        ],
+        "prediction_high": [
+          17.819070921636136,
+          14.716000571037762,
+          13.457826233800603
+        ]
+      },
+      "candidate_plan": [
+        {
+          "T_K": 373.0,
+          "planned_worst_case_fold": 82.3636160168983,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 380.0,
+          "planned_worst_case_fold": 82.3636160168983,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 393.0,
+          "planned_worst_case_fold": 82.3636160168983,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 410.0,
+          "planned_worst_case_fold": 82.3636160168983,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 425.0,
+          "planned_worst_case_fold": 82.3636160168983,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 443.0,
+          "planned_worst_case_fold": 82.3636160168983,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 455.0,
+          "planned_worst_case_fold": 82.3636160168983,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 475.0,
+          "planned_worst_case_fold": 82.3636160168983,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 494.0,
+          "planned_worst_case_fold": 82.3636160168983,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 510.0,
+          "planned_worst_case_fold": 82.3636160168983,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 523.0,
+          "planned_worst_case_fold": 82.3636160168983,
+          "planned_compatible_count": 3
+        }
+      ],
+      "safety_optimal_T_K": 373.0,
+      "fisher_T_K": 373.0,
+      "random_T_K": 380.0,
+      "safety_certificate": {
+        "compatible_count": 3,
+        "diameter_log": 4.411143786209127,
+        "worst_case_fold": 82.3636160168983,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          17.769171823262543,
+          14.666101472664169,
+          13.407927135427009
+        ],
+        "prediction_high": [
+          17.819070921636136,
+          14.716000571037762,
+          13.457826233800603
+        ]
+      },
+      "fisher_certificate": {
+        "compatible_count": 3,
+        "diameter_log": 4.411143786209127,
+        "worst_case_fold": 82.3636160168983,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          17.769171823262543,
+          14.666101472664169,
+          13.407927135427009
+        ],
+        "prediction_high": [
+          17.819070921636136,
+          14.716000571037762,
+          13.457826233800603
+        ]
+      },
+      "random_certificate": {
+        "compatible_count": 3,
+        "diameter_log": 4.411143786209127,
+        "worst_case_fold": 82.3636160168983,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          17.769171823262543,
+          14.666101472664169,
+          13.407927135427009
+        ],
+        "prediction_high": [
+          17.819070921636136,
+          14.716000571037762,
+          13.457826233800603
+        ]
+      }
+    },
+    {
+      "seed": 13,
+      "base_certificate": {
+        "compatible_count": 3,
+        "diameter_log": 4.429744912525695,
+        "worst_case_fold": 83.9100097875749,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          18.750354564805335,
+          15.637976555465933,
+          14.37060123789163
+        ],
+        "prediction_high": [
+          18.800346150417326,
+          15.687968141077924,
+          14.420592823503622
+        ]
+      },
+      "candidate_plan": [
+        {
+          "T_K": 373.0,
+          "planned_worst_case_fold": 83.9100097875749,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 380.0,
+          "planned_worst_case_fold": 83.9100097875749,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 393.0,
+          "planned_worst_case_fold": 83.9100097875749,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 410.0,
+          "planned_worst_case_fold": 83.9100097875749,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 425.0,
+          "planned_worst_case_fold": 83.9100097875749,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 443.0,
+          "planned_worst_case_fold": 83.9100097875749,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 455.0,
+          "planned_worst_case_fold": 83.9100097875749,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 475.0,
+          "planned_worst_case_fold": 83.9100097875749,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 494.0,
+          "planned_worst_case_fold": 83.9100097875749,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 510.0,
+          "planned_worst_case_fold": 83.9100097875749,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 523.0,
+          "planned_worst_case_fold": 83.9100097875749,
+          "planned_compatible_count": 3
+        }
+      ],
+      "safety_optimal_T_K": 373.0,
+      "fisher_T_K": 373.0,
+      "random_T_K": 393.0,
+      "safety_certificate": {
+        "compatible_count": 3,
+        "diameter_log": 4.429744912525695,
+        "worst_case_fold": 83.9100097875749,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          18.750354564805335,
+          15.637976555465933,
+          14.37060123789163
+        ],
+        "prediction_high": [
+          18.800346150417326,
+          15.687968141077924,
+          14.420592823503622
+        ]
+      },
+      "fisher_certificate": {
+        "compatible_count": 3,
+        "diameter_log": 4.429744912525695,
+        "worst_case_fold": 83.9100097875749,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          18.750354564805335,
+          15.637976555465933,
+          14.37060123789163
+        ],
+        "prediction_high": [
+          18.800346150417326,
+          15.687968141077924,
+          14.420592823503622
+        ]
+      },
+      "random_certificate": {
+        "compatible_count": 3,
+        "diameter_log": 4.429744912525695,
+        "worst_case_fold": 83.9100097875749,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          18.750354564805335,
+          15.637976555465933,
+          14.37060123789163
+        ],
+        "prediction_high": [
+          18.800346150417326,
+          15.687968141077924,
+          14.420592823503622
+        ]
+      }
+    },
+    {
+      "seed": 14,
+      "base_certificate": {
+        "compatible_count": 3,
+        "diameter_log": 4.433730397615822,
+        "worst_case_fold": 84.24509918384288,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          18.666939125177187,
+          15.55256925107038,
+          14.283202629804624
+        ],
+        "prediction_high": [
+          18.716933027420446,
+          15.602563153313639,
+          14.333196532047882
+        ]
+      },
+      "candidate_plan": [
+        {
+          "T_K": 373.0,
+          "planned_worst_case_fold": 84.24509918384288,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 380.0,
+          "planned_worst_case_fold": 84.24509918384288,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 393.0,
+          "planned_worst_case_fold": 84.24509918384288,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 410.0,
+          "planned_worst_case_fold": 84.24509918384288,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 425.0,
+          "planned_worst_case_fold": 84.24509918384288,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 443.0,
+          "planned_worst_case_fold": 84.24509918384288,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 455.0,
+          "planned_worst_case_fold": 84.24509918384288,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 475.0,
+          "planned_worst_case_fold": 84.24509918384288,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 494.0,
+          "planned_worst_case_fold": 84.24509918384288,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 510.0,
+          "planned_worst_case_fold": 84.24509918384288,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 523.0,
+          "planned_worst_case_fold": 84.24509918384288,
+          "planned_compatible_count": 3
+        }
+      ],
+      "safety_optimal_T_K": 373.0,
+      "fisher_T_K": 373.0,
+      "random_T_K": 410.0,
+      "safety_certificate": {
+        "compatible_count": 3,
+        "diameter_log": 4.433730397615822,
+        "worst_case_fold": 84.24509918384288,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          18.666939125177187,
+          15.55256925107038,
+          14.283202629804624
+        ],
+        "prediction_high": [
+          18.716933027420446,
+          15.602563153313639,
+          14.333196532047882
+        ]
+      },
+      "fisher_certificate": {
+        "compatible_count": 3,
+        "diameter_log": 4.433730397615822,
+        "worst_case_fold": 84.24509918384288,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          18.666939125177187,
+          15.55256925107038,
+          14.283202629804624
+        ],
+        "prediction_high": [
+          18.716933027420446,
+          15.602563153313639,
+          14.333196532047882
+        ]
+      },
+      "random_certificate": {
+        "compatible_count": 3,
+        "diameter_log": 4.433730397615822,
+        "worst_case_fold": 84.24509918384288,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          18.666939125177187,
+          15.55256925107038,
+          14.283202629804624
+        ],
+        "prediction_high": [
+          18.716933027420446,
+          15.602563153313639,
+          14.333196532047882
+        ]
+      }
+    },
+    {
+      "seed": 15,
+      "base_certificate": {
+        "compatible_count": 10,
+        "diameter_log": 4.557091439728422,
+        "worst_case_fold": 95.30587343119093,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          15.50562373765863,
+          12.416069755383567,
+          11.170959021431623
+        ],
+        "prediction_high": [
+          15.728050461160045,
+          12.638496478884981,
+          11.393385744933038
+        ]
+      },
+      "candidate_plan": [
+        {
+          "T_K": 373.0,
+          "planned_worst_case_fold": 88.49731247011233,
+          "planned_compatible_count": 7
+        },
+        {
+          "T_K": 380.0,
+          "planned_worst_case_fold": 88.49731247011233,
+          "planned_compatible_count": 7
+        },
+        {
+          "T_K": 393.0,
+          "planned_worst_case_fold": 88.49731247011233,
+          "planned_compatible_count": 7
+        },
+        {
+          "T_K": 410.0,
+          "planned_worst_case_fold": 90.70975360002187,
+          "planned_compatible_count": 8
+        },
+        {
+          "T_K": 425.0,
+          "planned_worst_case_fold": 90.70975360002187,
+          "planned_compatible_count": 8
+        },
+        {
+          "T_K": 443.0,
+          "planned_worst_case_fold": 90.70975360002187,
+          "planned_compatible_count": 8
+        },
+        {
+          "T_K": 455.0,
+          "planned_worst_case_fold": 92.98204561845331,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 475.0,
+          "planned_worst_case_fold": 92.98204561845331,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 494.0,
+          "planned_worst_case_fold": 92.98204561845331,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 510.0,
+          "planned_worst_case_fold": 92.98204561845331,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 523.0,
+          "planned_worst_case_fold": 95.30587343119093,
+          "planned_compatible_count": 10
+        }
+      ],
+      "safety_optimal_T_K": 373.0,
+      "fisher_T_K": 373.0,
+      "random_T_K": 425.0,
+      "safety_certificate": {
+        "compatible_count": 7,
+        "diameter_log": 4.482972183983428,
+        "worst_case_fold": 88.49731247011233,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          15.530365266033122,
+          12.440811283758059,
+          11.195700549806116
+        ],
+        "prediction_high": [
+          15.678672733789544,
+          12.58911875151448,
+          11.344008017562537
+        ]
+      },
+      "fisher_certificate": {
+        "compatible_count": 7,
+        "diameter_log": 4.482972183983428,
+        "worst_case_fold": 88.49731247011233,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          15.530365266033122,
+          12.440811283758059,
+          11.195700549806116
+        ],
+        "prediction_high": [
+          15.678672733789544,
+          12.58911875151448,
+          11.344008017562537
+        ]
+      },
+      "random_certificate": {
+        "compatible_count": 8,
+        "diameter_log": 4.507664888274601,
+        "worst_case_fold": 90.70975360002187,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          15.530365266033122,
+          12.440811283758059,
+          11.195700549806116
+        ],
+        "prediction_high": [
+          15.703365438080716,
+          12.613811455805653,
+          11.36870072185371
+        ]
+      }
+    },
+    {
+      "seed": 16,
+      "base_certificate": {
+        "compatible_count": 3,
+        "diameter_log": 4.412868517374552,
+        "worst_case_fold": 82.50579368622373,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          17.903717046850435,
+          14.799533719183595,
+          13.540268093939453
+        ],
+        "prediction_high": [
+          17.953136611314005,
+          14.848953283647164,
+          13.589687658403022
+        ]
+      },
+      "candidate_plan": [
+        {
+          "T_K": 373.0,
+          "planned_worst_case_fold": 82.50579368622373,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 380.0,
+          "planned_worst_case_fold": 82.50579368622373,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 393.0,
+          "planned_worst_case_fold": 82.50579368622373,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 410.0,
+          "planned_worst_case_fold": 82.50579368622373,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 425.0,
+          "planned_worst_case_fold": 82.50579368622373,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 443.0,
+          "planned_worst_case_fold": 82.50579368622373,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 455.0,
+          "planned_worst_case_fold": 82.50579368622373,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 475.0,
+          "planned_worst_case_fold": 82.50579368622373,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 494.0,
+          "planned_worst_case_fold": 82.50579368622373,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 510.0,
+          "planned_worst_case_fold": 82.50579368622373,
+          "planned_compatible_count": 3
+        },
+        {
+          "T_K": 523.0,
+          "planned_worst_case_fold": 82.50579368622373,
+          "planned_compatible_count": 3
+        }
+      ],
+      "safety_optimal_T_K": 373.0,
+      "fisher_T_K": 373.0,
+      "random_T_K": 443.0,
+      "safety_certificate": {
+        "compatible_count": 3,
+        "diameter_log": 4.412868517374552,
+        "worst_case_fold": 82.50579368622373,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          17.903717046850435,
+          14.799533719183595,
+          13.540268093939453
+        ],
+        "prediction_high": [
+          17.953136611314005,
+          14.848953283647164,
+          13.589687658403022
+        ]
+      },
+      "fisher_certificate": {
+        "compatible_count": 3,
+        "diameter_log": 4.412868517374552,
+        "worst_case_fold": 82.50579368622373,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          17.903717046850435,
+          14.799533719183595,
+          13.540268093939453
+        ],
+        "prediction_high": [
+          17.953136611314005,
+          14.848953283647164,
+          13.589687658403022
+        ]
+      },
+      "random_certificate": {
+        "compatible_count": 3,
+        "diameter_log": 4.412868517374552,
+        "worst_case_fold": 82.50579368622373,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          17.903717046850435,
+          14.799533719183595,
+          13.540268093939453
+        ],
+        "prediction_high": [
+          17.953136611314005,
+          14.848953283647164,
+          13.589687658403022
+        ]
+      }
+    },
+    {
+      "seed": 17,
+      "base_certificate": {
+        "compatible_count": 5,
+        "diameter_log": 4.480774173390291,
+        "worst_case_fold": 88.3030080596429,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          17.989786601848735,
+          14.875061386988177,
+          13.605338690229335
+        ],
+        "prediction_high": [
+          18.086112863619626,
+          14.971387648759071,
+          13.701664952000229
+        ]
+      },
+      "candidate_plan": [
+        {
+          "T_K": 373.0,
+          "planned_worst_case_fold": 88.3030080596429,
+          "planned_compatible_count": 5
+        },
+        {
+          "T_K": 380.0,
+          "planned_worst_case_fold": 88.3030080596429,
+          "planned_compatible_count": 5
+        },
+        {
+          "T_K": 393.0,
+          "planned_worst_case_fold": 88.3030080596429,
+          "planned_compatible_count": 5
+        },
+        {
+          "T_K": 410.0,
+          "planned_worst_case_fold": 88.3030080596429,
+          "planned_compatible_count": 5
+        },
+        {
+          "T_K": 425.0,
+          "planned_worst_case_fold": 88.3030080596429,
+          "planned_compatible_count": 5
+        },
+        {
+          "T_K": 443.0,
+          "planned_worst_case_fold": 88.3030080596429,
+          "planned_compatible_count": 5
+        },
+        {
+          "T_K": 455.0,
+          "planned_worst_case_fold": 88.3030080596429,
+          "planned_compatible_count": 5
+        },
+        {
+          "T_K": 475.0,
+          "planned_worst_case_fold": 88.3030080596429,
+          "planned_compatible_count": 5
+        },
+        {
+          "T_K": 494.0,
+          "planned_worst_case_fold": 88.3030080596429,
+          "planned_compatible_count": 5
+        },
+        {
+          "T_K": 510.0,
+          "planned_worst_case_fold": 88.3030080596429,
+          "planned_compatible_count": 5
+        },
+        {
+          "T_K": 523.0,
+          "planned_worst_case_fold": 88.3030080596429,
+          "planned_compatible_count": 5
+        }
+      ],
+      "safety_optimal_T_K": 373.0,
+      "fisher_T_K": 373.0,
+      "random_T_K": 455.0,
+      "safety_certificate": {
+        "compatible_count": 5,
+        "diameter_log": 4.480774173390291,
+        "worst_case_fold": 88.3030080596429,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          17.989786601848735,
+          14.875061386988177,
+          13.605338690229335
+        ],
+        "prediction_high": [
+          18.086112863619626,
+          14.971387648759071,
+          13.701664952000229
+        ]
+      },
+      "fisher_certificate": {
+        "compatible_count": 5,
+        "diameter_log": 4.480774173390291,
+        "worst_case_fold": 88.3030080596429,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          17.989786601848735,
+          14.875061386988177,
+          13.605338690229335
+        ],
+        "prediction_high": [
+          18.086112863619626,
+          14.971387648759071,
+          13.701664952000229
+        ]
+      },
+      "random_certificate": {
+        "compatible_count": 5,
+        "diameter_log": 4.480774173390291,
+        "worst_case_fold": 88.3030080596429,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          17.989786601848735,
+          14.875061386988177,
+          13.605338690229335
+        ],
+        "prediction_high": [
+          18.086112863619626,
+          14.971387648759071,
+          13.701664952000229
+        ]
+      }
+    },
+    {
+      "seed": 18,
+      "base_certificate": {
+        "compatible_count": 321,
+        "diameter_log": 4.386239446931725,
+        "worst_case_fold": 80.33773589007104,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          18.975366189035366,
+          15.866383128361402,
+          14.602383602800952
+        ],
+        "prediction_high": [
+          18.988623049732677,
+          15.879639989058713,
+          14.615640463498261
+        ]
+      },
+      "candidate_plan": [
+        {
+          "T_K": 373.0,
+          "planned_worst_case_fold": 80.33773589007104,
+          "planned_compatible_count": 321
+        },
+        {
+          "T_K": 380.0,
+          "planned_worst_case_fold": 80.33773589007104,
+          "planned_compatible_count": 321
+        },
+        {
+          "T_K": 393.0,
+          "planned_worst_case_fold": 80.33773589007104,
+          "planned_compatible_count": 321
+        },
+        {
+          "T_K": 410.0,
+          "planned_worst_case_fold": 80.33773589007104,
+          "planned_compatible_count": 321
+        },
+        {
+          "T_K": 425.0,
+          "planned_worst_case_fold": 80.33773589007104,
+          "planned_compatible_count": 321
+        },
+        {
+          "T_K": 443.0,
+          "planned_worst_case_fold": 80.33773589007104,
+          "planned_compatible_count": 321
+        },
+        {
+          "T_K": 455.0,
+          "planned_worst_case_fold": 80.33773589007104,
+          "planned_compatible_count": 321
+        },
+        {
+          "T_K": 475.0,
+          "planned_worst_case_fold": 80.33773589007104,
+          "planned_compatible_count": 321
+        },
+        {
+          "T_K": 494.0,
+          "planned_worst_case_fold": 80.33773589007104,
+          "planned_compatible_count": 321
+        },
+        {
+          "T_K": 510.0,
+          "planned_worst_case_fold": 80.33773589007104,
+          "planned_compatible_count": 321
+        },
+        {
+          "T_K": 523.0,
+          "planned_worst_case_fold": 80.33773589007104,
+          "planned_compatible_count": 321
+        }
+      ],
+      "safety_optimal_T_K": 373.0,
+      "fisher_T_K": 373.0,
+      "random_T_K": 475.0,
+      "safety_certificate": {
+        "compatible_count": 321,
+        "diameter_log": 4.386239446931725,
+        "worst_case_fold": 80.33773589007104,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          18.975366189035366,
+          15.866383128361402,
+          14.602383602800952
+        ],
+        "prediction_high": [
+          18.988623049732677,
+          15.879639989058713,
+          14.615640463498261
+        ]
+      },
+      "fisher_certificate": {
+        "compatible_count": 321,
+        "diameter_log": 4.386239446931725,
+        "worst_case_fold": 80.33773589007104,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          18.975366189035366,
+          15.866383128361402,
+          14.602383602800952
+        ],
+        "prediction_high": [
+          18.988623049732677,
+          15.879639989058713,
+          14.615640463498261
+        ]
+      },
+      "random_certificate": {
+        "compatible_count": 321,
+        "diameter_log": 4.386239446931725,
+        "worst_case_fold": 80.33773589007104,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          18.975366189035366,
+          15.866383128361402,
+          14.602383602800952
+        ],
+        "prediction_high": [
+          18.988623049732677,
+          15.879639989058713,
+          14.615640463498261
+        ]
+      }
+    },
+    {
+      "seed": 19,
+      "base_certificate": {
+        "compatible_count": 14,
+        "diameter_log": 4.6922557484442375,
+        "worst_case_fold": 109.09900235109012,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          14.854901208222108,
+          11.747457378545997,
+          10.48498089210327
+        ],
+        "prediction_high": [
+          15.177236640547507,
+          12.069792810871396,
+          10.807316324428669
+        ]
+      },
+      "candidate_plan": [
+        {
+          "T_K": 373.0,
+          "planned_worst_case_fold": 96.3806153043715,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 380.0,
+          "planned_worst_case_fold": 96.3806153043715,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 393.0,
+          "planned_worst_case_fold": 96.3806153043715,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 410.0,
+          "planned_worst_case_fold": 96.3806153043715,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 425.0,
+          "planned_worst_case_fold": 96.3806153043715,
+          "planned_compatible_count": 9
+        },
+        {
+          "T_K": 443.0,
+          "planned_worst_case_fold": 98.79823393877062,
+          "planned_compatible_count": 10
+        },
+        {
+          "T_K": 455.0,
+          "planned_worst_case_fold": 98.79823393877062,
+          "planned_compatible_count": 10
+        },
+        {
+          "T_K": 475.0,
+          "planned_worst_case_fold": 101.28106195865647,
+          "planned_compatible_count": 11
+        },
+        {
+          "T_K": 494.0,
+          "planned_worst_case_fold": 103.82101692321896,
+          "planned_compatible_count": 12
+        },
+        {
+          "T_K": 510.0,
+          "planned_worst_case_fold": 103.82101692321896,
+          "planned_compatible_count": 12
+        },
+        {
+          "T_K": 523.0,
+          "planned_worst_case_fold": 106.43053934071747,
+          "planned_compatible_count": 13
+        }
+      ],
+      "safety_optimal_T_K": 373.0,
+      "fisher_T_K": 373.0,
+      "random_T_K": 494.0,
+      "safety_certificate": {
+        "compatible_count": 9,
+        "diameter_log": 4.568305095341751,
+        "worst_case_fold": 96.3806153043715,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          14.904545056647397,
+          11.797101226971286,
+          10.53462474052856
+        ],
+        "prediction_high": [
+          15.102929835870311,
+          11.9954860061942,
+          10.733009519751473
+        ]
+      },
+      "fisher_certificate": {
+        "compatible_count": 9,
+        "diameter_log": 4.568305095341751,
+        "worst_case_fold": 96.3806153043715,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          14.904545056647397,
+          11.797101226971286,
+          10.53462474052856
+        ],
+        "prediction_high": [
+          15.102929835870311,
+          11.9954860061942,
+          10.733009519751473
+        ]
+      },
+      "random_certificate": {
+        "compatible_count": 12,
+        "diameter_log": 4.642668425411976,
+        "worst_case_fold": 103.82101692321896,
+        "status": "ABSTAIN",
+        "prediction_low": [
+          14.879725342413126,
+          11.772281512737017,
+          10.509805026294288
+        ],
+        "prediction_high": [
+          15.152473451706264,
+          12.045029622030153,
+          10.782553135587428
+        ]
+      }
+    }
+  ],
+  "interpretation": "SAFE means compatible members disagree by at most 2x at the deployment grid; ABSTAIN means the data do not support that sign-off resolution. This certificate is an empirical benchmark result, not a coverage guarantee."
+}

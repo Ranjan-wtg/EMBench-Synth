@@ -36,6 +36,31 @@ in **85%** of seeds versus **50%** for a random candidate batch. Results are in
 `figures/fig_deployment_identifiability.png` and
 `figures/fig_adaptive_test_design.png`.
 
+Novelty is tracked explicitly in `research/novelty_scorecard.md`. The current
+parameter-information and deployment-functional policies select the same batch
+on the present candidate set, so the stronger distinction between those
+objectives is not yet claimed as a discovery.
+
+**Current discovery candidate.** An optimizer-independent parameter tradeoff
+family produces nearly indistinguishable accelerated predictions (maximum
+0.15 log units across three pathway settings) but deployment disagreements of
+up to **15.97x** when the
+training window is restricted to `T >= 623 K`. The frontier is in
+`results/nonidentifiability_frontier.json` and
+`paper/figures/fig_nonidentifiability_frontier.png`; it is provisional pending
+prior-art and external-validation review.
+
+**Deployment-safety certificate.** The new certificate retains the compatible
+tradeoff family and asks whether one additional five-current batch can reduce
+worst-case deployment disagreement below 2x. Across 20 seeds, the accelerated
+fit starts at a median **91.8x** compatible-set disagreement; the certificate
+policy reduces this only to **88.4x**, with **100% ABSTAIN** decisions. This is
+a falsifiable design rule: the current accelerated window and one extra batch
+do not support a 2x deployment sign-off under the stated compatibility budget.
+The machine-readable result and plot are in
+`results/deployment_safety_certificate.json` and
+`paper/figures/fig_deployment_safety_certificate.png`.
+
 | Benchmark | Incumbent Black's | Corrected equation |
 |---|---|---|
 | Generalization (held-out T / J / L splits) | 0.21–0.65 ln-RMSE | **0.14–0.17** |
@@ -128,6 +153,7 @@ benchmarks/
   kanlite.py                        # single-layer spline KAN (physics-init + residual variants)
   eval.py                           # extrapolation, generalization, robustness sweeps
   deployment_identifiability.py    # deployment lever + adaptive temperature-batch design
+deployment_safety_certificate.py # robust compatible-set sign-off certificate
   figures.py                        # paper figures
   run_all.py                        # runs everything -> results/results.json, figures/
 prototype_phase_transition.py       # reproduces Table 2 (noise sweep) exactly
@@ -162,6 +188,7 @@ python prototype_rlct.py               # Table 3 (Fisher spectrum, lever)
 python prototype_diagnostic.py         # Table 6 (profile-likelihood widths)
 python prototype_quantitative.py       # Table 5 + sample-size laws
 python3 benchmarks/deployment_identifiability.py  # deployment ambiguity + adaptive test design
+python3 benchmarks/deployment_safety_certificate.py  # robust deployment sign-off certificate
 ```
 
 ## NeurIPS 2026 submission

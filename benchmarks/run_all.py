@@ -244,13 +244,21 @@ def main():
     for sigma, row in results["phase_transition"].items():
         print(f"  sigma={sigma}: " + ", ".join(f"{k}={v:.2f}x" for k, v in row.items()))
 
-    print("[9/13] deployment-identifiability and adaptive test design")
+    print("[9/14] deployment-identifiability and adaptive test design")
     from benchmarks import deployment_identifiability as di
     di.main()
     with open(os.path.join(RES, "deployment_identifiability.json")) as f:
         results["deployment_identifiability"] = json.load(f)
+    from benchmarks import nonidentifiability_frontier as nif
+    nif.main()
+    with open(os.path.join(RES, "nonidentifiability_frontier.json")) as f:
+        results["nonidentifiability_frontier"] = json.load(f)
+    from benchmarks import deployment_safety_certificate as dsc
+    dsc.main()
+    with open(os.path.join(RES, "deployment_safety_certificate.json")) as f:
+        results["deployment_safety_certificate"] = json.load(f)
 
-    print("[10/13] figures")
+    print("[10/14] figures")
     fig.fig_arrhenius_kink(dbb, gen, os.path.join(FIG, "fig_arrhenius_kink.png"))
     fig.fig_ea_recovery(T, ea, gen, rec_res["ea_eff"]["Tc_recovered_K"],
                         os.path.join(FIG, "fig_ea_recovery.png"))

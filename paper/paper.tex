@@ -219,6 +219,26 @@ envelope but disagree at deployment. This is deployment non-identifiability:
 the ambiguity is in the functional required by sign-off, not necessarily in the
 training loss.
 
+\paragraph{Optimizer-independent frontier.} We make this ambiguity explicit by
+shifting $\log B_0$, $\log C_0$, and $\log(D_{0,g}/D_{0,s})$ by the same amount.
+In the dominant-grain-boundary limit this transformation cancels from the
+accelerated prediction while changing the low-temperature prediction. Under a
+compatibility threshold of $0.15$ log-lifetime units, the largest hidden
+deployment disagreement is $1.53\times$ for $T\ge523$ K, increasing to
+$15.97\times$ for $T\ge623$ K. This construction does not depend on an
+optimizer or noisy realization and identifies a coverage-dependent safety
+frontier. Figure~\ref{fig:frontier} reports the full tradeoff.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.66\linewidth]{figures/fig_nonidentifiability_frontier.png}
+\caption{Optimizer-independent deployment-non-identifiability frontier. The
+same parameter tradeoff produces small accelerated-window discrepancies but
+large use-condition disagreements as the training envelope moves farther above
+the pathway crossover.}
+\label{fig:frontier}
+\end{figure}
+
 \paragraph{Deployment-conditioned lever.} For a fitted parameter vector
 $\hat\theta$, let $G_{\rm acc}$ be the Jacobian of the accelerated predictions
 and $H_{\rm use}$ the Jacobian of the predictions at $373$ K and
@@ -259,6 +279,36 @@ measurement reduces $\mathcal L_{\rm use}$, sign-off must use an external
 material constraint or abstain. This distinction matters for AI-assisted chip
 design: a model may be accurate within the accelerated training envelope while
 still being unsafe for ranking vulnerable PDN segments at use conditions.
+
+\paragraph{A robust sign-off certificate.} We also replace the local lever by a
+sequential, prediction-space certificate. Let $\Theta_\tau$ be the members of
+the cancellation family whose total squared deviation from the fitted
+accelerated prediction is at most $5\sigma^2$. The certificate reports
+\begin{equation}
+  \Delta_{\rm use}=\max_{\theta,\theta'\in\Theta_\tau,\,j\in{\cal J}_{use}}
+  \left|\log \widehat{\MTTF}_{\theta}(T_{use},j)-\log
+  \widehat{\MTTF}_{\theta'}(T_{use},j)\right|.
+\end{equation}
+We call a batch SAFE only when $\exp(\Delta_{\rm use})\le2$; otherwise the
+system returns ABSTAIN. Across 20 seeds, the accelerated-only median
+compatible-set disagreement is $91.8\times$. Selecting one batch by the
+planned certificate reduces it to $88.4\times$, but all seeds remain ABSTAIN;
+Fisher and random controls also remain at a 100\% abstention rate. Thus the
+stronger finding is a negative one: under this physically motivated ambiguity
+family, one additional batch is insufficient for a 2$\times$ deployment
+certificate. This is an empirical benchmark result, not a coverage guarantee,
+and motivates multi-stage testing or an independently measured material
+constraint. Figure~\ref{fig:certificate} summarizes the control comparison.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.64\linewidth]{figures/fig_deployment_safety_certificate.png}
+\caption{Robust deployment-safety certificate across 20 seeds. The compatible
+set remains much wider than the 2$\times$ sign-off limit after one additional
+batch, so the correct output is ABSTAIN rather than an overconfident lifetime
+ranking.}
+\label{fig:certificate}
+\end{figure}
 
 \section{Noise sensitivity as a secondary stress test}
 
@@ -819,6 +869,10 @@ test.
         the 20-seed deployment-identifiability experiment and writes
         \texttt{results/deployment\_identifiability.json} and the two adaptive
         test-design figures.
+  \item \texttt{python benchmarks/nonidentifiability\_frontier.py} reproduces
+        the optimizer-independent deployment frontier and its figure.
+  \item \texttt{python benchmarks/deployment\_safety\_certificate.py} reproduces
+        the 20-seed compatible-set sign-off certificate and its figure.
 \end{itemize}
 
 \paragraph*{Use of AI tools.} Large language models were used as writing,
